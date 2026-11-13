@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simon Says | Andy Shaw</title>
+<meta name="description" content="A physical Simon Says memory game I wired up with arcade buttons, LEDs, and an Arduino in one week.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<nav class="top">
+  <div class="wrap nav-in">
+    <a href="index.html" class="logo">Andy Shaw</a>
+    <ul class="nav-links">
+      <li><a href="index.html#kndi">kndi</a></li>
+      <li><a href="index.html#meta">Meta</a></li>
+      <li><a href="index.html#work">Projects</a></li>
+      <li><a href="index.html#experience">Experience</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="https://79f8e248-ca0f-4fcf-af31-76ef78ef797a.usrfiles.com/ugd/041fc2_833aa57dec1d47d5a1edbb8de85f2121.pdf" target="_blank" rel="noopener">Resume</a></li>
+      <li><a href="index.html#contact" class="cta">Get in touch</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="progress" aria-hidden="true"></div>
+<header class="cs-hero wrap">
+  <a class="back" href="index.html#work">← All projects</a>
+  <div class="label">UW HCDE · Hardware</div>
+  <h1>Simon Says</h1>
+  <p class="lede">An electronic Simon Says. The game flashes a sequence of lights, you repeat it on arcade buttons, and it gets longer every round. I had one week to design, build, and present it.</p>
+  
+  <div class="facts"><div><b>Context</b><span>UW HCDE</span></div><div><b>When</b><span>One week</span></div><div><b>Built</b><span>Solo</span></div><div><b>Hardware</b><span>Arduino, arcade buttons, LEDs</span></div></div>
+  <div class="glance"><div class="glance-h"><span>At a glance</span><span>2 min read</span></div><div class="glance-g"><div><b>Problem</b><p>Design, build, and present a hardware game in one week.</p></div><div><b>What I did</b><p>Circuit design, Arduino code, a cardboard enclosure, and sound cues for accessibility.</p></div><div class="result"><b>Result</b><p>A working game and demo video, on schedule.</p></div></div></div>
+</header>
+<div class="wrap"><div class="cs-cover"><div class="ph" data-full="https://static.wixstatic.com/media/041fc2_3d2d10d23082403382f286cef8f573ae~mv2.png/v1/fit/w_2400,h_2400,q_85/041fc2_3d2d10d23082403382f286cef8f573ae~mv2.png" data-cap="Simon Says" style="cursor:zoom-in"><img data-wix src="https://static.wixstatic.com/media/041fc2_3d2d10d23082403382f286cef8f573ae~mv2.png/v1/fit/w_2000,h_2000,q_85/041fc2_3d2d10d23082403382f286cef8f573ae~mv2.png" alt="Simon Says" decoding="async"></div></div></div>
+<nav class="toc"><div class="wrap"><a href="#the-plan">The plan</a><a href="#design-and-build">Design and build</a><a href="#demo">Demo</a></div></nav>
+<main id="main"><section class="cs-sec" id="the-plan"><div class="wrap narrow"><h2 class="rv">The plan</h2><p>One week for concept, design, build, and presentation meant I had to plan tightly:</p><ul><li><b>Day 1:</b> code that generates and tracks a random button order.</li><li><b>Day 3:</b> the circuit, with a start button and arcade buttons.</li><li><b>Day 4:</b> a working prototype, with a buzzer and score screen as stretch goals.</li><li><b>Day 6:</b> final presentation and documentation.</li></ul><p>I had to rewire arcade buttons from Amazon, which meant learning the components and pin layouts fast.</p></div></section><section class="cs-sec" id="design-and-build"><div class="wrap narrow"><h2 class="rv">Design and build</h2><p>I diagrammed the circuit and paired each button with its matching LED, so the light cues lined up with gameplay. Everything went in a cardboard box with holes cut for the buttons. The Arduino and breadboard sat hidden inside, so players only saw the game.</p><div class="figs c2 contain rv"><figure><div class="ph" style="--ar:4/3" data-full="https://static.wixstatic.com/media/041fc2_1799ee68c4904d20a347e3bade9a738f~mv2.png/v1/fit/w_2400,h_2400,q_85/041fc2_1799ee68c4904d20a347e3bade9a738f~mv2.png" data-cap="Circuit diagram"><img data-wix src="https://static.wixstatic.com/media/041fc2_1799ee68c4904d20a347e3bade9a738f~mv2.png/v1/fit/w_1200,h_1200,q_85/041fc2_1799ee68c4904d20a347e3bade9a738f~mv2.png" alt="Circuit diagram" loading="lazy" decoding="async"></div><figcaption>Circuit diagram</figcaption></figure><figure><div class="ph" style="--ar:4/3" data-full="https://static.wixstatic.com/media/041fc2_31a6e482301743f58cc010a4791d72b6~mv2.png/v1/fit/w_2400,h_2400,q_85/041fc2_31a6e482301743f58cc010a4791d72b6~mv2.png" data-cap="The raw circuit with arcade buttons"><img data-wix src="https://static.wixstatic.com/media/041fc2_31a6e482301743f58cc010a4791d72b6~mv2.png/v1/fit/w_1200,h_1200,q_85/041fc2_31a6e482301743f58cc010a4791d72b6~mv2.png" alt="The raw circuit with arcade buttons" loading="lazy" decoding="async"></div><figcaption>The raw circuit with arcade buttons</figcaption></figure></div><div class="figs c2 contain rv"><figure><div class="ph" style="--ar:3/4" data-full="https://static.wixstatic.com/media/041fc2_2703ea0b00d2408c83c01e3b1fc8abf3~mv2.png/v1/fit/w_2400,h_2400,q_85/041fc2_2703ea0b00d2408c83c01e3b1fc8abf3~mv2.png" data-cap="The shell"><img data-wix src="https://static.wixstatic.com/media/041fc2_2703ea0b00d2408c83c01e3b1fc8abf3~mv2.png/v1/fit/w_1200,h_1200,q_85/041fc2_2703ea0b00d2408c83c01e3b1fc8abf3~mv2.png" alt="The shell" loading="lazy" decoding="async"></div><figcaption>The shell</figcaption></figure><figure><div class="ph" style="--ar:3/4" data-full="https://static.wixstatic.com/media/041fc2_3d2d10d23082403382f286cef8f573ae~mv2.png/v1/fit/w_2400,h_2400,q_85/041fc2_3d2d10d23082403382f286cef8f573ae~mv2.png" data-cap="The finished game"><img data-wix src="https://static.wixstatic.com/media/041fc2_3d2d10d23082403382f286cef8f573ae~mv2.png/v1/fit/w_1200,h_1200,q_85/041fc2_3d2d10d23082403382f286cef8f573ae~mv2.png" alt="The finished game" loading="lazy" decoding="async"></div><figcaption>The finished game</figcaption></figure></div><p>The code is split into functions for generating the sequence, flashing the LEDs, playing sounds, checking input, and moving to the next round. Each button also has its own buzz, so the game works for people who can't see the lights.</p></div></section><section class="cs-sec" id="demo"><div class="wrap narrow"><h2 class="rv">Demo</h2><figure class="rv"><div class="ph" data-full="https://static.wixstatic.com/media/041fc2_2975e9d3a049401aa7e08c0e5f002271~mv2.gif" data-cap="A demo video I filmed of the game"><img data-wix src="https://static.wixstatic.com/media/041fc2_2975e9d3a049401aa7e08c0e5f002271~mv2.gif" alt="A demo video I filmed of the game" loading="lazy" decoding="async"></div><figcaption>A demo video I filmed of the game</figcaption></figure><p>The hardest part was keeping the sequence, button presses, and LED feedback in sync. The tight timeline also taught me to stop polishing and ship.</p></div></section></main>
+<div class="wrap"><div class="cs-next"><a href="restaurant-finder.html"><span>← Previous</span><b>Restaurant Finder</b></a><a class="r" href="index.html#work"><span>Back to</span><b>All projects</b></a></div></div>
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="label">Contact</div>
+    <h2>Let's talk. <a href="mailto:andyjshaw000@gmail.com">andyjshaw000@gmail.com</a></h2>
+    <div class="links">
+      <a href="https://www.linkedin.com/in/andyjshaw000/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="https://github.com/andyjshaw000" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://79f8e248-ca0f-4fcf-af31-76ef78ef797a.usrfiles.com/ugd/041fc2_833aa57dec1d47d5a1edbb8de85f2121.pdf" target="_blank" rel="noopener">Resume (PDF) ↗</a>
+      <a href="https://kndi.app" target="_blank" rel="noopener">kndi.app ↗</a>
+    </div>
+  </div>
+</section>
+<footer><div class="wrap">© 2026 Andy Shaw</div></footer>
+<script src="assets/site.js"></script>
+</body>
+</html>

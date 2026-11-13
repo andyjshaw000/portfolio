@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Restaurant Finder | Andy Shaw</title>
+<meta name="description" content="A Python and Flask web app that maps nearby restaurants with color-coded ratings, using the Yelp Fusion API.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<nav class="top">
+  <div class="wrap nav-in">
+    <a href="index.html" class="logo">Andy Shaw</a>
+    <ul class="nav-links">
+      <li><a href="index.html#kndi">kndi</a></li>
+      <li><a href="index.html#meta">Meta</a></li>
+      <li><a href="index.html#work">Projects</a></li>
+      <li><a href="index.html#experience">Experience</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="https://79f8e248-ca0f-4fcf-af31-76ef78ef797a.usrfiles.com/ugd/041fc2_833aa57dec1d47d5a1edbb8de85f2121.pdf" target="_blank" rel="noopener">Resume</a></li>
+      <li><a href="index.html#contact" class="cta">Get in touch</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="progress" aria-hidden="true"></div>
+<header class="cs-hero wrap">
+  <a class="back" href="index.html#work">← All projects</a>
+  <div class="label">UW HCDE · Code</div>
+  <h1>Restaurant Finder</h1>
+  <p class="lede">I like food and I like code, so I built a web app that pulls restaurant data from Yelp and puts it on an interactive map. Search for something, and you get every nearby spot color-coded by rating.</p>
+  <div class="btns" style="margin-top:28px"><a class="btn solid" href="https://andyjshaw000.pythonanywhere.com/" target="_blank" rel="noopener">Live demo ↗</a></div>
+  <div class="facts"><div><b>Context</b><span>UW HCDE</span></div><div><b>Built</b><span>Solo</span></div><div><b>Stack</b><span>Python, Flask, Folium</span></div><div><b>Data</b><span>Yelp Fusion API</span></div></div>
+  <div class="glance"><div class="glance-h"><span>At a glance</span><span>2 min read</span></div><div class="glance-g"><div><b>Problem</b><p>I wanted a faster way to see which nearby restaurants are good.</p></div><div><b>What I did</b><p>My first Python project: Flask, Folium, and the Yelp API, paginated past its 50-result cap.</p></div><div class="result"><b>Result</b><p>A deployed web app with a color-coded restaurant map.</p></div></div></div>
+</header>
+<div class="wrap"><div class="cs-cover"><div class="ph" data-full="https://static.wixstatic.com/media/041fc2_35594dc7958d442cb5eb68fcd17642c8~mv2.png/v1/fit/w_2400,h_2400,q_85/041fc2_35594dc7958d442cb5eb68fcd17642c8~mv2.png" data-cap="Restaurant Finder" style="cursor:zoom-in"><img data-wix src="https://static.wixstatic.com/media/041fc2_35594dc7958d442cb5eb68fcd17642c8~mv2.png/v1/fit/w_2000,h_2000,q_85/041fc2_35594dc7958d442cb5eb68fcd17642c8~mv2.png" alt="Restaurant Finder" decoding="async"></div></div></div>
+<nav class="toc"><div class="wrap"><a href="#planning">Planning</a><a href="#building-it">Building it</a><a href="#deploying-it">Deploying it</a></div></nav>
+<main id="main"><section class="cs-sec" id="planning"><div class="wrap narrow"><h2 class="rv">Planning</h2><p>This was my first time using Python. I planned three core features: search, ratings and reviews, and an interactive map. I chose Yelp Fusion for the data, Flask for the web app, Folium for the map, and the Google Maps API for a better map experience.</p><div class="figs c2 contain rv"><figure><div class="ph" style="--ar:16/9" data-full="https://static.wixstatic.com/media/041fc2_f3b026c2024542e892d271266e9ead0f~mv2.png/v1/fit/w_2400,h_2400,q_85/041fc2_f3b026c2024542e892d271266e9ead0f~mv2.png" data-cap="My Python skills going in"><img data-wix src="https://static.wixstatic.com/media/041fc2_f3b026c2024542e892d271266e9ead0f~mv2.png/v1/fit/w_1200,h_1200,q_85/041fc2_f3b026c2024542e892d271266e9ead0f~mv2.png" alt="My Python skills going in" loading="lazy" decoding="async"></div><figcaption>My Python skills going in</figcaption></figure><figure><div class="ph" style="--ar:16/9" data-full="https://static.wixstatic.com/media/041fc2_f9c4f6ca0c3f46d1b083a43b9cb0c888~mv2.png/v1/fit/w_2400,h_2400,q_85/041fc2_f9c4f6ca0c3f46d1b083a43b9cb0c888~mv2.png" data-cap="My to-do list"><img data-wix src="https://static.wixstatic.com/media/041fc2_f9c4f6ca0c3f46d1b083a43b9cb0c888~mv2.png/v1/fit/w_1200,h_1200,q_85/041fc2_f9c4f6ca0c3f46d1b083a43b9cb0c888~mv2.png" alt="My to-do list" loading="lazy" decoding="async"></div><figcaption>My to-do list</figcaption></figure></div><p>The must-haves were the map and getting it deployed. Colors, marker sizes, tooltips, and a moving map were next.</p><figure class="rv"><div class="ph" data-full="https://static.wixstatic.com/media/041fc2_04c39d24a14a4c60913cd16f34fe57e8~mv2.png/v1/fit/w_2400,h_2400,q_85/041fc2_04c39d24a14a4c60913cd16f34fe57e8~mv2.png" data-cap="A map I found that inspired my design"><img data-wix src="https://static.wixstatic.com/media/041fc2_04c39d24a14a4c60913cd16f34fe57e8~mv2.png/v1/fit/w_1800,h_1800,q_85/041fc2_04c39d24a14a4c60913cd16f34fe57e8~mv2.png" alt="A map I found that inspired my design" loading="lazy" decoding="async"></div><figcaption>A map I found that inspired my design</figcaption></figure></div></section><section class="cs-sec" id="building-it"><div class="wrap narrow"><h2 class="rv">Building it</h2><p><b>Getting enough data.</b> Yelp only returns 50 restaurants per request. I made multiple requests with different offsets and saved the results to a CSV, so the map shows every restaurant nearby.</p><p><b>Search.</b> Flask takes what you type and sends it to the Yelp API as a parameter.</p><figure class="rv"><div class="ph" data-full="https://static.wixstatic.com/media/041fc2_620d98aee1f84f888ae0d0ed6110d0b7~mv2.png/v1/fit/w_2400,h_2400,q_85/041fc2_620d98aee1f84f888ae0d0ed6110d0b7~mv2.png" data-cap="The search bar"><img data-wix src="https://static.wixstatic.com/media/041fc2_620d98aee1f84f888ae0d0ed6110d0b7~mv2.png/v1/fit/w_1800,h_1800,q_85/041fc2_620d98aee1f84f888ae0d0ed6110d0b7~mv2.png" alt="The search bar" loading="lazy" decoding="async"></div><figcaption>The search bar</figcaption></figure><p><b>The map.</b> Markers are color-coded by rating so you can spot the good places fast. Click one and you get the rating, review count, and a review snippet. You can pan, zoom, and drag around the area.</p><figure class="rv"><div class="ph" data-full="https://static.wixstatic.com/media/041fc2_35594dc7958d442cb5eb68fcd17642c8~mv2.png/v1/fit/w_2400,h_2400,q_85/041fc2_35594dc7958d442cb5eb68fcd17642c8~mv2.png" data-cap="The map after a search"><img data-wix src="https://static.wixstatic.com/media/041fc2_35594dc7958d442cb5eb68fcd17642c8~mv2.png/v1/fit/w_1800,h_1800,q_85/041fc2_35594dc7958d442cb5eb68fcd17642c8~mv2.png" alt="The map after a search" loading="lazy" decoding="async"></div><figcaption>The map after a search</figcaption></figure><figure class="rv"><div class="ph" data-full="https://static.wixstatic.com/media/041fc2_36ed98dee17a44e9b2a1debec393d91c~mv2.png/v1/fit/w_2400,h_2400,q_85/041fc2_36ed98dee17a44e9b2a1debec393d91c~mv2.png" data-cap="The popup when you click a restaurant"><img data-wix src="https://static.wixstatic.com/media/041fc2_36ed98dee17a44e9b2a1debec393d91c~mv2.png/v1/fit/w_1800,h_1800,q_85/041fc2_36ed98dee17a44e9b2a1debec393d91c~mv2.png" alt="The popup when you click a restaurant" loading="lazy" decoding="async"></div><figcaption>The popup when you click a restaurant</figcaption></figure></div></section><section class="cs-sec" id="deploying-it"><div class="wrap narrow"><h2 class="rv">Deploying it</h2><p>Deploying to PythonAnywhere meant reworking my Flask routing to fit its setup.</p><figure class="rv"><div class="ph" data-full="https://static.wixstatic.com/media/041fc2_54ee7c8042cb465e8484c3582ee847d0~mv2.png/v1/fit/w_2400,h_2400,q_85/041fc2_54ee7c8042cb465e8484c3582ee847d0~mv2.png" data-cap="The Google Maps API key expired in August 2023, so the live map may not fully load"><img data-wix src="https://static.wixstatic.com/media/041fc2_54ee7c8042cb465e8484c3582ee847d0~mv2.png/v1/fit/w_1800,h_1800,q_85/041fc2_54ee7c8042cb465e8484c3582ee847d0~mv2.png" alt="The Google Maps API key expired in August 2023, so the live map may not fully load" loading="lazy" decoding="async"></div><figcaption>The Google Maps API key expired in August 2023, so the live map may not fully load</figcaption></figure><p>Going in, I'd never written Python. Coming out, I'd used HTTP requests, parsed JSON, built a Flask app, and shipped it to the web.</p></div></section></main>
+<div class="wrap"><div class="cs-next"><a href="celestial-ninja.html"><span>← Previous</span><b>Celestial Ninja</b></a><a class="r" href="simon-says.html"><span>Next →</span><b>Simon Says</b></a></div></div>
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="label">Contact</div>
+    <h2>Let's talk. <a href="mailto:andyjshaw000@gmail.com">andyjshaw000@gmail.com</a></h2>
+    <div class="links">
+      <a href="https://www.linkedin.com/in/andyjshaw000/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="https://github.com/andyjshaw000" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://79f8e248-ca0f-4fcf-af31-76ef78ef797a.usrfiles.com/ugd/041fc2_833aa57dec1d47d5a1edbb8de85f2121.pdf" target="_blank" rel="noopener">Resume (PDF) ↗</a>
+      <a href="https://kndi.app" target="_blank" rel="noopener">kndi.app ↗</a>
+    </div>
+  </div>
+</section>
+<footer><div class="wrap">© 2026 Andy Shaw</div></footer>
+<script src="assets/site.js"></script>
+</body>
+</html>
