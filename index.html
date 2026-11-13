@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="swiss" class="js">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,7 +7,7 @@
 <meta name="description" content="Andy Shaw. UX researcher at Meta Reality Labs and builder of kndi, an iOS app for planning festivals with friends. Open to PM, PjM, and UX research roles.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
@@ -15,6 +15,7 @@
 <nav class="top">
   <div class="wrap nav-in">
     <a href="#top" class="logo">Andy Shaw</a>
+    <button class="menu-btn" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
     <ul class="nav-links">
       <li><a href="#kndi">kndi</a></li>
       <li><a href="#meta">Meta</a></li>
@@ -29,12 +30,29 @@
 
 <main id="main">
 <header class="hero wrap" id="top">
+ <div class="hero-grid">
+ <div class="hero-main">
   <div class="status"><span class="dot"></span>Open to PM, PjM, and UX research roles. Seattle or relocating.</div>
   <h1>I research how people use products, and I <em>build</em> them too.</h1>
   <p class="lede">I'm Andy. I lead UX research studies at <strong>Meta Reality Labs</strong> for AR/VR and smart glasses, and on the side I built and shipped <strong>kndi</strong>, an iPhone app for planning festivals with friends. Now I want a role where I help decide what gets built, not just test it after.</p>
-  <div class="beads" aria-hidden="true">
-    <span style="background:#E2552B"></span><span style="background:#F2A541"></span><span style="background:#F5D547"></span><span style="background:#5BC0A8"></span><span style="background:#4F8EF7"></span><span style="background:#9B6BF2"></span><span style="background:#EF6FB4"></span>
+  <div class="btns hero-cta">
+    <a class="btn solid" href="#work">See my work ↓</a>
+    <a class="btn" href="https://79f8e248-ca0f-4fcf-af31-76ef78ef797a.usrfiles.com/ugd/041fc2_833aa57dec1d47d5a1edbb8de85f2121.pdf" target="_blank" rel="noopener">Resume ↗</a>
+    <a class="btn ghost" href="#contact">Get in touch</a>
   </div>
+ </div>
+ <aside class="quick" aria-label="Quick facts">
+  <div class="quick-h"><span>Quick facts</span><span class="beads" aria-hidden="true"><span style="background:#E2552B"></span><span style="background:#F2A541"></span><span style="background:#F5D547"></span><span style="background:#5BC0A8"></span><span style="background:#4F8EF7"></span><span style="background:#9B6BF2"></span><span style="background:#EF6FB4"></span></span></div>
+  <dl>
+    <div><dt>Now</dt><dd>UX Research at Meta Reality Labs</dd></div>
+    <div><dt>Shipped</dt><dd><a href="#kndi">kndi</a>, live on the App Store</dd></div>
+    <div><dt>Track record</dt><dd>300+ studies run. Gopuff research shipped.</dd></div>
+    <div><dt>Looking for</dt><dd>PM, PjM, or UX research roles</dd></div>
+    <div><dt>Based in</dt><dd>Seattle. Open to relocating.</dd></div>
+    <div><dt>School</dt><dd>UW HCDE, Cum Laude, Math minor</dd></div>
+  </dl>
+ </aside>
+ </div>
 </header>
 <div class="strip" aria-label="Where I've worked and studied"><div class="strip-track">
   <span>Meta Reality Labs</span><i></i><span>Gopuff</span><i></i><span>User Research International</span><i></i><span>KUOW Public Radio</span><i></i><span>University of Washington</span><i></i><span>kndi</span><i></i>
@@ -136,6 +154,7 @@
     <p>How should Gopuff sell product bundles? I ran the interviews and concept tests that answered it.</p>
     <div class="impact">Most recommendations shipped in the live app</div>
     <div class="pills"><span>User interviews</span><span>Concept testing</span></div>
+    <div class="more">Read case study <span>→</span></div>
   </div>
 </a>
 <a class="proj rv" data-c="research" href="save-for-later.html">
@@ -146,6 +165,7 @@
     <p>People were using their cart as a wishlist, then abandoning it. I researched what a real save-for-later feature should look like.</p>
     <div class="impact">Projected to add $16M in annual revenue</div>
     <div class="pills"><span>User interviews</span><span>Usability testing</span></div>
+    <div class="more">Read case study <span>→</span></div>
   </div>
 </a>
 <a class="proj rv" data-c="research" href="pdp-redesign.html">
@@ -156,6 +176,7 @@
     <p>I compared Gopuff's product page against 12 competitors and category leaders to figure out what to fix.</p>
     <div class="impact">Redesigned page went live in August 2023</div>
     <div class="pills"><span>Competitive analysis</span><span>Stakeholder deck</span></div>
+    <div class="more">Read case study <span>→</span></div>
   </div>
 </a>
 <a class="proj rv" data-c="research design" href="kuow.html">
@@ -166,6 +187,7 @@
     <p>Our senior capstone for KUOW public radio. We redesigned the app to win back engagement and reach a younger, more diverse audience.</p>
     <div class="impact">Pitched to judges at the HCDE capstone showcase</div>
     <div class="pills"><span>Interviews</span><span>Personas</span><span>A/B testing</span><span>Figma</span></div>
+    <div class="more">Read case study <span>→</span></div>
   </div>
 </a>
 <a class="proj rv" data-c="research design" href="strelmo.html">
@@ -176,6 +198,7 @@
     <p>The Stress Less Mouse. A mouse with a cortisol sensor and a desktop app that helps students track stress.</p>
     <div class="impact">Shown at the UW Computer Science showcase</div>
     <div class="pills"><span>Interviews</span><span>Usability testing</span><span>Heuristic analysis</span><span>Figma</span></div>
+    <div class="more">Read case study <span>→</span></div>
   </div>
 </a>
 <a class="proj rv" data-c="design" href="hike-finder.html">
@@ -186,6 +209,7 @@
     <p>Reworked the Washington Trails Association's mobile hike search and visual system, ending with a full brand book.</p>
     
     <div class="pills"><span>Visual design</span><span>Wireframes</span><span>Brand book</span><span>Figma</span></div>
+    <div class="more">Read case study <span>→</span></div>
   </div>
 </a>
 <a class="proj rv" data-c="design" href="cooking-central.html">
@@ -196,6 +220,7 @@
     <p>A cooking app for young adults short on time, money, and skills, with a social side so cooking feels less lonely.</p>
     
     <div class="pills"><span>Journey mapping</span><span>Storyboards</span><span>Prototyping</span><span>Figma</span></div>
+    <div class="more">Read case study <span>→</span></div>
   </div>
 </a>
 <a class="proj rv" data-c="code" href="celestial-ninja.html">
@@ -206,6 +231,7 @@
     <p>A 2D survival game in JavaScript with five elemental powers, a boss fight, and a live Firebase leaderboard. Playable in the browser.</p>
     <div class="impact">Playable live demo</div>
     <div class="pills"><span>JavaScript</span><span>p5play</span><span>Firebase</span></div>
+    <div class="more">Read case study <span>→</span></div>
   </div>
 </a>
 <a class="proj rv" data-c="code" href="restaurant-finder.html">
@@ -216,6 +242,7 @@
     <p>A Python and Flask web app that maps nearby restaurants with color-coded ratings, using the Yelp Fusion API.</p>
     
     <div class="pills"><span>Python</span><span>Flask</span><span>Folium</span><span>Yelp API</span></div>
+    <div class="more">Read case study <span>→</span></div>
   </div>
 </a>
 <a class="proj rv" data-c="code" href="simon-says.html">
@@ -226,6 +253,7 @@
     <p>A physical Simon Says memory game I wired up with arcade buttons, LEDs, and an Arduino in one week.</p>
     
     <div class="pills"><span>Arduino</span><span>Circuit design</span></div>
+    <div class="more">Read case study <span>→</span></div>
   </div>
 </a>
     </div>
@@ -244,7 +272,6 @@
           <li>Promoted after 4 months to lead all UX research studies on a larger team.</li>
           <li>Ran 300+ auditory perception experiments informing AR/VR and smart glasses products.</li>
           <li>Wrote 12+ research reports with statistical analysis that influenced product direction.</li>
-          <li>Managed 100+ internal documents as the data collection team's documentation lead.</li>
         </ul></div></li>
       <li><span class="when">Ongoing</span><div>
         <div class="role">Founder and builder</div>
@@ -258,16 +285,14 @@
         <div class="org">User Research International, Redmond</div>
         <ul>
           <li>Led 80+ in-person usability tests, interviews, and benchmarks on consumer electronics hardware.</li>
-          <li>Set up wearable and AR/VR research equipment, and recruited and screened participants.</li>
           <li>Helped write client reports with trends, insights, and recommendations.</li>
         </ul></div></li>
       <li><span class="when">Jun 2022 to Aug 2022</span><div>
         <div class="role">UX Researcher Intern</div>
         <div class="org">Gopuff, remote</div>
         <ul>
-          <li>Ran 20+ interviews, usability tests, concept tests, and heuristic evaluations on the consumer app.</li>
-          <li>Researched saving items for later to cut cart abandonment, projected to add $16M in annual revenue.</li>
-          <li>Produced 40+ recommendations that guided app experiments. Bundling and product page work shipped.</li>
+          <li>Ran 20+ research sessions. Save-for-later work was projected to add $16M in annual revenue.</li>
+          <li>Produced 40+ recommendations. Bundling and product page work shipped.</li>
         </ul></div></li>
       <li><span class="when">2019 to 2023</span><div>
         <div class="role">B.S. Human Centered Design &amp; Engineering, Cum Laude</div>

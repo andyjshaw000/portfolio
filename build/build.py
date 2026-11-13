@@ -21,7 +21,7 @@ def img(mid, alt="", w=1400, fill=None, lazy=True, zoom=True, cap=""):
             f'{" loading=\"lazy\"" if lazy else ""} decoding="async">'), z
 
 HEAD = """<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="swiss" class="js">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,7 +29,7 @@ HEAD = """<!DOCTYPE html>
 <meta name="description" content="{desc}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
@@ -41,6 +41,7 @@ def nav(home=True):
     return f"""<nav class="top">
   <div class="wrap nav-in">
     <a href="{pre or '#top'}" class="logo">Andy Shaw</a>
+    <button class="menu-btn" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
     <ul class="nav-links">
       <li><a href="{pre}#kndi">kndi</a></li>
       <li><a href="{pre}#meta">Meta</a></li>
@@ -175,6 +176,7 @@ def card(p):
     <p>{p['card']}</p>
     {imp}
     <div class="pills">{pills}</div>
+    <div class="more">Read case study <span>→</span></div>
   </div>
 </a>"""
 
@@ -186,12 +188,29 @@ def home():
             + nav(True) + f"""
 <main id="main">
 <header class="hero wrap" id="top">
+ <div class="hero-grid">
+ <div class="hero-main">
   <div class="status"><span class="dot"></span>Open to PM, PjM, and UX research roles. Seattle or relocating.</div>
   <h1>I research how people use products, and I <em>build</em> them too.</h1>
   <p class="lede">I'm Andy. I lead UX research studies at <strong>Meta Reality Labs</strong> for AR/VR and smart glasses, and on the side I built and shipped <strong>kndi</strong>, an iPhone app for planning festivals with friends. Now I want a role where I help decide what gets built, not just test it after.</p>
-  <div class="beads" aria-hidden="true">
-    <span style="background:#E2552B"></span><span style="background:#F2A541"></span><span style="background:#F5D547"></span><span style="background:#5BC0A8"></span><span style="background:#4F8EF7"></span><span style="background:#9B6BF2"></span><span style="background:#EF6FB4"></span>
+  <div class="btns hero-cta">
+    <a class="btn solid" href="#work">See my work ↓</a>
+    <a class="btn" href="https://79f8e248-ca0f-4fcf-af31-76ef78ef797a.usrfiles.com/ugd/041fc2_833aa57dec1d47d5a1edbb8de85f2121.pdf" target="_blank" rel="noopener">Resume ↗</a>
+    <a class="btn ghost" href="#contact">Get in touch</a>
   </div>
+ </div>
+ <aside class="quick" aria-label="Quick facts">
+  <div class="quick-h"><span>Quick facts</span><span class="beads" aria-hidden="true"><span style="background:#E2552B"></span><span style="background:#F2A541"></span><span style="background:#F5D547"></span><span style="background:#5BC0A8"></span><span style="background:#4F8EF7"></span><span style="background:#9B6BF2"></span><span style="background:#EF6FB4"></span></span></div>
+  <dl>
+    <div><dt>Now</dt><dd>UX Research at Meta Reality Labs</dd></div>
+    <div><dt>Shipped</dt><dd><a href="#kndi">kndi</a>, live on the App Store</dd></div>
+    <div><dt>Track record</dt><dd>300+ studies run. Gopuff research shipped.</dd></div>
+    <div><dt>Looking for</dt><dd>PM, PjM, or UX research roles</dd></div>
+    <div><dt>Based in</dt><dd>Seattle. Open to relocating.</dd></div>
+    <div><dt>School</dt><dd>UW HCDE, Cum Laude, Math minor</dd></div>
+  </dl>
+ </aside>
+ </div>
 </header>
 <div class="strip" aria-label="Where I've worked and studied"><div class="strip-track">
   <span>Meta Reality Labs</span><i></i><span>Gopuff</span><i></i><span>User Research International</span><i></i><span>KUOW Public Radio</span><i></i><span>University of Washington</span><i></i><span>kndi</span><i></i>
@@ -302,7 +321,6 @@ def home():
           <li>Promoted after 4 months to lead all UX research studies on a larger team.</li>
           <li>Ran 300+ auditory perception experiments informing AR/VR and smart glasses products.</li>
           <li>Wrote 12+ research reports with statistical analysis that influenced product direction.</li>
-          <li>Managed 100+ internal documents as the data collection team's documentation lead.</li>
         </ul></div></li>
       <li><span class="when">Ongoing</span><div>
         <div class="role">Founder and builder</div>
@@ -316,16 +334,14 @@ def home():
         <div class="org">User Research International, Redmond</div>
         <ul>
           <li>Led 80+ in-person usability tests, interviews, and benchmarks on consumer electronics hardware.</li>
-          <li>Set up wearable and AR/VR research equipment, and recruited and screened participants.</li>
           <li>Helped write client reports with trends, insights, and recommendations.</li>
         </ul></div></li>
       <li><span class="when">Jun 2022 to Aug 2022</span><div>
         <div class="role">UX Researcher Intern</div>
         <div class="org">Gopuff, remote</div>
         <ul>
-          <li>Ran 20+ interviews, usability tests, concept tests, and heuristic evaluations on the consumer app.</li>
-          <li>Researched saving items for later to cut cart abandonment, projected to add $16M in annual revenue.</li>
-          <li>Produced 40+ recommendations that guided app experiments. Bundling and product page work shipped.</li>
+          <li>Ran 20+ research sessions. Save-for-later work was projected to add $16M in annual revenue.</li>
+          <li>Produced 40+ recommendations. Bundling and product page work shipped.</li>
         </ul></div></li>
       <li><span class="when">2019 to 2023</span><div>
         <div class="role">B.S. Human Centered Design &amp; Engineering, Cum Laude</div>
