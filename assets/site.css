@@ -476,3 +476,66 @@ html.anim-more .quick{opacity:0;transform:translateY(16px);animation:pagein .8s 
 .cs-cover .ph{max-height:560px;overflow:hidden}
 .toc a{padding:4px 0;border-bottom:2px solid transparent}
 .toc a.on{border-bottom-color:var(--accent)}
+
+/* ================= v5: visual polish ================= */
+.logo{display:inline-flex;align-items:baseline;gap:3px}
+.logo i{width:7px;height:7px;background:var(--accent);display:inline-block}
+.label em{font-style:normal;color:var(--ink);font-weight:500;margin-right:2px}
+.contact .label em{color:#fff}
+
+/* hero grid */
+.hero{position:relative}
+.gridlines{position:absolute;inset:0 28px;display:grid;grid-template-columns:repeat(6,1fr);pointer-events:none;z-index:-1}
+.gridlines i{border-left:1px solid color-mix(in srgb,var(--line) 55%,transparent)}
+.gridlines i:last-child{border-right:1px solid color-mix(in srgb,var(--line) 55%,transparent)}
+html.anim-more .gridlines i{transform:scaleY(0);transform-origin:top;animation:growy 1.2s cubic-bezier(.2,.7,.2,1) forwards}
+html.anim-more .gridlines i:nth-child(2){animation-delay:.08s}
+html.anim-more .gridlines i:nth-child(3){animation-delay:.16s}
+html.anim-more .gridlines i:nth-child(4){animation-delay:.24s}
+html.anim-more .gridlines i:nth-child(5){animation-delay:.32s}
+html.anim-more .gridlines i:nth-child(6){animation-delay:.4s}
+@keyframes growy{to{transform:scaleY(1)}}
+.hero h1{font-size:clamp(40px,5.8vw,72px);line-height:.98}
+
+/* quick facts card */
+.quick{background:var(--bg);border:1px solid var(--ink);box-shadow:8px 8px 0 var(--accent)}
+.quick-h{background:var(--ink);color:#fff;border-bottom:none;padding:12px 18px}
+.quick dl>div{grid-template-columns:96px 1fr;padding:11px 18px;transition:background .2s}
+.quick dl>div:hover{background:var(--accent-soft)}
+.quick dd{font-weight:500;font-size:14.5px}
+.quick dt{font-size:11px}
+
+/* cards */
+.proj .thumb{position:relative}
+.idx{position:absolute;top:12px;left:12px;background:var(--bg);color:var(--ink);font-family:var(--mono);font-size:12px;padding:3px 8px;border:1px solid var(--ink)}
+.proj:hover .idx{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* section rhythm: alternate band */
+#meta,#experience{background:var(--paper)}
+#meta .num{background:var(--bg)}
+
+/* kndi feature in swiss */
+html[data-theme="swiss"] .feature{border-color:var(--ink)}
+html[data-theme="swiss"] .feature-art{background:linear-gradient(160deg,#0B1A5C 0%,#1F4BFF 70%,#6C8BFF 120%)}
+html[data-theme="swiss"] .tag{background:var(--accent);color:#fff}
+
+/* contact */
+.contact{padding:120px 0}
+
+/* ================= print / save as PDF ================= */
+@media print{
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  nav.top,.toc,.strip,.to-top,.progress,.lab,.lab-btn,.gridlines,.menu-btn,.filters,.skip{display:none!important}
+  html.anim-more .st,html.anim-more .wipe,.rv,html.anim-more .quick,html.anim-hero .hero h1 .w,img[data-wix]{opacity:1!important;transform:none!important;clip-path:none!important;animation:none!important}
+  html[data-theme="swiss"] .hero h1 em{background-size:100% 6px!important}
+  body{font-size:12pt}
+  section,.cs-sec{padding:36px 0;break-inside:auto}
+  .hero{padding:24px 0}
+  .proj,.num,figure,.quick,.glance,.xp>li{break-inside:avoid}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .feature{grid-template-columns:1fr}
+  .feature-art{display:none}
+  a[href^="http"]:not(.btn)::after{content:""}
+  .contact{padding:36px 0}
+}
+.hero{isolation:isolate}

@@ -1,9 +1,15 @@
-import html, os, sys
+import html, os, sys, hashlib
 sys.path.insert(0, os.path.dirname(__file__))
 from content import PROJECTS, ORDER, m, TLDR
 
 OUT = os.path.join(os.path.dirname(__file__), "..")
 BYSLUG = {p["slug"]: p for p in PROJECTS}
+def _ver():
+    h = hashlib.md5()
+    for f in ("assets/site.css", "assets/site.js"):
+        h.update(open(os.path.join(OUT, f), "rb").read())
+    return h.hexdigest()[:8]
+V = _ver()
 
 def url(mid, w=1400, fill=None):
     """Wix image URL. GIFs are served as-is so they stay animated."""
@@ -30,7 +36,7 @@ HEAD = """<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/site.css?v={v}">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -40,7 +46,7 @@ def nav(home=True):
     pre = "" if home else "index.html"
     return f"""<nav class="top">
   <div class="wrap nav-in">
-    <a href="{pre or '#top'}" class="logo">Andy Shaw</a>
+    <a href="{pre or '#top'}" class="logo">Andy Shaw<i></i></a>
     <button class="menu-btn" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
     <ul class="nav-links">
       <li><a href="{pre}#kndi">kndi</a></li>
@@ -57,7 +63,7 @@ def nav(home=True):
 
 CONTACT = """<section class="contact" id="contact">
   <div class="wrap">
-    <div class="label">Contact</div>
+    <div class="label"><em>06</em>Contact</div>
     <h2>Let's talk. <a href="mailto:andyjshaw000@gmail.com">andyjshaw000@gmail.com</a></h2>
     <div class="links">
       <a href="https://www.linkedin.com/in/andyjshaw000/" target="_blank" rel="noopener">LinkedIn ↗</a>
@@ -68,7 +74,7 @@ CONTACT = """<section class="contact" id="contact">
   </div>
 </section>
 <footer><div class="wrap">© 2026 Andy Shaw</div></footer>
-<script src="assets/site.js"></script>
+<script src="assets/site.js?v=__V__"></script>
 </body>
 </html>
 """
@@ -147,7 +153,7 @@ def case_page(p):
         nxt += f'<a class="r" href="{next_p["slug"]}.html"><span>Next →</span><b>{next_p["title"]}</b></a>'
     else:
         nxt += '<a class="r" href="index.html#work"><span>Back to</span><b>All projects</b></a>'
-    return (HEAD.format(title=f'{p["title"]} | Andy Shaw', desc=html.escape(p["card"], quote=True)) + nav(False) +
+    return (HEAD.format(v=V, title=f'{p["title"]} | Andy Shaw', desc=html.escape(p["card"], quote=True)) + nav(False) +
 f"""<div class="progress" aria-hidden="true"></div>
 <header class="cs-hero wrap">
   <a class="back" href="index.html#work">← All projects</a>
@@ -165,11 +171,12 @@ f"""<div class="progress" aria-hidden="true"></div>
 """ + CONTACT)
 
 def card(p):
+    n = ORDER.index(p["slug"]) + 1
     tag, _ = img(p["thumb"], alt=p["title"], fill=800, zoom=False)
     imp = f'<div class="impact">{p["impact"]}</div>' if p.get("impact") else ""
     pills = "".join(f"<span>{x}</span>" for x in p["pills"])
     return f"""<a class="proj rv" data-c="{p['cat']}" href="{p['slug']}.html">
-  <div class="thumb">{tag}</div>
+  <div class="thumb">{tag}<span class="idx">{n:02d}</span></div>
   <div class="body">
     <div class="where"><span>{p['where']}</span><span>{p['kind']}</span></div>
     <h4>{p['title']}</h4>
@@ -183,11 +190,12 @@ def card(p):
 def home():
     cards = "\n".join(card(BYSLUG[s]) for s in ORDER)
     ptag, _ = img(m("56a508aabfa1400493a7a92ebbedee1b", "jpg"), alt="Andy Shaw", w=900, zoom=False)
-    return (HEAD.format(title="Andy Shaw | UX Research and Product",
+    return (HEAD.format(v=V, title="Andy Shaw | UX Research and Product",
                         desc="Andy Shaw. UX researcher at Meta Reality Labs and builder of kndi, an iOS app for planning festivals with friends. Open to PM, PjM, and UX research roles.")
             + nav(True) + f"""
 <main id="main">
 <header class="hero wrap" id="top">
+ <div class="gridlines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
  <div class="hero-grid">
  <div class="hero-main">
   <div class="status"><span class="dot"></span>Open to PM, PjM, and UX research roles. Seattle or relocating.</div>
@@ -219,7 +227,7 @@ def home():
 
 <section id="kndi">
   <div class="wrap">
-    <div class="label rv">Featured project</div>
+    <div class="label rv"><em>01</em>Featured project</div>
     <h2 class="rv">From a group chat problem to a live app on the App Store.</h2>
     <div class="feature rv">
       <div class="feature-copy">
@@ -270,7 +278,7 @@ def home():
   <div class="wrap">
     <div class="split">
       <div class="rv">
-        <div class="label">Current role</div>
+        <div class="label"><em>02</em>Current role</div>
         <div class="meta-side">
           <b>Meta Reality Labs</b>
           UX Research Assistant<br>
@@ -295,7 +303,7 @@ def home():
 
 <section id="work">
   <div class="wrap">
-    <div class="label rv">Case studies</div>
+    <div class="label rv"><em>03</em>Case studies</div>
     <h2 class="rv">Research, design, and code from Gopuff and UW.</h2>
     <div class="filters rv" role="group" aria-label="Filter projects">
       <button class="on" data-f="all">All</button>
@@ -311,7 +319,7 @@ def home():
 
 <section id="experience">
   <div class="wrap">
-    <div class="label rv">Experience</div>
+    <div class="label rv"><em>04</em>Experience</div>
     <h2 class="rv">About three years in UX research.</h2>
     <ul class="xp rv">
       <li><span class="when">May 2024 to now</span><div>
@@ -355,7 +363,7 @@ def home():
   <div class="wrap about-grid">
     <div class="portrait rv">{ptag}</div>
     <div class="rv">
-      <div class="label">About</div>
+      <div class="label"><em>05</em>About</div>
       <h2 style="margin-bottom:28px">The planner of the group.</h2>
       <div class="prose">
         <p>I grew up in the Seattle area and studied HCDE at UW. In every group I'm in, I end up being the one who plans things and keeps everyone moving. I also work better when people are counting on me. That's a big part of why I'm moving toward product and program management.</p>
@@ -376,10 +384,10 @@ def home():
 
 def main():
     with open(os.path.join(OUT, "index.html"), "w") as f:
-        f.write(home())
+        f.write(home().replace("__V__", V))
     for p in PROJECTS:
         with open(os.path.join(OUT, f"{p['slug']}.html"), "w") as f:
-            f.write(case_page(p))
+            f.write(case_page(p).replace("__V__", V))
     print("built", 1 + len(PROJECTS), "pages")
 
 if __name__ == "__main__":
