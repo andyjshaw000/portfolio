@@ -160,8 +160,8 @@
   // count up
   function countUp(el){
     if (!root.classList.contains('anim-count')) return;
-    var target = +el.dataset.count, t0 = null, dur = 1400;
-    function fmt(v){ return Math.round(v).toLocaleString('en-US') + '+'; }
+    var target = +el.dataset.count, t0 = null, dur = 1400, plus = /\+\s*$/.test(el.textContent) ? '+' : '';
+    function fmt(v){ return Math.round(v).toLocaleString('en-US') + plus; }
     function step(ts){ if (!t0) t0 = ts; var p = Math.min(1, (ts - t0) / dur); el.textContent = fmt(target * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); }
     requestAnimationFrame(step);
   }
@@ -256,14 +256,16 @@
   });
   if ('IntersectionObserver' in window) {
     var so = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); so.unobserve(e.target); } }); }, {threshold:.1});
-    document.querySelectorAll('.st, .label, .wipe').forEach(function(el){ so.observe(el); });
+    document.querySelectorAll('.st, .label').forEach(function(el){ so.observe(el); });
   }
 
   // image wipe on case study figures
   document.querySelectorAll('figure .ph, .cs-cover').forEach(function(el){ el.classList.add('wipe'); });
   if ('IntersectionObserver' in window) {
-    var wo = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); wo.unobserve(e.target); } }); }, {threshold:.12});
-    document.querySelectorAll('.wipe').forEach(function(el){ wo.observe(el); });
+    // observe the unclipped parent: a fully clipped element never reports as intersecting
+    var wo = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target._wipe.classList.add('in'); wo.unobserve(e.target); } }); }, {threshold:.05});
+    document.querySelectorAll('.wipe').forEach(function(el){ var host = el.parentElement || el; host._wipe = el; wo.observe(host); });
+    setTimeout(function(){ document.querySelectorAll('.wipe:not(.in)').forEach(function(el){ var r = el.getBoundingClientRect(); if (r.top < innerHeight && r.bottom > 0) el.classList.add('in'); }); }, 1500);
   }
 
   // cover parallax

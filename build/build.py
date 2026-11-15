@@ -13,6 +13,8 @@ V = _ver()
 
 def url(mid, w=1400, fill=None):
     """Wix image URL. GIFs are served as-is so they stay animated."""
+    if mid.startswith("assets/"):
+        return mid
     base = f"https://static.wixstatic.com/media/{mid}"
     if mid.endswith(".gif"):
         return base
@@ -139,6 +141,11 @@ def case_page(p):
             f'<a class="btn solid" href="{u}" target="_blank" rel="noopener">{l} ↗</a>' for l, u in p["links"]) + "</div>"
     cover_id = p.get("cover") or p["thumb"]
     ctag, cz = img(cover_id, alt=p["title"], w=2000, lazy=False, cap=p["title"])
+    if p.get("strip"):
+        cells = "".join(f'<div class="cs-strip-cell" data-full="{u}" data-cap="kndi on the App Store">' + img(u, zoom=False, lazy=False)[0] + '</div>' for u in p["strip"])
+        cover_html = f'<div class="wrap"><div class="cs-strip">{cells}</div></div>'
+    else:
+        cover_html = f'<div class="wrap"><div class="cs-cover"><div class="ph"{cz} style="cursor:zoom-in">{ctag}</div></div></div>'
     toc = "".join(f'<a href="#{anchor(h)}">{h}</a>' for h, _ in p["sections"])
     secs = []
     for h, blocks in p["sections"]:
@@ -164,14 +171,14 @@ f"""<div class="progress" aria-hidden="true"></div>
   <div class="facts">{facts}</div>
   {outcome}
 </header>
-<div class="wrap"><div class="cs-cover"><div class="ph"{cz} style="cursor:zoom-in">{ctag}</div></div></div>
+{cover_html}
 <nav class="toc"><div class="wrap">{toc}</div></nav>
 <main id="main">{"".join(secs)}</main>
 <div class="wrap"><div class="cs-next">{nxt}</div></div>
 """ + CONTACT)
 
 def card(p):
-    n = ORDER.index(p["slug"]) + 1
+    n = [x for x in ORDER if x != "kndi"].index(p["slug"]) + 1
     tag, _ = img(p["thumb"], alt=p["title"], fill=800, zoom=False)
     imp = f'<div class="impact">{p["impact"]}</div>' if p.get("impact") else ""
     pills = "".join(f"<span>{x}</span>" for x in p["pills"])
@@ -188,7 +195,7 @@ def card(p):
 </a>"""
 
 def home():
-    cards = "\n".join(card(BYSLUG[s]) for s in ORDER)
+    cards = "\n".join(card(BYSLUG[s]) for s in ORDER if s != "kndi")
     ptag, _ = img(m("56a508aabfa1400493a7a92ebbedee1b", "jpg"), alt="Andy Shaw", w=900, zoom=False)
     return (HEAD.format(v=V, title="Andy Shaw | UX Research and Product",
                         desc="Andy Shaw. UX researcher at Meta Reality Labs and builder of kndi, an iOS app for planning festivals with friends. Open to PM, PjM, and UX research roles.")
@@ -237,38 +244,23 @@ def home():
         <p>Planning a festival with a group usually means a messy group chat, five screenshots of the set times, and nobody knowing where to meet. kndi puts all of that in one place. Every event gets a group with chat, polls, a shared schedule, and an album, and you get a heads up when two sets you picked overlap.</p>
         <p>It also brings kandi trading into the app. You design digital beads and trade them by scanning each other's codes in person. The goal was never to replace the real thing. It's a way to keep the memory of who you met.</p>
         <ul class="did">
-          <li><b>Product</b><span>Decided what to build and what to cut, based on how my friends and I actually plan shows.</span></li>
-          <li><b>Build</b><span>Built and shipped the iOS app with a small group of friends, using AI coding tools to move fast.</span></li>
-          <li><b>Growth</b><span>Wrote the go-to-market plan, focused on local network effects and Insomniac events, and worked on App Store discoverability.</span></li>
+          <li><b>Product</b><span>Decide what to build and what to cut, based on how my friends and I actually plan shows.</span></li>
+          <li><b>Build</b><span>Top contributor on a team of six: 51% of commits, including chat, the design system, kandi, and push notifications.</span></li>
+          <li><b>Growth</b><span>Wrote the go-to-market plan around local network effects and Insomniac events.</span></li>
         </ul>
         <div class="stats">
           <div class="stat"><b>4.9</b><span>App Store rating</span></div>
           <div class="stat"><b data-count="6200">6,200+</b><span>events in 408 cities</span></div>
+          <div class="stat"><b data-count="647">647</b><span>commits by me</span></div>
         </div>
         <div class="btns">
-          <a class="btn solid" href="https://apps.apple.com/app/kndi/id6762342337" target="_blank" rel="noopener">View on the App Store ↗</a>
+          <a class="btn solid" href="kndi.html">Read the case study →</a>
+          <a class="btn" href="https://apps.apple.com/app/kndi/id6762342337" target="_blank" rel="noopener">App Store ↗</a>
           <a class="btn" href="https://kndi.app" target="_blank" rel="noopener">kndi.app ↗</a>
         </div>
       </div>
       <div class="feature-art" aria-hidden="true">
-        <div class="phone"><div class="screen">
-          <div class="scr-top"><b>kndi</b><span class="chip">EDC LV</span></div>
-          <div class="card">
-            <div class="t">The Squad</div>
-            <div class="m">6 friends · 3 days</div>
-            <div class="sets">
-              <div class="set"><span>Knock2 · 9:15</span><span class="av"><i style="background:#F2A541"></i><i style="background:#5BC0A8"></i><i style="background:#9B6BF2"></i></span></div>
-              <div class="set clash"><span>ISOxo · 10:30</span><span class="chip">overlap</span></div>
-              <div class="set"><span>Meet at the pin · 11:45</span><span class="av"><i style="background:#EF6FB4"></i><i style="background:#4F8EF7"></i></span></div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="t">Your kandi</div>
-            <div class="m">12 trades this weekend</div>
-            <div class="kandi"><i style="background:#E2552B"></i><i style="background:#F2A541"></i><i style="background:#F5D547"></i><i style="background:#5BC0A8"></i><i style="background:#4F8EF7"></i><i style="background:#9B6BF2"></i><i style="background:#EF6FB4"></i><i style="background:#E2552B"></i><i style="background:#F2A541"></i><i style="background:#F5D547"></i><i style="background:#5BC0A8"></i><i style="background:#4F8EF7"></i></div>
-          </div>
-          <div class="card"><div class="t">Poll: Day 2 outfit theme</div><div class="m">4 of 6 voted</div></div>
-        </div></div>
+        <div class="phone real"><img src="assets/kndi/01-home.jpg" alt="kndi home screen" loading="lazy"></div><div class="phone real back"><img src="assets/kndi/04-bracelet-editor.jpg" alt="" loading="lazy"></div>
       </div>
     </div>
   </div>

@@ -532,3 +532,66 @@ TLDR = {
                "Circuit design, Arduino code, a cardboard enclosure, and sound cues for accessibility.",
                "A working game and demo video, on schedule."),
 }
+
+K = "assets/kndi/"
+KNDI = dict(
+  slug="kndi", title="kndi", cat="product", where="Side project", kind="Product + iOS",
+  thumb=K+"01-home.jpg", cover=None,
+  strip=[K+"store-panel-00-cover.jpg", K+"store-panel-01.jpg", K+"store-panel-02.jpg", K+"store-panel-03.jpg", K+"store-panel-04.jpg"],
+  card="An iPhone app for planning festivals with friends and trading digital kandi.",
+  impact="Live on the App Store", pills=["Product", "SwiftUI", "Supabase"],
+  lede="An iPhone app for planning festivals with friends and trading digital kandi. I started it with friends in April 2026, and I'm the top contributor on a team of six.",
+  facts=[("Role","Co-founder, top contributor"),("Since","April 2026"),("Team","6 builders"),("Stack","SwiftUI, Supabase, Next.js")],
+  outcome="",
+  links=[("View on the App Store","https://apps.apple.com/app/kndi/id6762342337"),("kndi.app","https://kndi.app")],
+  sections=[
+    ("Why I built it", [
+      ("p","Every festival I've been to starts the same way: a messy group chat, five screenshots of the set times, and nobody knowing where to meet. Then you trade kandi with strangers all weekend and forget who half of them were by Monday."),
+      ("p","kndi puts the planning in one place and keeps the memories. Every event gets a group with chat, polls, a shared schedule, rides, and an album. You get a heads up when two sets you picked overlap."),
+      ("figs",3,[(K+"01-home.jpg","Home: your groups, schedules, and events"),(K+"02-group-info.jpg","Group info: themes, rides, links, people"),(K+"03-schedule.jpg","A shared set-time schedule")],"","9/19.5",False),
+    ]),
+    ("My role", [
+      ("p","I'm the top contributor on the team: <b>647 of 1,264 commits</b> and about <b>155,000 lines added</b> in seven months. I build with AI coding tools, which is how one person ships this much. My time goes into deciding what to build, testing how it feels, and fixing what breaks."),
+      ("p","The areas I owned:"),
+      ("ul",[
+        "<b>Group chat and DMs.</b> Realtime messages, typing indicators, @mentions, polls, voice messages, reactions, and read receipts.",
+        "<b>Offline first.</b> Festivals have terrible signal, so messages, reactions, bracelets, and trades queue on the phone and sync when signal comes back.",
+        "<b>The design system.</b> 143 reusable components and shared tokens, so every screen looks and behaves the same.",
+        "<b>Kandi.</b> The bracelet designer, trading, and trade memories.",
+        "<b>Push notifications and admin tools</b>, including a moderation dashboard for reports.",
+      ]),
+    ]),
+    ("Kandi, but digital", [
+      ("p","Kandi trading is the heart of festival culture, so I didn't want to replace it. You design a bracelet bead by bead, then trade it by scanning each other's phones in person. Each trade saves a memory of who you met and what they wrote."),
+      ("figs",3,[(K+"04-bracelet-editor.jpg","The bracelet designer"),(K+"05-bracelet-trade.jpg","Trading in person"),(K+"06-bracelet-detail.jpg","A bracelet and its trade memories")],"","9/19.5",False),
+    ]),
+    ("Small product calls", [
+      ("p","Most of product work is small decisions. A few I made:"),
+      ("ul",[
+        "<b>Assume people without a car need a ride</b>, so nobody gets stranded because they forgot to ask.",
+        "<b>An @mention breaks through a muted group.</b> Muting cuts noise, not the message meant for you.",
+        "<b>Collapse group notifications per group</b>, so a busy chat doesn't flood your lock screen.",
+        "<b>Only allow deleting a message for 2 minutes</b>, enough to fix a typo without rewriting history.",
+        "<b>Anyone can pin a message, but only hosts or the pinner can unpin it.</b>",
+        "<b>Rank festival lineups by Spotify monthly listeners</b>, so the artists people know show up first.",
+      ]),
+    ]),
+    ("Community and growth", [
+      ("p","Events, lineups, and artists sync in automatically from festival and music sources, so groups start with real set times. Profiles, ranks, and a trading leaderboard give people a reason to keep coming back."),
+      ("figs",3,[(K+"07-event-detail.jpg","Event detail with friends going"),(K+"08-profile.jpg","Profile with rank and top sprouts"),(K+"09-leaderboard.jpg","The trading leaderboard")],"","9/19.5",False),
+      ("p","I also wrote the go-to-market plan. It focuses on local network effects and Insomniac events, since kndi works best when a whole crew downloads it before the same show."),
+    ]),
+    ("Keeping quality up", [
+      ("p","With six people shipping fast, the same bugs kept coming back. I set up automated guardrails: a script that scans for known performance and reliability bugs and runs on every edit, every push, and in CI alongside SwiftLint. The project has over 2,800 unit tests."),
+    ]),
+    ("The App Store listing", [
+      ("slider",[K+f"store-panel-0{i}.jpg" if i else K+"store-panel-00-cover.jpg" for i in range(9)],"Our App Store screenshots","9/19.5"),
+      ("p","The next problem is growth: getting a whole crew to download it before the same festival. That's what I'm working on now."),
+    ]),
+  ],
+)
+PROJECTS.insert(0, KNDI)
+ORDER.insert(0, "kndi")
+TLDR["kndi"] = ("Festival plans live in messy group chats, and kandi trades get forgotten.",
+               "Led product calls and wrote 51% of the commits: chat, the design system, kandi, push, and admin tools.",
+               "Live on the App Store at version 1.1.5, with a 4.9 rating.")

@@ -539,3 +539,28 @@ html[data-theme="swiss"] .tag{background:var(--accent);color:#fff}
   .contact{padding:36px 0}
 }
 .hero{isolation:isolate}
+
+/* ================= v6: kndi real screenshots ================= */
+.feature-art{position:relative;overflow:hidden;gap:0}
+.phone.real{width:230px;height:auto;aspect-ratio:9/19.5;padding:8px;border-radius:36px;background:#0B0B0F;position:relative;z-index:2;transform:rotate(-4deg) translateX(30px)}
+.phone.real img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:28px}
+.phone.real.back{position:absolute;z-index:1;transform:rotate(7deg) translateX(110px) translateY(20px) scale(.88);opacity:.9}
+html.anim-more .phone.real{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+html.anim-more .feature:hover .phone.real:not(.back){transform:rotate(-2deg) translateX(10px) translateY(-6px)}
+html.anim-more .feature:hover .phone.real.back{transform:rotate(10deg) translateX(140px) translateY(10px) scale(.88)}
+@media (max-width:900px){.phone.real{transform:none}.phone.real.back{display:none}}
+/* tall phone screenshots in case studies */
+.figs .ph[style*="9/19.5"]{border-radius:22px;background:#0B0B0F;border-color:#0B0B0F}
+.figs .ph[style*="9/19.5"] img{object-fit:cover;object-position:top}
+.slider .slide[style*="9/19.5"]{flex-basis:30%;background:#000}
+.slider .slide[style*="9/19.5"] img{background:#000;object-fit:cover}
+@media (max-width:900px){.slider .slide[style*="9/19.5"]{flex-basis:62%}}
+.cs-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;background:#000;padding:12px;margin-top:8px}
+.cs-strip-cell{aspect-ratio:9/19.5;overflow:hidden;cursor:zoom-in}
+.cs-strip-cell img{width:100%;height:100%;object-fit:cover;opacity:1}
+html.anim-more .cs-strip-cell{opacity:0;transform:translateY(24px);animation:pagein .8s cubic-bezier(.2,.7,.2,1) forwards}
+.cs-strip-cell:nth-child(2){animation-delay:.08s}.cs-strip-cell:nth-child(3){animation-delay:.16s}.cs-strip-cell:nth-child(4){animation-delay:.24s}.cs-strip-cell:nth-child(5){animation-delay:.32s}
+@media (max-width:760px){.cs-strip{grid-template-columns:repeat(3,1fr)}.cs-strip-cell:nth-child(n+4){display:none}}
+.cs-strip{gap:0;padding:0}
+.cs-sec[id]{scroll-margin-top:120px}
+section[id]{scroll-margin-top:64px}
