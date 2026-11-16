@@ -380,7 +380,7 @@ dict(
 dict(
   slug="celestial-ninja", title="Celestial Ninja", cat="code", where="UW HCDE 438", kind="Code",
   thumb=m("c9bf43d5129c4ebb83488d9618d4240d"),
-  cover=m("a334d56933f24c90a85c5eacc9b6eaca"),
+  cover="assets/ninja/cover.mp4",
   card="A 2D survival game in JavaScript with five elemental powers, a boss fight, and a live Firebase leaderboard. Playable in the browser.",
   impact="Playable live demo",
   pills=["JavaScript", "p5play", "Firebase"],
@@ -392,15 +392,15 @@ dict(
     ("Getting started", [
       ("p","I'd never used p5play, so I started with its examples to plan the code structure."),
       ("p","Enemy health and speed scale exponentially while the player scales linearly, so the game gets harder the longer you last."),
-      ("figs",2,[(m("6321434b3fbb42fc976a400b9698a6e4"),"First XP spawning"),(m("25ec706a599d4c4f82a30757e3bc89d2","gif"),"Enemies chasing the player")],"","8/5",True),
+      ("figs",2,[(m("6321434b3fbb42fc976a400b9698a6e4"),"First XP spawning"),("assets/ninja/chase.mp4","Enemies chasing the player")],"","64/29",True),
       ("p","Enemies first snapped to the player way too fast because I was using a force that kept increasing. Switching to a constant velocity fixed it."),
-      ("figs",2,[(m("4e237ec0c297458f9f99be4222aca8b8","gif"),"Shooting enemies"),(m("e6a2eeda122b419c87f6db949de10be6","gif"),"Enemies with way too much speed")],"","8/5",True),
+      ("figs",2,[("assets/ninja/shooting.mp4","Shooting enemies"),("assets/ninja/too-fast.mp4","Enemies with way too much speed")],"","64/29",True),
     ]),
     ("Power-ups and graphics", [
       ("p","The spinning stones were the hardest power-up because they needed unit circle math. The bouncing airball was next, since its direction had to flip at the window edges. Every few levels the game pauses and gives you three random upgrade cards to pick from."),
-      ("figs",2,[(m("6204b3bb99ce463cbb8839b1b60a43ca","gif"),"Picking a power-up"),(m("28a17baba0014423a195432cb85bbde5"),"Power-up cards")],"","8/5",True),
+      ("figs",2,[("assets/ninja/cards.mp4","Picking a power-up"),(m("28a17baba0014423a195432cb85bbde5"),"Power-up cards")],"","64/29",True),
       ("p","My own drawings looked rough, so I switched to compressed pixel art. That took a while for animated sprites like the ninja and the rotating water."),
-      ("fig",m("93a983b8bd00438c8b5c9c6bd87319ac","gif"),"The first version with real graphics"),
+      ("fig","assets/ninja/graphics.mp4","The first version with real graphics"),
     ]),
     ("Planning round two", [
       ("p","For the second phase, I planned new features on paper: a sword, pause and play-again buttons, new enemy types, a boss, and a Firebase leaderboard. Firebase was the part I was most worried about."),
@@ -408,19 +408,19 @@ dict(
     ]),
     ("New features", [
       ("p","<b>The sword</b> was the hardest part of the whole project. p5play didn't handle mouse aiming well on a moving canvas, and my first attempt didn't work at all. I ended up attaching a sword sprite to the player and making four rotated animations to match the hitbox."),
-      ("figs",2,[(m("39311a1d53ed4ade9f91d46ef24ac228","gif"),"The first sword, which didn't work"),(m("8d264c8e0d5f49a5bb73190e84b861f3","gif"),"The working sword")],"","8/5",True),
+      ("figs",2,[("assets/ninja/sword-early.mp4","An early version of the sword"),("assets/ninja/sword.mp4","The sword after the fix")],"","64/29",True),
       ("p","<b>New enemies.</b> Red enemies are fast and rush you. Purple enemies shoot shadow orbs at you. <b>The boss</b> shows up every five minutes and charges at you in bursts. Getting its timing right took a lot of tuning."),
-      ("figs",2,[(m("2f251d41eacc4a8696ebdc09e248349c","gif"),"Red and purple enemies"),(m("63353597481e4253806fcd429e9b624c","gif"),"The five-minute boss")],"","8/5",True),
+      ("figs",2,[("assets/ninja/new-enemies.mp4","Red and purple enemies"),("assets/ninja/boss.mp4","The five-minute boss")],"","64/29",True),
       ("p","<b>Balancing.</b> I toned down some skills, changed how defense works, and added darkness that closes in over time so enemies are harder to see. I aimed for runs under about 10 minutes."),
-      ("figs",2,[(m("419838493f7c4381b47730e7d5f651ab","gif"),"Darkness closing in"),(m("13e62ffc6c6a43efae30e29625d1d88a"),"Play again screen")],"","8/5",True),
+      ("figs",2,[(m("419838493f7c4381b47730e7d5f651ab","gif"),"Darkness closing in"),(m("13e62ffc6c6a43efae30e29625d1d88a"),"Play again screen")],"","64/29",True),
       ("p","<b>Live leaderboard.</b> With help from a classmate, I built a Firebase backend for high scores. I added a real-time listener so the top 5 update live, right on the game canvas."),
-      ("figs",2,[(m("484d51c290f7475c889d05d24ffd6229","gif"),"Early leaderboard"),(m("c380c2e255134095b6ced3578fce90a7","gif"),"Leaderboard on the canvas")],"","8/5",True),
+      ("figs",2,[("assets/ninja/leaderboard-early.mp4","Early leaderboard, updating live above the game"),("assets/ninja/leaderboard.mp4","Leaderboard on the canvas")],"","64/29",True),
     ]),
     ("Working with the library's creator", [
       ("p","The game was lagging, so I reached out to Quinton, the creator of p5play. He changed how the library checks collisions, which cut resource use."),
       ("fig",m("f5b91bc92f064f54aa406534ddf87705"),"Talking with p5play's creator"),
       ("p","Friends playtested it and asked to hold the mouse instead of clicking over and over, so I added that. I also made the game pause automatically when you switch tabs."),
-      ("fig",m("0fc333adf608415da0e3190403662d34"),"The finished game, with an upgrade tracker in the bottom right"),
+      ("fig","assets/ninja/final.mp4","The finished game, with the upgrade tracker in the bottom right"),
     ]),
     ("What I learned", [
       ("p","A week and a half, a new library, and 800+ lines of code. I finished on time, but working out of order cost me time. Next time I'd plan stricter."),

@@ -315,3 +315,23 @@
     Object.keys(map).forEach(function(id){ var el = document.getElementById(id); if (el) spy.observe(el); });
   }
 })();
+
+/* ================= v7: play videos only while visible ================= */
+(function(){
+  var vids = document.querySelectorAll('video[data-vid]');
+  if (!vids.length) return;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) {
+    vids.forEach(function(v){ v.controls = true; v.preload = 'metadata'; });
+    return;
+  }
+  // observe the wrapper's parent: wipe-clipped wrappers can read as hidden
+  var io2 = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      var v = e.target._v || e.target;
+      if (e.isIntersecting) { v.preload = 'auto'; var p = v.play(); if (p && p.catch) p.catch(function(){ v.controls = true; }); }
+      else v.pause();
+    });
+  }, {threshold:.25});
+  vids.forEach(function(v){ var host = (v.closest('.ph, .cs-cover') || v); host = host.parentElement || host; host._v = v; io2.observe(host); });
+})();

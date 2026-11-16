@@ -22,7 +22,14 @@ def url(mid, w=1400, fill=None):
         return f"{base}/v1/fill/w_{fill},h_{fill},al_c,q_85/{mid}"
     return f"{base}/v1/fit/w_{w},h_{w},q_85/{mid}"
 
+def vid(src, cap=""):
+    poster = src[:-4] + ".jpg"
+    a = html.escape(cap, quote=True)
+    return (f'<video data-vid src="{src}" poster="{poster}" muted loop playsinline preload="none" aria-label="{a}"></video>'), ""
+
 def img(mid, alt="", w=1400, fill=None, lazy=True, zoom=True, cap=""):
+    if mid.endswith(".mp4"):
+        return vid(mid, cap or alt)
     a = html.escape(alt or cap or "", quote=True)
     z = f' data-full="{url(mid, 2400)}" data-cap="{html.escape(cap, quote=True)}"' if zoom else ""
     return (f'<img data-wix src="{url(mid, w, fill)}" alt="{a}"'
@@ -94,7 +101,7 @@ def block(b):
         _, mid, cap = b
         tag, z = img(mid, cap=cap, w=1800)
         c = f"<figcaption>{cap}</figcaption>" if cap else ""
-        return f'<figure class="rv"><div class="ph"{z}>{tag}</div>{c}</figure>'
+        return f'<figure class="rv"><div class="ph{" is-vid" if mid.endswith(".mp4") else ""}"{z}>{tag}</div>{c}</figure>'
     if t == "figs":
         _, cols, items, cap, ar, contain = b
         cls = f"figs c{cols}" + (" contain" if contain else "")

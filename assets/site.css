@@ -564,3 +564,19 @@ html.anim-more .cs-strip-cell{opacity:0;transform:translateY(24px);animation:pag
 .cs-strip{gap:0;padding:0}
 .cs-sec[id]{scroll-margin-top:120px}
 section[id]{scroll-margin-top:64px}
+
+/* ================= v7: gameplay videos ================= */
+video[data-vid]{display:block;width:100%;height:auto;background:#111}
+.figs .ph video[data-vid]{height:100%;object-fit:cover}
+.ph.is-vid,.figs .ph:has(video){cursor:default}
+.cs-cover video[data-vid]{max-height:640px;object-fit:cover}
+.cs-sec .narrow>.figs:has(video),.cs-sec .narrow>figure:has(video){width:min(1080px,calc(100vw - 56px));margin-left:calc(50% - min(540px,calc(50vw - 28px)))}
+.cs-sec .figs:has(video)+.figs-cap{text-align:center}
+@media (max-width:760px){.cs-sec .figs:has(video){grid-template-columns:1fr}}
+.figs{grid-auto-columns:minmax(0,1fr)}
+.figs.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.figs.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.figs.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.figs>figure,.figs .ph{min-width:0}
+@media (max-width:760px){.cs-sec .figs:has(video){grid-template-columns:1fr}}
+@media (max-width:640px){.figs.c2,.figs.c3{grid-template-columns:1fr}}
