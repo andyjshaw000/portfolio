@@ -561,3 +561,4 @@ video[data-vid]{display:block;width:100%;height:auto;background:#111}
 }
 .foot a{display:inline-block;padding:10px 0}
 .back{padding:10px 0}
+.foot{align-items:center}
