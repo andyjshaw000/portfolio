@@ -41,7 +41,7 @@ def img(mid, alt="", w=1400, fill=None, lazy=True, zoom=True, cap=""):
     a = html.escape(alt or cap or "", quote=True)
     z = f' data-full="{url(mid, 2400)}" data-cap="{html.escape(cap, quote=True)}"' if zoom else ""
     return (f'<img data-wix src="{url(mid, w, fill)}" alt="{a}"'
-            f'{" loading=\"lazy\"" if lazy else ""} decoding="async">'), z
+            ' decoding="async">'), z
 
 HEAD = """<!DOCTYPE html>
 <html lang="en" data-theme="swiss">
@@ -123,13 +123,13 @@ def block(b):
         _, mid, cap = b
         tag, z = img(mid, cap=cap, w=1800)
         c = f"<figcaption>{cap}</figcaption>" if cap else ""
-        return f'<figure class="rv"><div class="ph{" is-vid" if mid.endswith(".mp4") else ""}"{z}>{tag}</div>{c}</figure>'
+        return f'<figure><div class="ph{" is-vid" if mid.endswith(".mp4") else ""}"{z}>{tag}</div>{c}</figure>'
     if t == "figs":
         _, cols, items, cap, ar, contain = b
         cls = f"figs c{cols}" + (" contain" if contain else "")
         if cols == 1:
             cls += '" style="max-width:520px;margin-left:auto;margin-right:auto'
-        out = [f'<div class="{cls} rv">']
+        out = [f'<div class="{cls}">']
         for mid, c in items:
             tag, z = img(mid, cap=c or cap, w=1200)
             fc = f"<figcaption>{c}</figcaption>" if c else ""
@@ -145,7 +145,7 @@ def block(b):
         for i, mid in enumerate(ids):
             tag, z = img(mid, cap=f"{cap} ({i+1} of {len(ids)})", w=1600)
             slides.append(f'<div class="slide"{ar_style(ar)}{z}>{tag}</div>')
-        return (f'<div class="slider rv"><div class="track">{"".join(slides)}</div>'
+        return (f'<div class="slider"><div class="track">{"".join(slides)}</div>'
                 f'<div class="ctrl"><span class="count"></span><span class="figs-cap" style="margin:0">{cap}</span>'
                 f'<span class="arrows"><button class="pv" aria-label="Previous">←</button><button class="nx" aria-label="Next">→</button></span></div></div>')
     raise ValueError(t)
@@ -211,7 +211,7 @@ def card(p):
     tag, _ = img(p["thumb"], alt=p["title"], fill=800, zoom=False)
     imp = f'<div class="impact">{p["impact"]}</div>' if p.get("impact") else ""
     pills = "".join(f"<span>{x}</span>" for x in p["pills"])
-    return f"""<a class="proj rv" data-c="{p['cat']}" href="{p['slug']}.html">
+    return f"""<a class="proj" data-c="{p['cat']}" href="{p['slug']}.html">
   <div class="thumb">{tag}<span class="idx">{n:02d}</span></div>
   <div class="body">
     <div class="where"><span>{p['where']}</span><span>{p['kind']}</span></div>
@@ -274,7 +274,7 @@ def home():
   <div class="wrap">
     <div class="label rv"><em>01</em>Featured project</div>
     <h2 class="rv">From a group chat problem to a live app on the App Store.</h2>
-    <div class="feature rv">
+    <div class="feature">
       <div class="feature-copy">
         <span class="tag">Side project · iOS · Live</span>
         <h3>kndi</h3>
@@ -298,7 +298,7 @@ def home():
         </div>
       </div>
       <div class="feature-art" aria-hidden="true">
-        <div class="phone real"><img src="assets/kndi/home.jpg" alt="kndi home screen" loading="lazy"></div><div class="phone real back"><img src="assets/kndi/designer.jpg" alt="" loading="lazy"></div>
+        <div class="phone real"><img src="assets/kndi/home.jpg" alt="kndi home screen"></div><div class="phone real back"><img src="assets/kndi/designer.jpg" alt=""></div>
       </div>
     </div>
   </div>

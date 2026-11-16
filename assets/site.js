@@ -36,20 +36,11 @@
   });
   onSeen(document.querySelectorAll('.rv, .st, .label'), function(el){ el.classList.add('in'); }, {threshold:.08});
 
-  /* image wipe: observe the unclipped parent, since a fully clipped element never reads as visible */
-  var wipes = document.querySelectorAll('figure .ph, .cs-cover');
-  wipes.forEach(function(el){ el.classList.add('wipe'); });
-  if (hasIO) {
-    var wo = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target._wipe.classList.add('in'); wo.unobserve(e.target); } }); }, {threshold:.05});
-    wipes.forEach(function(el){ var host = el.parentElement || el; host._wipe = el; wo.observe(host); });
-  } else wipes.forEach(function(el){ el.classList.add('in'); });
-
-  /* images: fade in on load, placeholder on failure */
+  /* images: show a placeholder if one fails to load */
   document.querySelectorAll('img[data-wix]').forEach(function(img){
     function fail(){ if (img.parentElement) img.parentElement.classList.add('failed'); }
     img.addEventListener('error', fail);
-    img.addEventListener('load', function(){ img.classList.add('ok'); });
-    if (img.complete) { if (img.naturalWidth === 0) fail(); else img.classList.add('ok'); }
+    if (img.complete && img.naturalWidth === 0) fail();
   });
 
   /* hero words rise in */
