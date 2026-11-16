@@ -8,7 +8,7 @@ def m(h, ext="png"):
 PROJECTS = [
 # ------------------------------------------------------------------ BUNDLING
 dict(
-  slug="bundling", title="Bundling", cat="research", where="Gopuff", kind="Research",
+  slug="bundling", title="Bundling", cat="research", where="Gopuff · 2022", kind="Research",
   thumb=m("ac41818a18824cda8b4a404ed0357459"),
   cover=None,
   card="How should Gopuff sell product bundles? I ran the interviews and concept tests that answered it.",
@@ -67,15 +67,15 @@ dict(
 ),
 # ------------------------------------------------------------- SAVE FOR LATER
 dict(
-  slug="save-for-later", title="Save For Later", cat="research", where="Gopuff", kind="Research",
+  slug="save-for-later", title="Save For Later", cat="research", where="Gopuff · 2022", kind="Research",
   thumb=m("865fd07f116f49e7a4769ef09fd593ba"),
   cover=m("733ee0ee99064103923f4540bac11fc3"),
   card="People were using their cart as a wishlist, then abandoning it. I researched what a real save-for-later feature should look like.",
-  impact="Projected to add $16M in annual revenue",
+  impact="Team projected about $16M in annual revenue",
   pills=["User interviews", "Usability testing"],
   lede="Lots of Gopuff shoppers left items in their cart just to remember them, then never checked out. I looked at whether a Save for Later feature would fit how people actually shop.",
   facts=[("Role","UX Research Intern"),("When","Summer 2022"),("Team","My mentor, stakeholders, UX designers"),("Methods","Interviews, usability testing")],
-  outcome="This work on saving items was projected to increase Gopuff's annual revenue by $16M by cutting cart abandonment.",
+  outcome="The team projected the Save For Later feature at about $16M in annual revenue from reduced cart abandonment.",
   sections=[
     ("The ask", [
       ("p","Gopuff wanted to know if a Save for Later feature would fit people's shopping habits, and what would get them to create, organize, and share lists."),
@@ -123,7 +123,7 @@ dict(
 ),
 # --------------------------------------------------------------- PDP REDESIGN
 dict(
-  slug="pdp-redesign", title="Product Page Redesign", cat="research", where="Gopuff", kind="Research",
+  slug="pdp-redesign", title="Product Page Redesign", cat="research", where="Gopuff · 2022", kind="Research",
   thumb=m("fe562874bf23461ca57c1bb11e7d16cc"),
   cover=None,
   card="I compared Gopuff's product page against 12 competitors and category leaders to figure out what to fix.",
@@ -166,7 +166,7 @@ dict(
 ),
 # --------------------------------------------------------------------- KUOW
 dict(
-  slug="kuow", title="KUOW Redesign", cat="research design", where="UW Capstone", kind="Research + Design",
+  slug="kuow", title="KUOW Redesign", cat="research design", where="UW Capstone · 2023", kind="Research + Design",
   thumb=m("4df59576199e4828a0e88f7415937630"),
   cover=m("3641d9d17e5544b98e158fd87709b3e4"),
   card="Our senior capstone for KUOW public radio. We redesigned the app to win back engagement and reach a younger, more diverse audience.",
@@ -329,14 +329,14 @@ dict(
 ),
 # ----------------------------------------------------------- COOKING CENTRAL
 dict(
-  slug="cooking-central", title="Cooking Central", cat="design", where="UW HCDE", kind="Design",
+  slug="cooking-central", title="Cooking Central", cat="design", where="UW HCDE · 2020", kind="Design",
   thumb=m("395ef3fde3394981bac4b5bbaf78ccba"),
   cover=None,
   card="A cooking app for young adults short on time, money, and skills, with a social side so cooking feels less lonely.",
   impact="",
   pills=["Journey mapping", "Storyboards", "Prototyping", "Figma"],
   lede="A lot of young people see cooking as a chore. They don't have much time, money, or skill, and during the pandemic it got lonely too. Our team designed an app to get people cooking more, and cooking with others.",
-  facts=[("Context","UW Intro to User-Centered Design"),("When","2020"),("Team","Team project"),("Tools","Figma, Miro")],
+  facts=[("Context","UW Intro to User-Centered Design"),("When","2020"),("Team","Group project"),("Tools","Figma, Miro")],
   outcome="",
   sections=[
     ("Research", [
@@ -378,7 +378,7 @@ dict(
 ),
 # --------------------------------------------------------- CELESTIAL NINJA
 dict(
-  slug="celestial-ninja", title="Celestial Ninja", cat="code", where="UW HCDE 438", kind="Code",
+  slug="celestial-ninja", title="Celestial Ninja", cat="code", where="UW HCDE 438 · 2023", kind="Code",
   thumb=m("c9bf43d5129c4ebb83488d9618d4240d"),
   cover="assets/ninja/cover.mp4",
   card="A 2D survival game in JavaScript with five elemental powers, a boss fight, and a live Firebase leaderboard. Playable in the browser.",
@@ -506,7 +506,7 @@ TLDR = {
                "6 recommendations. Most were live in the app by August 2023."),
   "save-for-later": ("Shoppers used the cart as a wishlist, then abandoned it.",
                "Ran 6 combined interview and usability sessions on a save-for-later prototype.",
-               "8 recommendations. The work was projected to add $16M a year."),
+               "8 recommendations. The team projected the feature at about $16M a year."),
   "pdp-redesign": ("The product page had accessibility gaps and sold products poorly.",
                "Benchmarked 12 apps against Baymard research and presented a 25-slide deck.",
                "The redesigned page went live in August 2023."),
@@ -536,19 +536,19 @@ TLDR = {
 K = "assets/kndi/"
 KNDI = dict(
   slug="kndi", title="kndi", cat="product", where="Side project", kind="Product + iOS",
-  thumb=K+"01-home.jpg", cover=None,
-  strip=[K+"store-panel-00-cover.jpg", K+"store-panel-01.jpg", K+"store-panel-02.jpg", K+"store-panel-03.jpg", K+"store-panel-04.jpg"],
+  thumb=K+"home.jpg", cover=None,
+  strip=[K+f"store-panel-0{i}.jpg" for i in range(1, 6)],
   card="An iPhone app for planning festivals with friends and trading digital kandi.",
   impact="Live on the App Store", pills=["Product", "SwiftUI", "Supabase"],
-  lede="An iPhone app for planning festivals with friends and trading digital kandi. I started it with friends in April 2026, and I'm the top contributor on a team of six.",
-  facts=[("Role","Co-founder, top contributor"),("Since","April 2026"),("Team","6 builders"),("Stack","SwiftUI, Supabase, Next.js")],
+  lede="An iPhone app for planning festivals with friends and trading digital kandi. I joined a volunteer team of six in April 2026 to handle UI and App Store submission, and ended up writing more of the code than anyone.",
+  facts=[("Role","iOS developer, top contributor"),("Since","April 2026"),("Team","6 volunteers"),("Stack","SwiftUI, Supabase, Next.js")],
   outcome="",
   links=[("View on the App Store","https://apps.apple.com/app/kndi/id6762342337"),("kndi.app","https://kndi.app")],
   sections=[
     ("Why I built it", [
       ("p","Every festival I've been to starts the same way: a messy group chat, five screenshots of the set times, and nobody knowing where to meet. Then you trade kandi with strangers all weekend and forget who half of them were by Monday."),
       ("p","kndi puts the planning in one place and keeps the memories. Every event gets a group with chat, polls, a shared schedule, rides, and an album. You get a heads up when two sets you picked overlap."),
-      ("figs",3,[(K+"01-home.jpg","Home: your groups, schedules, and events"),(K+"02-group-info.jpg","Group info: themes, rides, links, people"),(K+"03-schedule.jpg","A shared set-time schedule")],"","9/19.5",False),
+      ("figs",3,[(K+"home.jpg","Home: your groups and schedules"),(K+"group.jpg","One page for the whole trip"),(K+"sched.jpg","See who's going to which set")],"","9/19.5",False),
     ]),
     ("My role", [
       ("p","I'm the top contributor on the team: <b>647 of 1,264 commits</b> and about <b>155,000 lines added</b> in seven months. I build with AI coding tools, which is how one person ships this much. My time goes into deciding what to build, testing how it feels, and fixing what breaks."),
@@ -558,12 +558,14 @@ KNDI = dict(
         "<b>Offline first.</b> Festivals have terrible signal, so messages, reactions, bracelets, and trades queue on the phone and sync when signal comes back.",
         "<b>The design system.</b> 143 reusable components and shared tokens, so every screen looks and behaves the same.",
         "<b>Kandi.</b> The bracelet designer, trading, and trade memories.",
-        "<b>Push notifications and admin tools</b>, including a moderation dashboard for reports.",
+        "<b>Push notifications and admin tools</b>, including the moderation and analytics admin portal.",
+        "<b>App Store launch.</b> I led submission, including the moderation policy and DMCA registration.",
       ]),
+      ("figs",2,[(K+"chat.jpg","Making plans in the group chat"),(K+"map.jpg","Dropping a meetup spot on the festival map")],"","9/19.5",False),
     ]),
     ("Kandi, but digital", [
       ("p","Kandi trading is the heart of festival culture, so I didn't want to replace it. You design a bracelet bead by bead, then trade it by scanning each other's phones in person. Each trade saves a memory of who you met and what they wrote."),
-      ("figs",3,[(K+"04-bracelet-editor.jpg","The bracelet designer"),(K+"05-bracelet-trade.jpg","Trading in person"),(K+"06-bracelet-detail.jpg","A bracelet and its trade memories")],"","9/19.5",False),
+      ("figs",2,[(K+"designer.jpg","The bracelet designer"),(K+"rank.jpg","Ranks from trading kandi")],"","9/19.5",False),
     ]),
     ("Small product calls", [
       ("p","Most of product work is small decisions. A few I made:"),
@@ -578,14 +580,14 @@ KNDI = dict(
     ]),
     ("Community and growth", [
       ("p","Events, lineups, and artists sync in automatically from festival and music sources, so groups start with real set times. Profiles, ranks, and a trading leaderboard give people a reason to keep coming back."),
-      ("figs",3,[(K+"07-event-detail.jpg","Event detail with friends going"),(K+"08-profile.jpg","Profile with rank and top sprouts"),(K+"09-leaderboard.jpg","The trading leaderboard")],"","9/19.5",False),
-      ("p","I also wrote the go-to-market plan. It focuses on local network effects and Insomniac events, since kndi works best when a whole crew downloads it before the same show."),
+      ("figs",2,[(K+"event.jpg","Event pages with lineup and location"),(K+"search.jpg","Finding festivals, artists, and people")],"","9/19.5",False),
+      ("p","The growth plan focuses on local network effects and Insomniac events, since kndi works best when a whole crew downloads it before the same show."),
     ]),
     ("Keeping quality up", [
       ("p","With six people shipping fast, the same bugs kept coming back. I set up automated guardrails: a script that scans for known performance and reliability bugs and runs on every edit, every push, and in CI alongside SwiftLint. The project has over 2,800 unit tests."),
     ]),
     ("The App Store listing", [
-      ("slider",[K+f"store-panel-0{i}.jpg" if i else K+"store-panel-00-cover.jpg" for i in range(9)],"Our App Store screenshots","9/19.5"),
+      ("slider",[K+f"store-panel-0{i}.jpg" for i in range(1, 10)],"Our App Store screenshots","9/19.5"),
       ("p","The next problem is growth: getting a whole crew to download it before the same festival. That's what I'm working on now."),
     ]),
   ],

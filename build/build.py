@@ -2,14 +2,16 @@ import html, os, sys, hashlib
 sys.path.insert(0, os.path.dirname(__file__))
 from content import PROJECTS, ORDER, m, TLDR
 
-OUT = os.path.join(os.path.dirname(__file__), "..")
+OUT = os.environ.get("OUT_DIR") or os.path.join(os.path.dirname(__file__), "..")
+SRC = os.path.join(os.path.dirname(__file__), "..")
 BYSLUG = {p["slug"]: p for p in PROJECTS}
 def _ver():
     h = hashlib.md5()
     for f in ("assets/site.css", "assets/site.js"):
-        h.update(open(os.path.join(OUT, f), "rb").read())
+        h.update(open(os.path.join(SRC, f), "rb").read())
     return h.hexdigest()[:8]
 V = _ver()
+LD = '''<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Andy Shaw","url":"https://andyjshaw000.github.io/portfolio/","jobTitle":"UX Researcher","worksFor":{"@type":"Organization","name":"Meta Reality Labs"},"address":{"@type":"PostalAddress","addressLocality":"Seattle","addressRegion":"WA","addressCountry":"US"},"alumniOf":{"@type":"CollegeOrUniversity","name":"University of Washington"},"knowsAbout":["Product management","Program management","UX research","Usability testing","SwiftUI","Python","R","SQL"],"sameAs":["https://www.linkedin.com/in/andyjshaw000/","https://github.com/andyjshaw000","https://kndi.app"]}</script>'''
 
 # Contact email comes from the environment so it isn't stored in this script.
 # Build with: PORTFOLIO_EMAIL=you@example.com python3 build/build.py
@@ -42,15 +44,16 @@ def img(mid, alt="", w=1400, fill=None, lazy=True, zoom=True, cap=""):
             f'{" loading=\"lazy\"" if lazy else ""} decoding="async">'), z
 
 HEAD = """<!DOCTYPE html>
-<html lang="en" data-theme="swiss" class="js">
+<html lang="en" data-theme="swiss">
 <head>
 <meta charset="UTF-8">
+<script>document.documentElement.classList.add("js")</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;600;700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css?v={v}">
 <link rel="canonical" href="{canon}">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -63,6 +66,7 @@ HEAD = """<!DOCTYPE html>
 <meta property="og:url" content="{canon}">
 <meta property="og:image" content="https://andyjshaw000.github.io/portfolio/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
+{ld}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -80,7 +84,7 @@ def nav(home=True):
       <li><a href="{pre}#work">Projects</a></li>
       <li><a href="{pre}#experience">Experience</a></li>
       <li><a href="{pre}#about">About</a></li>
-      <li><a href="https://79f8e248-ca0f-4fcf-af31-76ef78ef797a.usrfiles.com/ugd/041fc2_833aa57dec1d47d5a1edbb8de85f2121.pdf" target="_blank" rel="noopener">Resume</a></li>
+      <li><a href="assets/Andy_Shaw_Resume.pdf" target="_blank" rel="noopener">Resume</a></li>
       <li><a href="{pre}#contact" class="cta">Get in touch</a></li>
     </ul>
   </div>
@@ -95,7 +99,7 @@ CONTACT = """<section class="contact" id="contact">
     <div class="links">
       <a href="https://www.linkedin.com/in/andyjshaw000/" target="_blank" rel="noopener">LinkedIn ↗</a>
       <a href="https://github.com/andyjshaw000" target="_blank" rel="noopener">GitHub ↗</a>
-      <a href="https://79f8e248-ca0f-4fcf-af31-76ef78ef797a.usrfiles.com/ugd/041fc2_833aa57dec1d47d5a1edbb8de85f2121.pdf" target="_blank" rel="noopener">Resume (PDF) ↗</a>
+      <a href="assets/Andy_Shaw_Resume.pdf" target="_blank" rel="noopener">Resume (PDF) ↗</a>
       <a href="https://kndi.app" target="_blank" rel="noopener">kndi.app ↗</a>
     </div>
   </div>
@@ -185,7 +189,7 @@ def case_page(p):
         nxt += f'<a class="r" href="{next_p["slug"]}.html"><span>Next →</span><b>{next_p["title"]}</b></a>'
     else:
         nxt += '<a class="r" href="index.html#work"><span>Back to</span><b>All projects</b></a>'
-    return (HEAD.format(v=V, canon="https://andyjshaw000.github.io/portfolio/"+p["slug"]+".html", title=f'{p["title"]} | Andy Shaw', desc=html.escape(p["card"], quote=True)) + nav(False) +
+    return (HEAD.format(ld="", v=V, canon="https://andyjshaw000.github.io/portfolio/"+p["slug"]+".html", title=f'{p["title"]} | Andy Shaw', desc=html.escape(p["card"], quote=True)) + nav(False) +
 f"""<div class="progress" aria-hidden="true"></div>
 <header class="cs-hero wrap" id="top">
   <a class="back" href="index.html#work">← All projects</a>
@@ -222,21 +226,21 @@ def card(p):
 def home():
     cards = "\n".join(card(BYSLUG[s]) for s in ORDER if s != "kndi")
     ptag, _ = img(m("56a508aabfa1400493a7a92ebbedee1b", "jpg"), alt="Andy Shaw", w=900, zoom=False)
-    return (HEAD.format(v=V, canon="https://andyjshaw000.github.io/portfolio/", title="Andy Shaw | UX Research and Product",
-                        desc="Andy Shaw. UX researcher at Meta Reality Labs and builder of kndi, an iOS app for planning festivals with friends. Open to PM, PjM, and UX research roles.")
+    return (HEAD.format(ld=LD, v=V, canon="https://andyjshaw000.github.io/portfolio/", title="Andy Shaw | Product Manager and UX Researcher in Seattle",
+                        desc="Andy Shaw leads UX research studies at Meta Reality Labs and co-founded kndi, a live iOS app. Open to Product Manager, Program Manager, and UX Researcher roles in Seattle or remote.")
             + nav(True) + f"""
 <main id="main">
 <header class="hero wrap" id="top">
  <div class="gridlines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
  <div class="hero-grid">
  <div class="hero-main">
-  <div class="status"><span class="dot"></span>Open to PM, PjM, and UX research roles. Seattle or relocating.</div>
+  <div class="status"><span class="dot"></span>Open to Product Manager, Program Manager, and UX Researcher roles.</div>
   <h1>I research how people use products, and I <em>build</em> them too.</h1>
-  <p class="lede">I'm Andy. I lead UX research studies at <strong>Meta Reality Labs</strong> for AR/VR and smart glasses, and on the side I built and shipped <strong>kndi</strong>, an iPhone app for planning festivals with friends. Now I want a role where I help decide what gets built, not just test it after.</p>
+  <p class="lede">I'm Andy. I run UX research studies at <strong>Meta Reality Labs</strong> for AR/VR and smart glasses, and on the side I'm the top contributor on <strong>kndi</strong>, a live iPhone app for planning festivals with friends. Now I want a role where I help decide what gets built, not just test it after.</p>
   <div class="btns hero-cta">
     <a class="btn solid" href="#work">See my work ↓</a>
-    <a class="btn" href="https://79f8e248-ca0f-4fcf-af31-76ef78ef797a.usrfiles.com/ugd/041fc2_833aa57dec1d47d5a1edbb8de85f2121.pdf" target="_blank" rel="noopener">Resume ↗</a>
-    <a class="btn ghost" href="#contact">Get in touch</a>
+    <a class="btn" href="assets/Andy_Shaw_Resume.pdf" target="_blank" rel="noopener">Resume (PDF) ↗</a>
+    <a class="btn" href="https://www.linkedin.com/in/andyjshaw000/" target="_blank" rel="noopener">LinkedIn ↗</a>
   </div>
  </div>
  <aside class="quick" aria-label="Quick facts">
@@ -245,13 +249,22 @@ def home():
     <div><dt>Now</dt><dd>UX Research at Meta Reality Labs</dd></div>
     <div><dt>Shipped</dt><dd><a href="#kndi">kndi</a>, live on the App Store</dd></div>
     <div><dt>Track record</dt><dd>300+ experiments run at Meta. Gopuff research shipped.</dd></div>
-    <div><dt>Looking for</dt><dd>PM, PjM, or UX research roles</dd></div>
-    <div><dt>Based in</dt><dd>Seattle. Open to relocating.</dd></div>
+    <div><dt>Looking for</dt><dd>Product, program, or UX research roles</dd></div>
+    <div><dt>Based in</dt><dd>Seattle. Open to relocating or remote.</dd></div>
+    <div><dt>Available</dt><dd>December 2026</dd></div>
     <div><dt>School</dt><dd>UW HCDE, Cum Laude, Math minor</dd></div>
   </dl>
  </aside>
  </div>
 </header>
+<section class="impact" aria-label="Highlights">
+  <div class="wrap impact-g">
+    <a href="#meta"><b>3,500+</b><span>survey responses collected across 13 research programs</span><i>Meta</i></a>
+    <a href="#meta"><b>4 mo.</b><span>to owning my team's UX research work</span><i>Meta</i></a>
+    <a href="kndi.html"><b>51%</b><span>of all commits on a live iOS app, as top contributor of 6</span><i>kndi</i></a>
+    <a href="bundling.html"><b>2</b><span>research projects that shipped in the Gopuff app</span><i>Gopuff</i></a>
+  </div>
+</section>
 <div class="strip" aria-label="Where I've worked and studied"><div class="strip-track">
   <span>Meta Reality Labs</span><i></i><span>Gopuff</span><i></i><span>User Research International</span><i></i><span>KUOW Public Radio</span><i></i><span>University of Washington</span><i></i><span>kndi</span><i></i>
   <span aria-hidden="true">Meta Reality Labs</span><i></i><span aria-hidden="true">Gopuff</span><i></i><span aria-hidden="true">User Research International</span><i></i><span aria-hidden="true">KUOW Public Radio</span><i></i><span aria-hidden="true">University of Washington</span><i></i><span aria-hidden="true">kndi</span><i></i>
@@ -271,7 +284,7 @@ def home():
         <ul class="did">
           <li><b>Product</b><span>Decide what to build and what to cut, based on how my friends and I actually plan shows.</span></li>
           <li><b>Build</b><span>Top contributor on a team of six: 51% of commits, including chat, the design system, kandi, and push notifications.</span></li>
-          <li><b>Growth</b><span>Wrote the go-to-market plan around local network effects and Insomniac events.</span></li>
+          <li><b>Launch</b><span>Led App Store submission, including the moderation policy and DMCA registration.</span></li>
         </ul>
         <div class="stats">
           <div class="stat"><b>4.9</b><span>App Store rating</span></div>
@@ -285,7 +298,7 @@ def home():
         </div>
       </div>
       <div class="feature-art" aria-hidden="true">
-        <div class="phone real"><img src="assets/kndi/01-home.jpg" alt="kndi home screen" loading="lazy"></div><div class="phone real back"><img src="assets/kndi/04-bracelet-editor.jpg" alt="" loading="lazy"></div>
+        <div class="phone real"><img src="assets/kndi/home.jpg" alt="kndi home screen" loading="lazy"></div><div class="phone real back"><img src="assets/kndi/designer.jpg" alt="" loading="lazy"></div>
       </div>
     </div>
   </div>
@@ -299,22 +312,23 @@ def home():
         <h2 style="margin-bottom:28px">Leading research for AR/VR and smart glasses.</h2>
         <div class="meta-side">
           <b>Meta Reality Labs</b>
-          UX Research Assistant<br>
+          Human Subjects Research Assistant II<br>
+          (UX research)<br>
           May 2024 to now<br>
           Redmond, via H10
         </div>
       </div>
       <div class="prose rv">
-        <p>I joined Meta to support research studies. Four months in, I was promoted to lead all of the UX research studies on a larger team.</p>
+        <p>I joined Meta to support research studies. Within four months, I took ownership of my team's UX research work instead of rotating across teams.</p>
         <p>I run studies end to end: writing the procedures, recruiting participants, piloting, collecting data in person, and doing the first round of cleaning and analysis in R and Python. That work goes straight to the research scientists who use it to shape product proposals for AR/VR and smart glasses.</p>
         <p class="note">Most of this work is under NDA, so I keep it high level here. I'm happy to walk through how I run a study when we talk.</p>
       </div>
     </div>
     <div class="numbers rv">
       <div class="num"><b data-count="300">300+</b><span>auditory perception experiments run</span></div>
-      <div class="num"><b data-count="12">12+</b><span>research reports that influenced product direction</span></div>
-      <div class="num"><b data-count="400">400+</b><span>user entries coded into 10+ personas and scenarios</span></div>
-      <div class="num"><b data-count="8">8+</b><span>training sessions for vendor research assistants</span></div>
+      <div class="num"><b data-count="90">90</b><span>surveys built, collecting 3,500+ responses</span></div>
+      <div class="num"><b data-count="8">8</b><span>research reports I contributed to, one shaping a Meta AI app onboarding flow</span></div>
+      <div class="num"><b data-count="8">8</b><span>vendor research assistants I trained</span></div>
     </div>
   </div>
 </section>
@@ -341,19 +355,19 @@ def home():
     <h2 class="rv">About three years in UX research.</h2>
     <ul class="xp rv">
       <li><span class="when">May 2024 to now</span><div>
-        <div class="role">UX Research Assistant</div>
-        <div class="org">Meta Reality Labs, Redmond (via H10)</div>
+        <div class="role">Human Subjects Research Assistant II (UX research)</div>
+        <div class="org">Meta Reality Labs, Redmond (contract via H10)</div>
         <ul>
-          <li>Promoted after 4 months to lead all UX research studies on a larger team.</li>
-          <li>Ran 300+ auditory perception experiments informing AR/VR and smart glasses products.</li>
-          <li>Wrote 12+ research reports with statistical analysis that influenced product direction.</li>
+          <li>Took ownership of my team's UX research work within four months, running studies from pilot to readout.</li>
+          <li>Ran 300+ audio perception experiments and built 90 surveys that collected 3,500+ responses.</li>
+          <li>Contributed to 8 research reports, including one that shaped an onboarding flow in the Meta AI app for smart glasses.</li>
         </ul></div></li>
       <li><span class="when">Apr 2026 to now</span><div>
-        <div class="role">Co-founder</div>
-        <div class="org">kndi, iOS app (team of 6)</div>
+        <div class="role">Top contributor</div>
+        <div class="org">kndi, iOS app (volunteer team of 6)</div>
         <ul>
           <li>Top contributor with 647 of 1,264 commits: group chat, the design system, kandi, and push notifications.</li>
-          <li>Own product direction and the go-to-market plan.</li>
+          <li>Built the moderation admin portal and voice messages, and led App Store submission.</li>
         </ul></div></li>
       <li><span class="when">Nov 2023 to May 2024</span><div>
         <div class="role">UX Moderator</div>
@@ -366,7 +380,7 @@ def home():
         <div class="role">UX Researcher Intern</div>
         <div class="org">Gopuff, remote</div>
         <ul>
-          <li>Ran 20+ research sessions. Save-for-later work was projected to add $16M in annual revenue.</li>
+          <li>Led discovery research on Save For Later, which the team projected at about $16M in annual revenue.</li>
           <li>Produced 40+ recommendations. Bundling and product page work shipped.</li>
         </ul></div></li>
       <li><span class="when">2019 to 2023</span><div>
@@ -407,7 +421,7 @@ def main():
         with open(os.path.join(OUT, f"{p['slug']}.html"), "w") as f:
             f.write(case_page(p).replace("__V__", V).replace("__EMAIL__", EMAIL))
     SITE = "https://andyjshaw000.github.io/portfolio/"
-    nf = (HEAD.format(v=V, canon=SITE, title="Page not found | Andy Shaw", desc="This page doesn't exist.").replace("<head>", '<head>\n<base href="/portfolio/">', 1)
+    nf = (HEAD.format(ld="", v=V, canon=SITE, title="Page not found | Andy Shaw", desc="This page doesn't exist.").replace("<head>", '<head>\n<base href="/portfolio/">', 1)
           + nav(False) + """<main id="main"><header class="cs-hero wrap" id="top" style="min-height:60vh">
   <div class="label"><em>404</em>Page not found</div>
   <h1>That page doesn't exist.</h1>
