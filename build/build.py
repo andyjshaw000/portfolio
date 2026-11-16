@@ -11,6 +11,12 @@ def _ver():
     return h.hexdigest()[:8]
 V = _ver()
 
+# Contact email comes from the environment so it isn't stored in this script.
+# Build with: PORTFOLIO_EMAIL=you@example.com python3 build/build.py
+EMAIL = os.environ.get("PORTFOLIO_EMAIL", "").strip()
+if not EMAIL:
+    sys.exit("Set PORTFOLIO_EMAIL to the contact address shown on the site, then rerun.")
+
 def url(mid, w=1400, fill=None):
     """Wix image URL. GIFs are served as-is so they stay animated."""
     if mid.startswith("assets/"):
@@ -46,6 +52,17 @@ HEAD = """<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css?v={v}">
+<link rel="canonical" href="{canon}">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#FFFFFF">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Andy Shaw">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{desc}">
+<meta property="og:url" content="{canon}">
+<meta property="og:image" content="https://andyjshaw000.github.io/portfolio/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -73,7 +90,8 @@ def nav(home=True):
 CONTACT = """<section class="contact" id="contact">
   <div class="wrap">
     <div class="label"><em>06</em>Contact</div>
-    <h2>Let's talk. <a href="mailto:andyjshaw000@gmail.com">andyjshaw000@gmail.com</a></h2>
+    <h2>Let's talk. <a href="mailto:__EMAIL__">__EMAIL__</a></h2>
+    <button class="copy-email" data-email="__EMAIL__">Copy email</button>
     <div class="links">
       <a href="https://www.linkedin.com/in/andyjshaw000/" target="_blank" rel="noopener">LinkedIn ↗</a>
       <a href="https://github.com/andyjshaw000" target="_blank" rel="noopener">GitHub ↗</a>
@@ -82,7 +100,7 @@ CONTACT = """<section class="contact" id="contact">
     </div>
   </div>
 </section>
-<footer><div class="wrap">© 2026 Andy Shaw</div></footer>
+<footer><div class="wrap foot"><span>© 2026 Andy Shaw</span><span><a href="index.html#work">Projects</a><a href="kndi.html">kndi</a><a href="https://www.linkedin.com/in/andyjshaw000/" target="_blank" rel="noopener">LinkedIn</a><a href="#top" class="foot-top">Back to top ↑</a></span></div></footer>
 <script src="assets/site.js?v=__V__"></script>
 </body>
 </html>
@@ -145,11 +163,11 @@ def case_page(p):
     links = ""
     if p.get("links"):
         links = '<div class="btns" style="margin-top:28px">' + "".join(
-            f'<a class="btn solid" href="{u}" target="_blank" rel="noopener">{l} ↗</a>' for l, u in p["links"]) + "</div>"
+            f'<a class="btn{" solid" if i == 0 else ""}" href="{u}" target="_blank" rel="noopener">{l} ↗</a>' for i, (l, u) in enumerate(p["links"])) + "</div>"
     cover_id = p.get("cover") or p["thumb"]
     ctag, cz = img(cover_id, alt=p["title"], w=2000, lazy=False, cap=p["title"])
     if p.get("strip"):
-        cells = "".join(f'<div class="cs-strip-cell" data-full="{u}" data-cap="kndi on the App Store">' + img(u, zoom=False, lazy=False)[0] + '</div>' for u in p["strip"])
+        cells = "".join(f'<div class="cs-strip-cell" data-full="{u}" data-cap="kndi on the App Store">' + img(u, alt="kndi App Store screenshot", zoom=False, lazy=False)[0] + '</div>' for u in p["strip"])
         cover_html = f'<div class="wrap"><div class="cs-strip">{cells}</div></div>'
     else:
         cover_html = f'<div class="wrap"><div class="cs-cover"><div class="ph"{cz} style="cursor:zoom-in">{ctag}</div></div></div>'
@@ -167,9 +185,9 @@ def case_page(p):
         nxt += f'<a class="r" href="{next_p["slug"]}.html"><span>Next →</span><b>{next_p["title"]}</b></a>'
     else:
         nxt += '<a class="r" href="index.html#work"><span>Back to</span><b>All projects</b></a>'
-    return (HEAD.format(v=V, title=f'{p["title"]} | Andy Shaw', desc=html.escape(p["card"], quote=True)) + nav(False) +
+    return (HEAD.format(v=V, canon="https://andyjshaw000.github.io/portfolio/"+p["slug"]+".html", title=f'{p["title"]} | Andy Shaw', desc=html.escape(p["card"], quote=True)) + nav(False) +
 f"""<div class="progress" aria-hidden="true"></div>
-<header class="cs-hero wrap">
+<header class="cs-hero wrap" id="top">
   <a class="back" href="index.html#work">← All projects</a>
   <div class="label">{p["where"]} · {p["kind"]}</div>
   <h1>{p["title"]}</h1>
@@ -193,7 +211,7 @@ def card(p):
   <div class="thumb">{tag}<span class="idx">{n:02d}</span></div>
   <div class="body">
     <div class="where"><span>{p['where']}</span><span>{p['kind']}</span></div>
-    <h4>{p['title']}</h4>
+    <h3 class="proj-t">{p['title']}</h3>
     <p>{p['card']}</p>
     {imp}
     <div class="pills">{pills}</div>
@@ -204,7 +222,7 @@ def card(p):
 def home():
     cards = "\n".join(card(BYSLUG[s]) for s in ORDER if s != "kndi")
     ptag, _ = img(m("56a508aabfa1400493a7a92ebbedee1b", "jpg"), alt="Andy Shaw", w=900, zoom=False)
-    return (HEAD.format(v=V, title="Andy Shaw | UX Research and Product",
+    return (HEAD.format(v=V, canon="https://andyjshaw000.github.io/portfolio/", title="Andy Shaw | UX Research and Product",
                         desc="Andy Shaw. UX researcher at Meta Reality Labs and builder of kndi, an iOS app for planning festivals with friends. Open to PM, PjM, and UX research roles.")
             + nav(True) + f"""
 <main id="main">
@@ -226,7 +244,7 @@ def home():
   <dl>
     <div><dt>Now</dt><dd>UX Research at Meta Reality Labs</dd></div>
     <div><dt>Shipped</dt><dd><a href="#kndi">kndi</a>, live on the App Store</dd></div>
-    <div><dt>Track record</dt><dd>300+ studies run. Gopuff research shipped.</dd></div>
+    <div><dt>Track record</dt><dd>300+ experiments run at Meta. Gopuff research shipped.</dd></div>
     <div><dt>Looking for</dt><dd>PM, PjM, or UX research roles</dd></div>
     <div><dt>Based in</dt><dd>Seattle. Open to relocating.</dd></div>
     <div><dt>School</dt><dd>UW HCDE, Cum Laude, Math minor</dd></div>
@@ -278,6 +296,7 @@ def home():
     <div class="split">
       <div class="rv">
         <div class="label"><em>02</em>Current role</div>
+        <h2 style="margin-bottom:28px">Leading research for AR/VR and smart glasses.</h2>
         <div class="meta-side">
           <b>Meta Reality Labs</b>
           UX Research Assistant<br>
@@ -329,12 +348,12 @@ def home():
           <li>Ran 300+ auditory perception experiments informing AR/VR and smart glasses products.</li>
           <li>Wrote 12+ research reports with statistical analysis that influenced product direction.</li>
         </ul></div></li>
-      <li><span class="when">Ongoing</span><div>
-        <div class="role">Founder and builder</div>
-        <div class="org">kndi, iOS app</div>
+      <li><span class="when">Apr 2026 to now</span><div>
+        <div class="role">Co-founder</div>
+        <div class="org">kndi, iOS app (team of 6)</div>
         <ul>
-          <li>Built and shipped an iPhone app for festival group planning and digital kandi trading.</li>
-          <li>Owns product direction and the go-to-market plan.</li>
+          <li>Top contributor with 647 of 1,264 commits: group chat, the design system, kandi, and push notifications.</li>
+          <li>Own product direction and the go-to-market plan.</li>
         </ul></div></li>
       <li><span class="when">Nov 2023 to May 2024</span><div>
         <div class="role">UX Moderator</div>
@@ -370,10 +389,10 @@ def home():
         <p>Outside of work I run a weekly D&amp;D campaign as the Dungeon Master, go to a lot of EDM shows (which is where kndi came from), and play more League than I should.</p>
       </div>
       <div class="skills">
-        <div><h5>Research</h5><p>Study design, interviews, usability tests, concept tests, surveys, heuristic evaluation, competitive analysis, personas</p></div>
-        <div><h5>Data and code</h5><p>R, Python, SQL, JavaScript, Java, HTML/CSS, Git</p></div>
-        <div><h5>Design</h5><p>Figma, Miro, wireframes, user flows, prototyping, Illustrator, Photoshop</p></div>
-        <div><h5>Project management</h5><p>Research planning, prioritization, team training, documentation, shipping an app end to end</p></div>
+        <div><h3 class="sk">Research</h3><p>Study design, interviews, usability tests, concept tests, surveys, heuristic evaluation, competitive analysis, personas</p></div>
+        <div><h3 class="sk">Data and code</h3><p>R, Python, SQL, JavaScript, Java, HTML/CSS, Git</p></div>
+        <div><h3 class="sk">Design</h3><p>Figma, Miro, wireframes, user flows, prototyping, Illustrator, Photoshop</p></div>
+        <div><h3 class="sk">Project management</h3><p>Research planning, prioritization, team training, documentation, shipping an app end to end</p></div>
       </div>
     </div>
   </div>
@@ -383,11 +402,28 @@ def home():
 
 def main():
     with open(os.path.join(OUT, "index.html"), "w") as f:
-        f.write(home().replace("__V__", V))
+        f.write(home().replace("__V__", V).replace("__EMAIL__", EMAIL))
     for p in PROJECTS:
         with open(os.path.join(OUT, f"{p['slug']}.html"), "w") as f:
-            f.write(case_page(p).replace("__V__", V))
-    print("built", 1 + len(PROJECTS), "pages")
+            f.write(case_page(p).replace("__V__", V).replace("__EMAIL__", EMAIL))
+    SITE = "https://andyjshaw000.github.io/portfolio/"
+    nf = (HEAD.format(v=V, canon=SITE, title="Page not found | Andy Shaw", desc="This page doesn't exist.").replace("<head>", '<head>\n<base href="/portfolio/">', 1)
+          + nav(False) + """<main id="main"><header class="cs-hero wrap" id="top" style="min-height:60vh">
+  <div class="label"><em>404</em>Page not found</div>
+  <h1>That page doesn't exist.</h1>
+  <p class="lede">The link might be old, or the page moved when this site replaced the Wix one.</p>
+  <div class="btns" style="margin-top:28px"><a class="btn solid" href="index.html">Go to the home page</a><a class="btn" href="index.html#work">See case studies</a></div>
+</header></main>
+""" + CONTACT).replace("__V__", V).replace("__EMAIL__", EMAIL)
+    with open(os.path.join(OUT, "404.html"), "w") as f:
+        f.write(nf)
+    urls = [SITE] + [SITE + p["slug"] + ".html" for p in PROJECTS]
+    with open(os.path.join(OUT, "sitemap.xml"), "w") as f:
+        f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+                + "".join(f"  <url><loc>{u}</loc></url>\n" for u in urls) + "</urlset>\n")
+    with open(os.path.join(OUT, "robots.txt"), "w") as f:
+        f.write(f"User-agent: *\nAllow: /\nSitemap: {SITE}sitemap.xml\n")
+    print("built", 1 + len(PROJECTS), "pages + 404, sitemap, robots")
 
 if __name__ == "__main__":
     main()
