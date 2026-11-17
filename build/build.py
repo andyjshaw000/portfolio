@@ -204,16 +204,26 @@ f"""<div class="progress" aria-hidden="true"></div>
 <div class="wrap"><div class="cs-next">{nxt}</div></div>
 """ + CONTACT)
 
-def card(p):
-    n = [x for x in ORDER if x != "kndi"].index(p["slug"]) + 1
+# Hiring guides agree on 3 to 5 deep case studies, titled by what you did rather
+# than the product name. kndi is featured above, so these four are the real
+# company and capstone work. Everything else sits in a compact list below.
+FEATURED = ["bundling", "save-for-later", "pdp-redesign", "kuow"]
+HEADLINES = {
+    "bundling": "Finding out what makes Gopuff shoppers buy bundles",
+    "save-for-later": "Turning a cart people used as a wishlist into a real feature",
+    "pdp-redesign": "Benchmarking Gopuff's product page against 12 competitors",
+    "kuow": "Redesigning a public radio app for a younger audience",
+}
+
+def card(p, n):
     tag, _ = img(p["thumb"], alt=p["title"], fill=800, zoom=False)
     imp = f'<div class="impact">{p["impact"]}</div>' if p.get("impact") else ""
     pills = "".join(f"<span>{x}</span>" for x in p["pills"])
-    return f"""<a class="proj" data-c="{p['cat']}" href="{p['slug']}.html">
+    return f"""<a class="proj" href="{p['slug']}.html">
   <div class="thumb">{tag}<span class="idx">{n:02d}</span></div>
   <div class="body">
-    <div class="where"><span>{p['where']}</span><span>{p['kind']}</span></div>
-    <h3 class="proj-t">{p['title']}</h3>
+    <div class="where"><span>{p['title']} · {p['where']}</span><span>{p['kind']}</span></div>
+    <h3 class="proj-t">{HEADLINES.get(p['slug'], p['title'])}</h3>
     <p>{p['card']}</p>
     {imp}
     <div class="pills">{pills}</div>
@@ -221,11 +231,21 @@ def card(p):
   </div>
 </a>"""
 
+def mini(p):
+    tag, _ = img(p["thumb"], alt="", fill=300, zoom=False)
+    return f"""<a class="mini" href="{p['slug']}.html">
+  <div class="mini-thumb">{tag}</div>
+  <div class="mini-body"><h3>{p['title']}</h3><p>{p['card']}</p></div>
+  <div class="mini-meta"><span>{p['where']}</span><span>{p['kind']}</span></div>
+  <span class="mini-go" aria-hidden="true">→</span>
+</a>"""
+
 def home():
-    cards = "\n".join(card(BYSLUG[s]) for s in ORDER if s != "kndi")
+    cards = "\n".join(card(BYSLUG[s], i + 2) for i, s in enumerate(FEATURED))
+    minis = "\n".join(mini(BYSLUG[s]) for s in ORDER if s != "kndi" and s not in FEATURED)
     ptag, _ = img(m("56a508aabfa1400493a7a92ebbedee1b", "jpg"), alt="Andy Shaw", w=900, zoom=False)
     return (HEAD.format(ld=LD, v=V, canon="https://andyjshaw000.github.io/portfolio/", title="Andy Shaw | Product Manager and UX Researcher in Seattle",
-                        desc="Andy Shaw leads UX research studies at Meta Reality Labs and co-founded kndi, a live iOS app. Open to Product Manager, Program Manager, and UX Researcher roles in Seattle or remote.")
+                        desc="Andy Shaw runs UX research studies at Meta Reality Labs and is the top contributor on kndi, a live iOS app. Open to Product Manager, Program Manager, and UX Researcher roles in Seattle or remote.")
             + nav(True) + f"""
 <main id="main">
 <header class="hero wrap" id="top">
@@ -320,7 +340,7 @@ def home():
         <p>I joined Meta to support research studies. Within four months, I took ownership of my team's UX research work instead of rotating across teams.</p>
         <p>I run studies end to end: writing the procedures, building screeners and surveys in Qualtrics, recruiting through Prolific or our internal pool, running sessions in the lab, and doing the first round of analysis in R and Python. That work goes straight to the research scientists who use it to shape product proposals for AR/VR and smart glasses.</p>
         <p>I care a lot about data you can trust. I build headphone screeners, catch trials, and hidden references into studies, which in one case narrowed 146 recruits to 98 reliable participants. I use the standard methods from audio research, like MUSHRA listening tests, MaxDiff, and paired comparisons, and I've run sessions in 8+ labs, including an anechoic chamber, plus people's homes and live cafeterias.</p>
-        <p>I also own the team's documentation. I wrote 101 of the wiki's 113 revisions, consolidated 40+ documents into 10 role-based categories, and built a training curriculum so our panel studies no longer depend on one person.</p>
+        <p>I also own the team's documentation. I wrote 101 of the wiki's 113 revisions, consolidated 40+ documents into 10 role-based categories, and built a training curriculum so our panel studies no longer depend on one person. I use AI where it saves the team time: an LLM that tracks document status, a chatbot that answers common equipment and process questions, and a digest of meeting notes.</p>
         <p class="note">Most of this work is under NDA, so I keep it high level here. I'm happy to walk through how I run a study when we talk.</p>
       </div>
     </div>
@@ -336,15 +356,15 @@ def home():
 <section id="work">
   <div class="wrap">
     <div class="label"><em>03</em>Case studies</div>
-    <h2>Research, design, and code from Gopuff and UW.</h2>
-    <div class="filters" role="group" aria-label="Filter projects">
-      <button class="on" data-f="all">All</button>
-      <button data-f="research">Research</button>
-      <button data-f="design">Design</button>
-      <button data-f="code">Code</button>
-    </div>
-    <div class="grid">
+    <h2>Research that shipped at Gopuff, plus my UW capstone.</h2>
+    <div class="grid two">
 {cards}
+    </div>
+    <div class="more-work">
+      <h3 class="sk">More projects from school</h3>
+      <div class="minis">
+{minis}
+      </div>
     </div>
   </div>
 </section>
@@ -401,9 +421,9 @@ def home():
       <div class="label"><em>05</em>About</div>
       <h2 style="margin-bottom:28px">The planner of the group.</h2>
       <div class="prose">
-        <p>I grew up in the Seattle area and studied HCDE at UW. In every group I'm in, I end up being the one who plans things and keeps everyone moving. I also work better when people are counting on me. That's a big part of why I'm moving toward product and program management.</p>
-        <p>Research taught me to ask why before jumping to a fix. Building kndi taught me what comes after that: picking what to ship, cutting what doesn't matter, and seeing whether real people actually use it.</p>
-        <p>Outside of work I run a weekly D&amp;D campaign as the Dungeon Master, go to a lot of EDM shows (which is where kndi came from), and play more League than I should.</p>
+        <p>In every group I'm in, I end up planning things and keeping everyone moving, and I work best when people are counting on me. That's why I'm moving toward product and program management.</p>
+        <p>Research taught me to ask why before jumping to a fix. Building kndi taught me what comes next: picking what to ship, cutting what doesn't matter, and checking whether people actually use it.</p>
+        <p>Outside of work I'm a weekly D&amp;D Dungeon Master and go to a lot of EDM shows, which is where kndi came from.</p>
       </div>
       <div class="skills">
         <div><h3 class="sk">Research</h3><p>Study design, interviews, usability tests, concept tests, surveys, heuristic evaluation, competitive analysis, personas</p></div>

@@ -203,6 +203,23 @@ section.impact{padding:0;background:var(--surface)}
 .filters button:hover{border-color:var(--ink);color:var(--ink)}
 .filters button.on{background:var(--ink);border-color:var(--ink);color:#fff}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s5)}
+.grid.two{grid-template-columns:repeat(2,1fr)}
+.grid.two .proj-t{font-size:24px;line-height:1.15}
+/* Older school projects: a compact list, so the four main case studies get the attention */
+.more-work{margin-top:var(--s7)}
+.more-work .sk{margin-bottom:var(--s3);font-family:var(--mono);font-weight:500;font-size:var(--t-xs);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.minis{border-top:1px solid var(--line)}
+.mini{display:grid;grid-template-columns:96px 1fr auto 24px;gap:var(--s4);align-items:center;padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none;color:inherit;transition:background var(--fast)}
+.mini:hover{background:var(--surface)}
+.mini-thumb{width:96px;aspect-ratio:16/10;overflow:hidden;background:var(--well);border:1px solid var(--line)}
+.mini-thumb img{width:100%;height:100%;object-fit:cover}
+.mini h3{font-size:17px;margin-bottom:2px}
+.mini p{font-size:14px;color:var(--muted);margin:0}
+.mini-meta{display:flex;flex-direction:column;align-items:flex-end;gap:2px;font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+.mini-go{transition:transform var(--med) var(--ease)}
+.mini:hover .mini-go{transform:translateX(4px)}
+@media (max-width:900px){.grid.two{grid-template-columns:1fr}}
+@media (max-width:640px){.mini{grid-template-columns:72px 1fr}.mini-thumb{width:72px}.mini-meta,.mini-go{display:none}}
 .proj{display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--line);text-decoration:none;transition:transform var(--med) var(--ease),border-color var(--fast),box-shadow var(--med) var(--ease)}
 .proj:hover{transform:translate(-3px,-3px);border-color:var(--ink);box-shadow:var(--shadow-pop)}
 .proj:active{transform:none;box-shadow:none}
@@ -216,12 +233,7 @@ section.impact{padding:0;background:var(--surface)}
 .proj .where{display:flex;justify-content:space-between;gap:var(--s2);margin-bottom:10px;font-family:var(--mono);font-size:var(--t-xs);color:var(--muted)}
 .proj .proj-t{font-size:22px;line-height:1.1;margin-bottom:var(--s2)}
 .proj p{flex:1;margin-bottom:var(--s4);font-size:14.5px;color:var(--muted)}
-/* A lone card in the last row spans the row as a horizontal card instead of
-   leaving two empty slots. */
-@media (min-width:901px){
-  .grid:not(.filtered)>.proj:last-child:nth-child(3n+1){grid-column:1/-1;flex-direction:row}
-  .grid:not(.filtered)>.proj:last-child:nth-child(3n+1)>.thumb{flex:0 0 calc((100% - 2 * var(--s5)) / 3);aspect-ratio:16/10;border-bottom:0;border-right:1px solid var(--line)}
-}
+
 .proj .impact{margin-bottom:14px;font-size:13px;font-weight:600;color:var(--accent)}
 .proj .more{display:flex;justify-content:space-between;margin-top:var(--s4);padding-top:14px;border-top:1px solid var(--line);font-size:var(--t-sm);font-weight:500}
 .proj .more span{transition:transform var(--med) var(--ease)}
