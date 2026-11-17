@@ -359,6 +359,7 @@ figcaption,.figs-cap{max-width:62ch;margin:12px auto 0;font-size:var(--t-sm);lin
 .cs-sec .narrow>figure .ph img,.figs.c1 .ph img{width:auto;height:auto;max-width:100%;max-height:min(72vh,680px);object-fit:contain}
 .cs-sec .narrow>figure,.cs-sec .narrow>.figs,.cs-sec .narrow>.slider{width:min(var(--wide),calc(100vw - 2 * var(--gutter)));margin-left:calc(50% - min(var(--wide) / 2,50vw - var(--gutter)))}
 .cs-sec .narrow>.figs.phones{width:min(860px,calc(100vw - 2 * var(--gutter)));margin-left:calc(50% - min(430px,50vw - var(--gutter)))}
+.cs-sec .narrow>.figs.phones.c2{width:min(580px,calc(100vw - 2 * var(--gutter)));margin-left:calc(50% - min(290px,50vw - var(--gutter)))}
 .cs-sec .narrow>.figs.c1{width:min(760px,calc(100vw - 2 * var(--gutter)));margin-left:calc(50% - min(380px,50vw - var(--gutter)))}
 
 /* slider */
