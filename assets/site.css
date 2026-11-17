@@ -341,6 +341,12 @@ figcaption,.figs-cap{max-width:62ch;margin:12px auto 0;font-size:var(--t-sm);lin
    centered inside it uncropped, and the captions line up underneath. */
 .figs.contain .ph{flex:1;display:flex;align-items:center;justify-content:center;aspect-ratio:auto;padding:12px;background:#fff}
 .figs.contain .ph img{width:100%;height:auto;object-fit:contain}
+/* Once JS knows each image's shape, mixed grids become justified rows: every
+   image in a row is the same height and the row fills the width, so nothing
+   is letterboxed or shrunk to a sliver. */
+.figs.contain.just{display:flex;flex-wrap:wrap;justify-content:center}
+.figs.contain.just figure{flex:none}
+.figs.contain.just .ph{flex:none;display:block;padding:0}
 .figs.phones .ph{border-radius:var(--radius-device);background:#0B0B0F;border-color:#0B0B0F}
 .figs.phones .ph img{object-position:top}
 /* Single images shrink-wrap and cap their height, so a tall phone mockup or

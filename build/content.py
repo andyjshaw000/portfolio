@@ -88,10 +88,8 @@ dict(
     ]),
     ("The prototype", [
       ("p","I worked with the UX designers to get mockups ready for testing."),
-      ("fig",m("733ee0ee99064103923f4540bac11fc3"),"The prototype participants used"),
-      ("fig",m("d130281b13794773ac3ba257a43f9602"),""),
-      ("fig",m("099a08049a9b4b748bb712b419f8f252"),""),
-      ("figs",3,[(m("5bf596d5601c4726b881f796b1506e3d"),""),(m("306d43b7079e4c229dc2b8fb361d1ac4"),""),(m("6966880fce0d4ab585050c464afca922"),"Favoriting from checkout")],"Other prototype screens","3/4",True),
+      ("figs",3,[(m("733ee0ee99064103923f4540bac11fc3"),""),(m("d130281b13794773ac3ba257a43f9602"),""),(m("099a08049a9b4b748bb712b419f8f252"),""),(m("5bf596d5601c4726b881f796b1506e3d"),""),(m("306d43b7079e4c229dc2b8fb361d1ac4"),"")],"The prototype as participants saw it in remote sessions. Click any screen to enlarge it.","16/9",True),
+      ("fig",m("6966880fce0d4ab585050c464afca922"),"Favoriting from checkout"),
     ]),
     ("What we learned", [
       ("ul",[

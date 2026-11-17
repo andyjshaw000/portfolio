@@ -25,6 +25,34 @@
   addEventListener('scroll', function(){ if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, {passive:true});
   onScroll();
 
+  /* mixed-size image grids: lay out as justified rows */
+  var justGrids = Array.prototype.slice.call(document.querySelectorAll('.figs.contain'));
+  function justify(g){
+    var figs = Array.prototype.slice.call(g.querySelectorAll(':scope > figure'));
+    if (innerWidth < 640 || figs.length < 2) {
+      g.classList.remove('just'); figs.forEach(function(f){ f.style.width = ''; }); return;
+    }
+    var gap = 20, W = g.clientWidth, target = Math.max(220, Math.min(380, W * .34)), row = [], sum = 0;
+    function ar(f){ var im = f.querySelector('img'); return im && im.naturalWidth ? im.naturalWidth / im.naturalHeight : 4 / 3; }
+    function place(items, total, last){
+      var h = (W - gap * (items.length - 1)) / total;
+      if (last && h > target * 1.25) h = target * 1.25;
+      items.forEach(function(f){ f.style.width = Math.floor(ar(f) * h) + 'px'; });
+    }
+    figs.forEach(function(f){
+      row.push(f); sum += ar(f);
+      if ((W - gap * (row.length - 1)) / sum <= target) { place(row, sum, false); row = []; sum = 0; }
+    });
+    if (row.length) place(row, sum, true);
+    g.classList.add('just');
+  }
+  justGrids.forEach(function(g){
+    g.querySelectorAll('img').forEach(function(im){ if (!im.complete) im.addEventListener('load', function(){ justify(g); }); });
+    justify(g);
+  });
+  var jt = null;
+  addEventListener('resize', function(){ clearTimeout(jt); jt = setTimeout(function(){ justGrids.forEach(justify); }, 120); });
+
   /* images: show a placeholder if one fails to load */
   document.querySelectorAll('img[data-wix]').forEach(function(img){
     function fail(){ if (img.parentElement) img.parentElement.classList.add('failed'); }
