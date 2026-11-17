@@ -555,7 +555,7 @@ KNDI = dict(
   slug="kndi", title="kndi", cat="product", where="Side project", kind="Product + iOS",
   thumb=K+"home.jpg", cover=None,
   strip=[K+f"store-panel-0{i}.jpg" for i in range(1, 6)],
-  card="An iPhone app for planning festivals with friends and trading digital kandi. Live on the App Store with a 4.9 rating.",
+  card="An iPhone app for planning festivals with friends and trading digital kandi. Live on the App Store with about 560 users.",
   impact="Live on the App Store", pills=["Product", "React Native", "SwiftUI", "Supabase"],
   lede="An iPhone app for planning festivals with friends and trading digital kandi. I joined a volunteer team of six in April 2026 to handle UI and App Store submission, and ended up writing more of the code than anyone, first in SwiftUI and then in a full React Native rebuild.",
   facts=[("Role","Top contributor, product and engineering"),("Since","April 2026"),("Team","6 volunteers"),("Stack","React Native, Expo, Supabase (v1 in SwiftUI)")],
@@ -568,7 +568,7 @@ KNDI = dict(
       ("figs",3,[(K+"home.jpg","Home: your groups and schedules"),(K+"group.jpg","One page for the whole trip"),(K+"sched.jpg","See who's going to which set")],"","9/19.5",False),
     ]),
     ("My role", [
-      ("p","I'm the top contributor on the team. On the original SwiftUI app I wrote <b>647 of 1,264 commits</b>. In May 2026 we started rebuilding the whole app from scratch in React Native and Expo, using the SwiftUI app as the reference for how everything should behave. Across both versions I've written <b>5,491 of 7,643 commits (72%)</b>."),
+      ("p","I'm the top contributor on the team. On the original SwiftUI app I wrote <b>647 of 1,264 commits</b>. In May 2026 we started rebuilding the whole app from scratch in React Native and Expo, using the SwiftUI app as the reference for how everything should behave across about 40 feature areas, and built it for both iOS and Android. Across both versions I've written <b>5,491 of 7,643 commits (72%)</b>."),
       ("p","I build with AI coding tools, which is how one person ships this much. My time goes into deciding what to build, testing how it feels, and fixing what breaks."),
       ("p","The areas I owned:"),
       ("ul",[
@@ -596,13 +596,20 @@ KNDI = dict(
         "<b>Rank festival lineups by Spotify monthly listeners</b>, so the artists people know show up first.",
       ]),
     ]),
+    ("What the data told us", [
+      ("p","Once people were using the app, I ran a cohort study on 251 signups to see who stuck around. New users who joined a group on their first day came back in week one at <b>44%</b>, compared with <b>15%</b> for everyone else."),
+      ("p","That's a correlation. It doesn't prove joining a group makes people come back, since people who join on day one may just be more motivated. But the gap was big enough to act on, so I reshaped onboarding around getting new users into a group first."),
+      ("p","kndi has about <b>560 users</b> now."),
+    ]),
     ("Community and growth", [
-      ("p","Events, lineups, and artists sync in automatically from festival and music sources, so groups start with real set times. Profiles, ranks, and a trading leaderboard give people a reason to keep coming back."),
+      ("p","Events, lineups, and artists sync in automatically from 9+ festival and music sources, so groups start with real set times. Matching the same artist across sources was messy, so I used fuzzy matching to fix wrong streaming links on about 12% of artists."),
+      ("p","Profiles, ranks, and a trading leaderboard give people a reason to keep coming back."),
       ("figs",2,[(K+"event.jpg","Event pages with lineup and location"),(K+"search.jpg","Finding festivals, artists, and people")],"","9/19.5",False),
       ("p","The growth plan focuses on local network effects and Insomniac events, since kndi works best when a whole crew downloads it before the same show."),
     ]),
     ("Keeping quality up", [
       ("p","With six people shipping fast, the same bugs kept coming back. I set up automated guardrails: a script that scans for known performance and reliability bugs and runs on every edit, every push, and in CI. The rebuild has over 1,300 test files."),
+      ("p","Later I prioritized a full audit of the rebuild, from the app down to the database. It confirmed 214 issues, and 172 are fixed, including 5 database functions that anyone could call."),
       ("p","Rebuilding a live app is risky, so the SwiftUI version stayed the reference the whole way. Each screen in the rebuild had to match how the original behaved before it shipped."),
     ]),
     ("The App Store listing", [
@@ -614,5 +621,5 @@ KNDI = dict(
 PROJECTS.insert(0, KNDI)
 ORDER.insert(0, "kndi")
 TLDR["kndi"] = ("Festival plans live in messy group chats, and kandi trades get forgotten.",
-               "Made product calls and wrote 72% of the commits across the SwiftUI app and its React Native rebuild.",
-               "Version 2 is live on the App Store with a 4.9 rating from 29 reviews.")
+               "Ran a 251-signup cohort study that reshaped onboarding, and wrote 72% of the commits across the SwiftUI app and its React Native rebuild.",
+               "Version 2 is live on the App Store with about 560 users and a 4.9 rating.")

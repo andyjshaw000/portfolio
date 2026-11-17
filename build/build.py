@@ -280,13 +280,13 @@ def home():
         <p>Planning a festival with a group usually means a messy group chat, five screenshots of the set times, and nobody knowing where to meet. kndi puts all of that in one place. Every event gets a group with chat, polls, a shared schedule, and an album, and you get a heads up when two sets you picked overlap.</p>
         <p>It also brings kandi trading into the app. You design digital beads and trade them by scanning each other's codes in person. The goal was never to replace the real thing. It's a way to keep the memory of who you met.</p>
         <ul class="did">
-          <li><b>Product</b><span>Decide what to build and what to cut, based on how my friends and I actually plan shows.</span></li>
+          <li><b>Product</b><span>Decide what to build and what to cut. A cohort study of 251 signups showed new users who join a group on day one come back at 44% vs 15%, so onboarding now leads with groups.</span></li>
           <li><b>Build</b><span>Top contributor on a team of six: 72% of commits across the SwiftUI app and its React Native rebuild, including chat, the design system, kandi, and push.</span></li>
           <li><b>Launch</b><span>Led App Store submission, including the moderation policy and DMCA registration.</span></li>
         </ul>
         <div class="stats">
           <div class="stat"><b>4.9</b><span>App Store rating</span></div>
-          <div class="stat"><b>6,200+</b><span>events in 408 cities</span></div>
+          <div class="stat"><b>~560</b><span>users</span></div>
           <div class="stat"><b>5,491</b><span>commits by me</span></div>
         </div>
         <div class="btns">
@@ -318,7 +318,9 @@ def home():
       </div>
       <div class="prose">
         <p>I joined Meta to support research studies. Within four months, I took ownership of my team's UX research work instead of rotating across teams.</p>
-        <p>I run studies end to end: writing the procedures, recruiting participants, piloting, collecting data in person, and doing the first round of cleaning and analysis in R and Python. That work goes straight to the research scientists who use it to shape product proposals for AR/VR and smart glasses.</p>
+        <p>I run studies end to end: writing the procedures, building screeners and surveys in Qualtrics, recruiting through Prolific or our internal pool, running sessions in the lab, and doing the first round of analysis in R and Python. That work goes straight to the research scientists who use it to shape product proposals for AR/VR and smart glasses.</p>
+        <p>I care a lot about data you can trust. I build headphone screeners, catch trials, and hidden references into studies, which in one case narrowed 146 recruits to 98 reliable participants. I use the standard methods from audio research, like MUSHRA listening tests, MaxDiff, and paired comparisons, and I've run sessions in 8+ labs, including an anechoic chamber, plus people's homes and live cafeterias.</p>
+        <p>I also own the team's documentation. I wrote 101 of the wiki's 113 revisions, consolidated 40+ documents into 10 role-based categories, and built a training curriculum so our panel studies no longer depend on one person.</p>
         <p class="note">Most of this work is under NDA, so I keep it high level here. I'm happy to walk through how I run a study when we talk.</p>
       </div>
     </div>
@@ -326,7 +328,7 @@ def home():
       <div class="num"><b>300+</b><span>auditory perception experiments run</span></div>
       <div class="num"><b>90</b><span>surveys built, collecting 3,500+ responses</span></div>
       <div class="num"><b>8</b><span>research reports I contributed to, one shaping a Meta AI app onboarding flow</span></div>
-      <div class="num"><b>8</b><span>vendor research assistants I trained</span></div>
+      <div class="num"><b>101</b><span>of the team wiki's 113 revisions written by me</span></div>
     </div>
   </div>
 </section>
@@ -359,13 +361,16 @@ def home():
           <li>Took ownership of my team's UX research work within four months, running studies from pilot to readout.</li>
           <li>Ran 300+ audio perception experiments and built 90 surveys that collected 3,500+ responses.</li>
           <li>Contributed to 8 research reports, including one that shaped an onboarding flow in the Meta AI app for smart glasses.</li>
+          <li>Narrowed 146 recruits to 98 reliable participants with headphone screeners, catch trials, and hidden references.</li>
+          <li>Built a training curriculum so panel studies no longer depend on one person, and wrote 101 of 113 wiki revisions.</li>
         </ul></div></li>
       <li><span class="when">Apr 2026 to now</span><div>
         <div class="role">Top contributor</div>
         <div class="org">kndi, iOS app (volunteer team of 6)</div>
         <ul>
-          <li>Top contributor with 5,491 of 7,643 commits across the SwiftUI app and its React Native rebuild: group chat, the design system, kandi, and push notifications.</li>
-          <li>Built the moderation admin portal and voice messages, and led App Store submission.</li>
+          <li>Found in a cohort study of 251 signups that new users who join a group on day 0 come back in week 1 at 44% vs 15%, and reshaped onboarding around it.</li>
+          <li>Grew the app to about 560 users while writing 72% of all commits (5,491 of 7,643) across the SwiftUI app and its React Native rebuild.</li>
+          <li>Prioritized and fixed 172 of 214 issues from a full-stack audit, and led App Store submission.</li>
         </ul></div></li>
       <li><span class="when">Nov 2023 to May 2024</span><div>
         <div class="role">UX Moderator</div>

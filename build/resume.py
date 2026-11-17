@@ -1,4 +1,4 @@
-"""Builds assets/Andy_Shaw_Resume.pdf from the v7 General resume.
+"""Builds assets/Andy_Shaw_Resume.pdf from the latest General resume (Nov 2026, with the kndi update).
 
 The contact email comes from PORTFOLIO_EMAIL so it isn't stored in this script.
 Run: PORTFOLIO_EMAIL=you@example.com python3 build/resume.py
@@ -15,9 +15,9 @@ if not EMAIL:
     sys.exit("Set PORTFOLIO_EMAIL to the contact address for the resume, then rerun.")
 OUT = os.environ.get("OUT_DIR") or os.path.join(os.path.dirname(__file__), "..")
 
-SUMMARY = ("UX researcher with three years running studies end to end. At Meta Reality Labs, ran 300+ audio "
-           "perception experiments, built 90 surveys that collected 3,500+ responses, and rebuilt the team's "
-           "documentation. Shipped an iOS app on the side.")
+SUMMARY = ("UX researcher with three years running studies end to end and turning findings into product decisions. "
+           "At Meta Reality Labs, ran 300+ audio perception experiments and built 90 surveys that collected 3,500+ responses. "
+           "Leads product for kndi, an iOS app with ~560 users.")
 
 JOBS = [
     ("Human Subjects Research Assistant II", "Meta Reality Labs (contract via H10)", "Redmond, WA", "May 2024 - Present", [
@@ -30,7 +30,6 @@ JOBS = [
         "Built a tiered training curriculum and roles matrix so panel studies no longer depended on one person, then trained other assistants into it.",
         "Consolidated 40+ documents into 10 role-based categories and wrote 101 of 113 revisions of the team wiki.",
         "Automated document status tracking with an LLM and built a team knowledge chatbot and meeting-notes digest.",
-        "Trained 8 vendor research assistants at AIDI and staffed 3 outside research assistants onto a study.",
     ]),
     ("UX Moderator", "User Research International", "Redmond, WA", "Nov 2023 - May 2024", [
         "Moderated 80+ usability studies, interviews, and benchmarks on prototype electronics for major tech clients.",
@@ -42,9 +41,10 @@ JOBS = [
     ]),
 ]
 
-PROJECT = ("kndi, iOS app for festival crews", "React Native, SwiftUI, Supabase", "kndi.app", "Apr 2026 - Present", [
-    "Shipped an iOS app to the App Store as the top contributor on a volunteer team (5,491 of 7,643 commits across the SwiftUI app and its React Native rebuild).",
-    "Built the moderation admin portal, voice messages, and design system, and led App Store submission.",
+PROJECT = ("Product Owner and Lead Engineer", "kndi, iOS app for festival crews (volunteer team)", "kndi.app", "Apr 2026 - Present", [
+    "Found that new users who join a group on day 0 return in week 1 at 44% vs 15%, from a cohort study of 251 signups, and reshaped onboarding around it.",
+    "Grew the app to ~560 users, leading product and engineering with AI coding tools (72% of all commits).",
+    "Led the rebuild from SwiftUI to React Native for iOS and Android, keeping parity across ~40 feature areas.",
 ])
 
 EDUCATION = [
@@ -54,9 +54,9 @@ EDUCATION = [
 ]
 
 SKILLS = [
-    ("Research", "Experimental design, power analysis, surveys, interviews, usability testing, thematic analysis"),
+    ("Research", "Experimental design, cohort analysis, power analysis, surveys, interviews, usability testing"),
     ("Operations", "Prolific, Qualtrics, Ethnio, Dscout, UserTesting, REDCap, recruiting and screening, ethics review"),
-    ("Technical", "R, Python, SQL, shell, Git, Swift, React Native, Figma, Excel, AWS S3, Gemini"),
+    ("Technical", "SQL, PostHog, R, Python, React Native, Supabase, Git, Figma, Excel, AI coding tools"),
     ("Audio", "Max/MSP, IRCAM Spat5, SenseLab, ambisonics, binaural rendering, multichannel capture, Audacity, Reaper"),
 ]
 
