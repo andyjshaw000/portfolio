@@ -82,6 +82,7 @@
       fb.forEach(function(x){ x.classList.remove('on'); x.setAttribute('aria-pressed', 'false'); });
       b.classList.add('on'); b.setAttribute('aria-pressed', 'true');
       var f = b.dataset.f, cards = Array.prototype.slice.call(document.querySelectorAll('.proj'));
+      var grid = document.querySelector('.grid'); if (grid) grid.classList.toggle('filtered', f !== 'all');
       var before = new Map();
       cards.forEach(function(p){ if (!p.classList.contains('hide')) before.set(p, p.getBoundingClientRect()); });
       cards.forEach(function(p){
@@ -247,10 +248,11 @@
       if (!a || !a.offsetWidth) { ind.style.opacity = 0; return; }
       ind.style.opacity = 1;
       ind.style.width = a.offsetWidth + 'px';
+      ind.style.top = (a.offsetTop + a.offsetHeight + 4) + 'px';
       ind.style.transform = 'translateX(' + (a.offsetLeft) + 'px)';
     };
   }
-  var navInd = slider(document.querySelector('.nav-links'), 'a.on');
+  var navInd = slider(document.querySelector('.nav-links'), 'a.on:not(.cta)');
   var tocInd = slider(document.querySelector('.toc .wrap'), 'a.on');
   if (navInd || tocInd) {
     new MutationObserver(function(){ if (navInd) navInd(); if (tocInd) tocInd(); })
