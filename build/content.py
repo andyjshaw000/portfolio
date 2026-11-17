@@ -164,7 +164,6 @@ dict(
 dict(
   slug="kuow", title="KUOW Redesign", cat="research design", where="UW Capstone · 2023", kind="Research + Design",
   thumb=m("4df59576199e4828a0e88f7415937630"),
-  cover=m("3641d9d17e5544b98e158fd87709b3e4"),
   card="Our senior capstone for KUOW public radio. We redesigned the app to win back engagement and reach a younger, more diverse audience.",
   impact="Pitched to judges at the HCDE capstone showcase",
   pills=["Interviews", "Personas", "A/B testing", "Figma"],
@@ -376,7 +375,7 @@ dict(
 dict(
   slug="celestial-ninja", title="Celestial Ninja", cat="code", where="UW HCDE 438 · 2023", kind="Code",
   thumb="assets/ninja/v2-gameplay.jpg",
-  cover="assets/ninja/v2-gameplay.jpg",
+  cover="assets/ninja/v2-gameplay.jpg",  # outlined enemies, kill streak, new HUD
   card="A 2D survival game in JavaScript with 14 powers, five enemy types, a boss, and a live leaderboard. Playable in the browser.",
   impact="Playable live demo",
   pills=["JavaScript", "p5play", "Firebase"],
@@ -433,7 +432,7 @@ dict(
         "<b>New moves and powers.</b> A dash with a brief dodge window, a kill streak multiplier, homing fireballs, and six new upgrades, including the magnet I wanted in 2023.",
         "<b>A faster start.</b> You pick a weapon right after Play instead of sitting through a 30 second tutorial.",
       ]),
-      ("figs",2,[("assets/ninja/v2-gameplay.jpg","Outlined enemies, a kill streak, and the new HUD"),("assets/ninja/v2-upgrade.jpg","Level-up cards")],"","16/9",True),
+      ("fig","assets/ninja/v2-upgrade.jpg","Level-up cards"),
       ("p","I also fixed a security hole: the leaderboard put player names on the page as raw HTML, so anyone could submit a name that ran code in other players' browsers. Names now show as plain text."),
     ]),
   ],
@@ -442,7 +441,6 @@ dict(
 dict(
   slug="restaurant-finder", title="Restaurant Finder", cat="code", where="UW HCDE", kind="Code",
   thumb=m("056c4875bf1545e7bc72d93214dc2b9b"),
-  cover=m("35594dc7958d442cb5eb68fcd17642c8"),
   card="A Python and Flask web app that maps nearby restaurants with color-coded ratings, using the Yelp Fusion API.",
   impact="",
   pills=["Python", "Flask", "Folium", "Yelp API"],
@@ -479,7 +477,6 @@ dict(
 dict(
   slug="simon-says", title="Simon Says", cat="code", where="UW HCDE", kind="Hardware",
   thumb=m("82f67276b86c4ce6bef7008c791951bc"),
-  cover=m("3d2d10d23082403382f286cef8f573ae"),
   card="A physical Simon Says memory game I wired up with arcade buttons, LEDs, and an Arduino in one week.",
   impact="",
   pills=["Arduino", "Circuit design"],
