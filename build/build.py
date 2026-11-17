@@ -241,7 +241,7 @@ def mini(p):
 </a>"""
 
 def home():
-    cards = "\n".join(card(BYSLUG[s], i + 2) for i, s in enumerate(FEATURED))
+    cards = "\n".join(card(BYSLUG[s], i + 1) for i, s in enumerate(FEATURED))
     minis = "\n".join(mini(BYSLUG[s]) for s in ORDER if s != "kndi" and s not in FEATURED)
     ptag, _ = img(m("56a508aabfa1400493a7a92ebbedee1b", "jpg"), alt="Andy Shaw", w=900, zoom=False)
     return (HEAD.format(ld=LD, v=V, canon="https://andyjshaw000.github.io/portfolio/", title="Andy Shaw | Product Manager and UX Researcher in Seattle",
