@@ -379,15 +379,15 @@ dict(
 # --------------------------------------------------------- CELESTIAL NINJA
 dict(
   slug="celestial-ninja", title="Celestial Ninja", cat="code", where="UW HCDE 438 · 2023", kind="Code",
-  thumb=m("c9bf43d5129c4ebb83488d9618d4240d"),
-  cover="assets/ninja/cover.mp4",
-  card="A 2D survival game in JavaScript with five elemental powers, a boss fight, and a live Firebase leaderboard. Playable in the browser.",
+  thumb="assets/ninja/v2-gameplay.jpg",
+  cover="assets/ninja/v2-gameplay.jpg",
+  card="A 2D survival game in JavaScript with 14 powers, five enemy types, a boss, and a live leaderboard. Playable in the browser.",
   impact="Playable live demo",
   pills=["JavaScript", "p5play", "Firebase"],
   lede="You're a ninja who can bend five elements: fire, earth, water, sun, and air. Shadow warriors keep coming, and they get stronger over time. Kill them, collect XP, and pick an upgrade every few levels.",
-  facts=[("Context","UW HCDE 438"),("Built","Solo, 800+ lines"),("Stack","JavaScript, p5play, Firebase"),("Hosting","GitHub Pages")],
+  facts=[("Context","UW HCDE 438, updated 2026"),("Built","Solo, 2,300+ lines"),("Stack","JavaScript, p5play, Firebase"),("Hosting","GitHub Pages")],
   outcome="",
-  links=[("Play it live","https://andyjshaw000.github.io/Final438/")],
+  links=[("Play it live","https://andyjshaw000.github.io/Final438/"),("Source code","https://github.com/andyjshaw000/Final438")],
   sections=[
     ("Getting started", [
       ("p","I'd never used p5play, so I started with its examples to plan the code structure."),
@@ -426,6 +426,20 @@ dict(
       ("p","A week and a half, a new library, and 800+ lines of code. I finished on time, but working out of order cost me time. Next time I'd plan stricter."),
       ("p","If I kept going, I'd add loot that carries between runs, a menu, multiplayer, and a magnet power-up."),
     ]),
+    ("Coming back to it in 2026", [
+      ("p","Three years later the game had stopped loading. The libraries it pulled from the web had changed underneath it. I pinned them into the repo, then used the chance to fix what bugged me as a player and finish the list above."),
+      ("figs",2,[("assets/ninja/v2-menu.jpg","A title screen with controls and your best score"),("assets/ninja/v2-weapon.jpg","Weapon and power cards you can pick with 1, 2, or 3")],"","16/9",True),
+      ("ul",[
+        "<b>A sword that hits where you aim.</b> The old one stretched to the cursor and pushed enemies around. Now it's a fixed blade that sweeps toward the cursor and hits whatever it covers.",
+        "<b>Enemies you can actually see.</b> Each shadow gets a colored outline that shows its type, on a toned-down forest map that replaced the old concrete tiles.",
+        "<b>More going on.</b> Brutes, splitters, bombers with a warning circle, rare elites, and random events like a surrounding ring or a rush from one side.",
+        "<b>Pacing that holds attention.</b> The enemy count climbs steadily and moves in 60 second waves, so there's always a breather or a rush coming.",
+        "<b>New moves and powers.</b> A dash with a brief dodge window, a kill streak multiplier, homing fireballs, and six new upgrades, including the magnet I wanted in 2023.",
+        "<b>A faster start.</b> You pick a weapon right after Play instead of sitting through a 30 second tutorial.",
+      ]),
+      ("figs",2,[("assets/ninja/v2-gameplay.jpg","Outlined enemies, a kill streak, and the new HUD"),("assets/ninja/v2-upgrade.jpg","Level-up cards")],"","16/9",True),
+      ("p","I also fixed a security hole: the leaderboard put player names on the page as raw HTML, so anyone could submit a name that ran code in other players' browsers. Names now show as plain text."),
+    ]),
   ],
 ),
 # --------------------------------------------------------- RESTAURANT FINDER
@@ -457,7 +471,10 @@ dict(
     ]),
     ("Deploying it", [
       ("p","Deploying to PythonAnywhere meant reworking my Flask routing to fit its setup."),
-      ("fig",m("54ee7c8042cb465e8484c3582ee847d0"),"The Google Maps API key expired in August 2023, so the live map may not fully load"),
+      ("fig",m("54ee7c8042cb465e8484c3582ee847d0"),"The deployed app on PythonAnywhere"),
+    ]),
+    ("Fixing it in 2026", [
+      ("p","The Google Maps key expired in August 2023 and the map stopped loading. I swapped it for OpenStreetMap, which needs no key, and cleaned up the code while I was in there. Results now stay in memory instead of a CSV file, popups escape text from Yelp so a restaurant name can't break the page, and bad coordinates get a friendly error instead of a crash."),
       ("p","Going in, I'd never written Python. Coming out, I'd used HTTP requests, parsed JSON, built a Flask app, and shipped it to the web."),
     ]),
   ],
@@ -523,8 +540,8 @@ TLDR = {
                "Interviews, personas, a journey map, 8 requirements, Figma prototypes, and testing.",
                "An app with meal planning, search by ingredients, and a social feed."),
   "celestial-ninja": ("Build a full game in a library I'd never used, in a week and a half.",
-               "800+ lines of JavaScript: 5 powers, a boss, and a live Firebase leaderboard.",
-               "Shipped on time and playable in the browser."),
+               "Built it solo in JavaScript, then rebuilt it in 2026 with new enemies, events, and 14 powers.",
+               "Playable in the browser, with a live Firebase leaderboard."),
   "restaurant-finder": ("I wanted a faster way to see which nearby restaurants are good.",
                "My first Python project: Flask, Folium, and the Yelp API, paginated past its 50-result cap.",
                "A deployed web app with a color-coded restaurant map."),
@@ -538,10 +555,10 @@ KNDI = dict(
   slug="kndi", title="kndi", cat="product", where="Side project", kind="Product + iOS",
   thumb=K+"home.jpg", cover=None,
   strip=[K+f"store-panel-0{i}.jpg" for i in range(1, 6)],
-  card="An iPhone app for planning festivals with friends and trading digital kandi.",
-  impact="Live on the App Store", pills=["Product", "SwiftUI", "Supabase"],
-  lede="An iPhone app for planning festivals with friends and trading digital kandi. I joined a volunteer team of six in April 2026 to handle UI and App Store submission, and ended up writing more of the code than anyone.",
-  facts=[("Role","iOS developer, top contributor"),("Since","April 2026"),("Team","6 volunteers"),("Stack","SwiftUI, Supabase, Next.js")],
+  card="An iPhone app for planning festivals with friends and trading digital kandi. Live on the App Store with a 4.9 rating.",
+  impact="Live on the App Store", pills=["Product", "React Native", "SwiftUI", "Supabase"],
+  lede="An iPhone app for planning festivals with friends and trading digital kandi. I joined a volunteer team of six in April 2026 to handle UI and App Store submission, and ended up writing more of the code than anyone, first in SwiftUI and then in a full React Native rebuild.",
+  facts=[("Role","Top contributor, product and engineering"),("Since","April 2026"),("Team","6 volunteers"),("Stack","React Native, Expo, Supabase (v1 in SwiftUI)")],
   outcome="",
   links=[("View on the App Store","https://apps.apple.com/app/kndi/id6762342337"),("kndi.app","https://kndi.app")],
   sections=[
@@ -551,12 +568,13 @@ KNDI = dict(
       ("figs",3,[(K+"home.jpg","Home: your groups and schedules"),(K+"group.jpg","One page for the whole trip"),(K+"sched.jpg","See who's going to which set")],"","9/19.5",False),
     ]),
     ("My role", [
-      ("p","I'm the top contributor on the team: <b>647 of 1,264 commits</b> and about <b>155,000 lines added</b> in seven months. I build with AI coding tools, which is how one person ships this much. My time goes into deciding what to build, testing how it feels, and fixing what breaks."),
+      ("p","I'm the top contributor on the team. On the original SwiftUI app I wrote <b>647 of 1,264 commits</b>. In May 2026 we started rebuilding the whole app from scratch in React Native and Expo, using the SwiftUI app as the reference for how everything should behave. Across both versions I've written <b>5,491 of 7,643 commits (72%)</b>."),
+      ("p","I build with AI coding tools, which is how one person ships this much. My time goes into deciding what to build, testing how it feels, and fixing what breaks."),
       ("p","The areas I owned:"),
       ("ul",[
         "<b>Group chat and DMs.</b> Realtime messages, typing indicators, @mentions, polls, voice messages, reactions, and read receipts.",
         "<b>Offline first.</b> Festivals have terrible signal, so messages, reactions, bracelets, and trades queue on the phone and sync when signal comes back.",
-        "<b>The design system.</b> 143 reusable components and shared tokens, so every screen looks and behaves the same.",
+        "<b>The design system.</b> A shared token package and a component library of 150+ components, so every screen looks and behaves the same.",
         "<b>Kandi.</b> The bracelet designer, trading, and trade memories.",
         "<b>Push notifications and admin tools</b>, including the moderation and analytics admin portal.",
         "<b>App Store launch.</b> I led submission, including the moderation policy and DMCA registration.",
@@ -584,7 +602,8 @@ KNDI = dict(
       ("p","The growth plan focuses on local network effects and Insomniac events, since kndi works best when a whole crew downloads it before the same show."),
     ]),
     ("Keeping quality up", [
-      ("p","With six people shipping fast, the same bugs kept coming back. I set up automated guardrails: a script that scans for known performance and reliability bugs and runs on every edit, every push, and in CI alongside SwiftLint. The project has over 2,800 unit tests."),
+      ("p","With six people shipping fast, the same bugs kept coming back. I set up automated guardrails: a script that scans for known performance and reliability bugs and runs on every edit, every push, and in CI. The rebuild has over 1,300 test files."),
+      ("p","Rebuilding a live app is risky, so the SwiftUI version stayed the reference the whole way. Each screen in the rebuild had to match how the original behaved before it shipped."),
     ]),
     ("The App Store listing", [
       ("slider",[K+f"store-panel-0{i}.jpg" for i in range(1, 10)],"Our App Store screenshots","9/19.5"),
@@ -595,5 +614,5 @@ KNDI = dict(
 PROJECTS.insert(0, KNDI)
 ORDER.insert(0, "kndi")
 TLDR["kndi"] = ("Festival plans live in messy group chats, and kandi trades get forgotten.",
-               "Led product calls and wrote 51% of the commits: chat, the design system, kandi, push, and admin tools.",
-               "Live on the App Store at version 1.1.5, with a 4.9 rating.")
+               "Made product calls and wrote 72% of the commits across the SwiftUI app and its React Native rebuild.",
+               "Version 2 is live on the App Store with a 4.9 rating from 29 reviews.")

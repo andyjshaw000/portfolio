@@ -11,7 +11,7 @@ def _ver():
         h.update(open(os.path.join(SRC, f), "rb").read())
     return h.hexdigest()[:8]
 V = _ver()
-LD = '''<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Andy Shaw","url":"https://andyjshaw000.github.io/portfolio/","jobTitle":"UX Researcher","worksFor":{"@type":"Organization","name":"Meta Reality Labs"},"address":{"@type":"PostalAddress","addressLocality":"Seattle","addressRegion":"WA","addressCountry":"US"},"alumniOf":{"@type":"CollegeOrUniversity","name":"University of Washington"},"knowsAbout":["Product management","Program management","UX research","Usability testing","SwiftUI","Python","R","SQL"],"sameAs":["https://www.linkedin.com/in/andyjshaw000/","https://github.com/andyjshaw000","https://kndi.app"]}</script>'''
+LD = '''<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Andy Shaw","url":"https://andyjshaw000.github.io/portfolio/","jobTitle":"UX Researcher","worksFor":{"@type":"Organization","name":"Meta Reality Labs"},"address":{"@type":"PostalAddress","addressLocality":"Seattle","addressRegion":"WA","addressCountry":"US"},"alumniOf":{"@type":"CollegeOrUniversity","name":"University of Washington"},"knowsAbout":["Product management","Program management","UX research","Usability testing","React Native","SwiftUI","Python","R","SQL"],"sameAs":["https://www.linkedin.com/in/andyjshaw000/","https://github.com/andyjshaw000","https://kndi.app"]}</script>'''
 
 # Contact email comes from the environment so it isn't stored in this script.
 # Build with: PORTFOLIO_EMAIL=you@example.com python3 build/build.py
@@ -126,9 +126,7 @@ def block(b):
         return f'<figure><div class="ph{" is-vid" if mid.endswith(".mp4") else ""}"{z}>{tag}</div>{c}</figure>'
     if t == "figs":
         _, cols, items, cap, ar, contain = b
-        cls = f"figs c{cols}" + (" contain" if contain else "")
-        if cols == 1:
-            cls += '" style="max-width:520px;margin-left:auto;margin-right:auto'
+        cls = f"figs c{cols}" + (" contain" if contain else "") + (" phones" if ar == "9/19.5" else "")
         out = [f'<div class="{cls}">']
         for mid, c in items:
             tag, z = img(mid, cap=c or cap, w=1200)
@@ -179,7 +177,7 @@ def case_page(p):
     secs = []
     for h, blocks in p["sections"]:
         body = "".join(block(b) for b in blocks)
-        secs.append(f'<section class="cs-sec" id="{anchor(h)}"><div class="wrap narrow"><h2 class="rv">{h}</h2>{body}</div></section>')
+        secs.append(f'<section class="cs-sec" id="{anchor(h)}"><div class="wrap narrow"><h2>{h}</h2>{body}</div></section>')
     nxt = ""
     if prev_p:
         nxt += f'<a href="{prev_p["slug"]}.html"><span>← Previous</span><b>{prev_p["title"]}</b></a>'
@@ -261,7 +259,7 @@ def home():
   <div class="wrap impact-g">
     <a href="#meta"><b>3,500+</b><span>survey responses collected across 13 research programs</span><i>Meta</i></a>
     <a href="#meta"><b>4 mo.</b><span>to owning my team's UX research work</span><i>Meta</i></a>
-    <a href="kndi.html"><b>51%</b><span>of all commits on a live iOS app, as top contributor of 6</span><i>kndi</i></a>
+    <a href="kndi.html"><b>72%</b><span>of all commits on a live iOS app, as top contributor of 6</span><i>kndi</i></a>
     <a href="bundling.html"><b>2</b><span>research projects that shipped in the Gopuff app</span><i>Gopuff</i></a>
   </div>
 </section>
@@ -272,8 +270,8 @@ def home():
 
 <section id="kndi">
   <div class="wrap">
-    <div class="label rv"><em>01</em>Featured project</div>
-    <h2 class="rv">From a group chat problem to a live app on the App Store.</h2>
+    <div class="label"><em>01</em>Featured project</div>
+    <h2>From a group chat problem to a live app on the App Store.</h2>
     <div class="feature">
       <div class="feature-copy">
         <span class="tag">Side project · iOS · Live</span>
@@ -283,13 +281,13 @@ def home():
         <p>It also brings kandi trading into the app. You design digital beads and trade them by scanning each other's codes in person. The goal was never to replace the real thing. It's a way to keep the memory of who you met.</p>
         <ul class="did">
           <li><b>Product</b><span>Decide what to build and what to cut, based on how my friends and I actually plan shows.</span></li>
-          <li><b>Build</b><span>Top contributor on a team of six: 51% of commits, including chat, the design system, kandi, and push notifications.</span></li>
+          <li><b>Build</b><span>Top contributor on a team of six: 72% of commits across the SwiftUI app and its React Native rebuild, including chat, the design system, kandi, and push.</span></li>
           <li><b>Launch</b><span>Led App Store submission, including the moderation policy and DMCA registration.</span></li>
         </ul>
         <div class="stats">
           <div class="stat"><b>4.9</b><span>App Store rating</span></div>
-          <div class="stat"><b data-count="6200">6,200+</b><span>events in 408 cities</span></div>
-          <div class="stat"><b data-count="647">647</b><span>commits by me</span></div>
+          <div class="stat"><b>6,200+</b><span>events in 408 cities</span></div>
+          <div class="stat"><b>5,491</b><span>commits by me</span></div>
         </div>
         <div class="btns">
           <a class="btn solid" href="kndi.html">Read the case study →</a>
@@ -307,7 +305,7 @@ def home():
 <section id="meta">
   <div class="wrap">
     <div class="split">
-      <div class="rv">
+      <div>
         <div class="label"><em>02</em>Current role</div>
         <h2 style="margin-bottom:28px">Leading research for AR/VR and smart glasses.</h2>
         <div class="meta-side">
@@ -318,26 +316,26 @@ def home():
           Redmond, via H10
         </div>
       </div>
-      <div class="prose rv">
+      <div class="prose">
         <p>I joined Meta to support research studies. Within four months, I took ownership of my team's UX research work instead of rotating across teams.</p>
         <p>I run studies end to end: writing the procedures, recruiting participants, piloting, collecting data in person, and doing the first round of cleaning and analysis in R and Python. That work goes straight to the research scientists who use it to shape product proposals for AR/VR and smart glasses.</p>
         <p class="note">Most of this work is under NDA, so I keep it high level here. I'm happy to walk through how I run a study when we talk.</p>
       </div>
     </div>
-    <div class="numbers rv">
-      <div class="num"><b data-count="300">300+</b><span>auditory perception experiments run</span></div>
-      <div class="num"><b data-count="90">90</b><span>surveys built, collecting 3,500+ responses</span></div>
-      <div class="num"><b data-count="8">8</b><span>research reports I contributed to, one shaping a Meta AI app onboarding flow</span></div>
-      <div class="num"><b data-count="8">8</b><span>vendor research assistants I trained</span></div>
+    <div class="numbers">
+      <div class="num"><b>300+</b><span>auditory perception experiments run</span></div>
+      <div class="num"><b>90</b><span>surveys built, collecting 3,500+ responses</span></div>
+      <div class="num"><b>8</b><span>research reports I contributed to, one shaping a Meta AI app onboarding flow</span></div>
+      <div class="num"><b>8</b><span>vendor research assistants I trained</span></div>
     </div>
   </div>
 </section>
 
 <section id="work">
   <div class="wrap">
-    <div class="label rv"><em>03</em>Case studies</div>
-    <h2 class="rv">Research, design, and code from Gopuff and UW.</h2>
-    <div class="filters rv" role="group" aria-label="Filter projects">
+    <div class="label"><em>03</em>Case studies</div>
+    <h2>Research, design, and code from Gopuff and UW.</h2>
+    <div class="filters" role="group" aria-label="Filter projects">
       <button class="on" data-f="all">All</button>
       <button data-f="research">Research</button>
       <button data-f="design">Design</button>
@@ -351,9 +349,9 @@ def home():
 
 <section id="experience">
   <div class="wrap">
-    <div class="label rv"><em>04</em>Experience</div>
-    <h2 class="rv">About three years in UX research.</h2>
-    <ul class="xp rv">
+    <div class="label"><em>04</em>Experience</div>
+    <h2>About three years in UX research.</h2>
+    <ul class="xp">
       <li><span class="when">May 2024 to now</span><div>
         <div class="role">Human Subjects Research Assistant II (UX research)</div>
         <div class="org">Meta Reality Labs, Redmond (contract via H10)</div>
@@ -366,7 +364,7 @@ def home():
         <div class="role">Top contributor</div>
         <div class="org">kndi, iOS app (volunteer team of 6)</div>
         <ul>
-          <li>Top contributor with 647 of 1,264 commits: group chat, the design system, kandi, and push notifications.</li>
+          <li>Top contributor with 5,491 of 7,643 commits across the SwiftUI app and its React Native rebuild: group chat, the design system, kandi, and push notifications.</li>
           <li>Built the moderation admin portal and voice messages, and led App Store submission.</li>
         </ul></div></li>
       <li><span class="when">Nov 2023 to May 2024</span><div>
@@ -393,8 +391,8 @@ def home():
 
 <section id="about">
   <div class="wrap about-grid">
-    <div class="portrait rv">{ptag}</div>
-    <div class="rv">
+    <div class="portrait">{ptag}</div>
+    <div>
       <div class="label"><em>05</em>About</div>
       <h2 style="margin-bottom:28px">The planner of the group.</h2>
       <div class="prose">

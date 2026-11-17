@@ -42,8 +42,8 @@ JOBS = [
     ]),
 ]
 
-PROJECT = ("kndi, iOS app for festival crews", "Swift, SwiftUI, Supabase", "kndi.app", "Apr 2026 - Present", [
-    "Shipped an iOS app to the App Store as the top contributor on a volunteer team (647 of 1,193 commits).",
+PROJECT = ("kndi, iOS app for festival crews", "React Native, SwiftUI, Supabase", "kndi.app", "Apr 2026 - Present", [
+    "Shipped an iOS app to the App Store as the top contributor on a volunteer team (5,491 of 7,643 commits across the SwiftUI app and its React Native rebuild).",
     "Built the moderation admin portal, voice messages, and design system, and led App Store submission.",
 ])
 
@@ -56,7 +56,7 @@ EDUCATION = [
 SKILLS = [
     ("Research", "Experimental design, power analysis, surveys, interviews, usability testing, thematic analysis"),
     ("Operations", "Prolific, Qualtrics, Ethnio, Dscout, UserTesting, REDCap, recruiting and screening, ethics review"),
-    ("Technical", "R, Python, SQL, shell, Git, Swift, Figma, Excel, AWS S3, Gemini"),
+    ("Technical", "R, Python, SQL, shell, Git, Swift, React Native, Figma, Excel, AWS S3, Gemini"),
     ("Audio", "Max/MSP, IRCAM Spat5, SenseLab, ambisonics, binaural rendering, multichannel capture, Audacity, Reaper"),
 ]
 
