@@ -318,7 +318,7 @@ dict(
     ]),
     ("Brand book", [
       ("p","I finished with a brand book covering the logo, colors, type, and the mobile flow. The goal was to turn WTA's mission of getting people out into nature into a visual identity."),
-      ("slider",[m(h) for h in ["257c282a2e6243f7b2a857fb5c064541","735d317ce72e4458922b3aecdd07e9e3","9de00ae9c0324ca5a114859ceabc2baa","997b599bc4324806900ca85446206489","b2cae1b4f320411ea1e606a344261d16","0cadc92ac8ec4065876bcc63d1f8a7f9","00a038d371ce4faf9440679b7d18cbb5","7789047792fe40f3b2cdbff0a8ff5e59","e0bcf108a2494429aa3e9955e1928f56","02e1392f9b124df1b8420f932083c628","5581bce546464b02a8c9a69501256f08"]],"The brand book","1294/1000"),
+      ("slider",[m(h) for h in ["735d317ce72e4458922b3aecdd07e9e3","9de00ae9c0324ca5a114859ceabc2baa","997b599bc4324806900ca85446206489","b2cae1b4f320411ea1e606a344261d16","0cadc92ac8ec4065876bcc63d1f8a7f9","00a038d371ce4faf9440679b7d18cbb5","7789047792fe40f3b2cdbff0a8ff5e59","e0bcf108a2494429aa3e9955e1928f56","02e1392f9b124df1b8420f932083c628","5581bce546464b02a8c9a69501256f08"]],"The brand book","1294/1000"),
           ]),
   ],
 ),
@@ -606,7 +606,7 @@ KNDI = dict(
       ("p","Rebuilding a live app is risky, so the SwiftUI version stayed the reference the whole way. Each screen in the rebuild had to match how the original behaved before it shipped."),
     ]),
     ("The App Store listing", [
-      ("slider",[K+f"store-panel-0{i}.jpg" for i in range(1, 10)],"Our App Store screenshots","9/19.5"),
+      ("slider",[K+f"store-panel-0{i}.jpg" for i in range(6, 10)],"The rest of our App Store screenshots (the first five are at the top)","9/19.5"),
       ("p","The next problem is growth: getting a whole crew to download it before the same festival. That's what I'm working on now."),
     ]),
   ],
