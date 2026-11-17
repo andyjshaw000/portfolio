@@ -440,7 +440,7 @@ dict(
 # --------------------------------------------------------- RESTAURANT FINDER
 dict(
   slug="restaurant-finder", title="Restaurant Finder", cat="code", where="UW HCDE", kind="Code",
-  thumb=m("056c4875bf1545e7bc72d93214dc2b9b"),
+  thumb=m("35594dc7958d442cb5eb68fcd17642c8"),
   card="A Python and Flask web app that maps nearby restaurants with color-coded ratings, using the Yelp Fusion API.",
   impact="",
   pills=["Python", "Flask", "Folium", "Yelp API"],
@@ -460,7 +460,6 @@ dict(
       ("p","<b>Search.</b> Flask takes what you type and sends it to the Yelp API as a parameter."),
       ("fig",m("620d98aee1f84f888ae0d0ed6110d0b7"),"The search bar"),
       ("p","<b>The map.</b> Markers are color-coded by rating so you can spot the good places fast. Click one and you get the rating, review count, and a review snippet. You can pan, zoom, and drag around the area."),
-      ("fig",m("35594dc7958d442cb5eb68fcd17642c8"),"The map after a search"),
       ("fig",m("36ed98dee17a44e9b2a1debec393d91c"),"The popup when you click a restaurant"),
     ]),
     ("Deploying it", [
