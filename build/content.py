@@ -115,6 +115,9 @@ dict(
     ("What I learned", [
       ("p","Timely alerts create urgency, and urgency moves people. One unclear icon can sink a feature. And convenience kept showing up as a top three priority."),
     ]),
+    ("What I'd do differently", [
+      ("p","I'd work closer with the designers the whole way through, not just hand off a report at the end. Sitting in on design reviews would have let me answer questions as they came up and push for the findings that mattered most."),
+    ]),
   ],
 ),
 # --------------------------------------------------------------- PDP REDESIGN
@@ -157,6 +160,9 @@ dict(
     ("The outcome", [
       ("p","The research shaped concepts that gave images more space, tightened titles, moved key info where people expected it, and sharpened the value props."),
       ("figs",1,[(m("bf9c46210012449185b5543dd8dcb511"),"The product page concept, live as of August 2023")],"","",True),
+    ]),
+    ("What I'd do differently", [
+      ("p","I'd work closer with the designers and make rough mockups of my recommendations myself. A slide that says \"give images more space\" is easy to agree with. A mockup shows exactly what I mean and gets the conversation going faster."),
     ]),
   ],
 ),
@@ -231,6 +237,9 @@ dict(
       ("p","We made a poster for the HCDE capstone showcase and pitched the design to a panel of judges. I also produced and filmed a video prototype for our sponsor and the judges."),
       ("figs",1,[(m("976d939b4fe74430a8fba4cc7d6ef61e","jpg"),"Our showcase poster")],"","2/3",True),
       ("p","The closest thing to a real product cycle I had in school: a sponsor, a deadline, and testing that changed our minds more than once."),
+    ]),
+    ("What I'd do differently", [
+      ("p","I'd spend more time on the UI. Looking back, it feels too simple for an app trying to win over a younger audience. It doesn't use animation or more engaging styles, and a new platform needs those to feel worth switching to."),
     ]),
   ],
 ),
