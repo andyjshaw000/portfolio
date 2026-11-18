@@ -35,7 +35,7 @@ def vid(src, cap=""):
     a = html.escape(cap, quote=True)
     return (f'<video data-vid src="{src}" poster="{poster}" muted loop playsinline preload="none" aria-label="{a}"></video>'), ""
 
-def img(mid, alt="", w=1400, fill=None, lazy=True, zoom=True, cap=""):
+def img(mid, alt="", w=1400, fill=None, zoom=True, cap=""):
     if mid.endswith(".mp4"):
         return vid(mid, cap or alt)
     a = html.escape(alt or cap or "", quote=True)
@@ -74,7 +74,7 @@ HEAD = """<!DOCTYPE html>
 
 def nav(home=True):
     pre = "" if home else "index.html"
-    return f"""<nav class="top">
+    return f"""<nav class="top" aria-label="Main">
   <div class="wrap nav-in">
     <a href="{pre or '#top'}" class="logo">Andy Shaw<i></i></a>
     <button class="menu-btn" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
@@ -91,7 +91,8 @@ def nav(home=True):
 </nav>
 """
 
-CONTACT = """<section class="contact" id="contact">
+CONTACT = """<footer>
+<section class="contact" id="contact">
   <div class="wrap">
     <div class="label"><em>06</em>Contact</div>
     <h2>Let's talk. <a href="mailto:__EMAIL__">__EMAIL__</a></h2>
@@ -104,7 +105,8 @@ CONTACT = """<section class="contact" id="contact">
     </div>
   </div>
 </section>
-<footer><div class="wrap foot"><span>© 2026 Andy Shaw</span><span><a href="index.html#work">Projects</a><a href="kndi.html">kndi</a><a href="https://www.linkedin.com/in/andyjshaw000/" target="_blank" rel="noopener">LinkedIn</a><a href="#top" class="foot-top">Back to top ↑</a></span></div></footer>
+<div class="foot-band"><div class="wrap foot"><span>© 2026 Andy Shaw</span><span><a href="index.html#work">Projects</a><a href="kndi.html">kndi</a><a href="https://www.linkedin.com/in/andyjshaw000/" target="_blank" rel="noopener">LinkedIn</a><a href="#top" class="foot-top">Back to top ↑</a></span></div></div>
+</footer>
 <script src="assets/site.js?v=__V__"></script>
 </body>
 </html>
@@ -167,9 +169,9 @@ def case_page(p):
         links = '<div class="btns" style="margin-top:28px">' + "".join(
             f'<a class="btn{" solid" if i == 0 else ""}" href="{u}" target="_blank" rel="noopener">{l} ↗</a>' for i, (l, u) in enumerate(p["links"])) + "</div>"
     cover_id = p.get("cover") or p["thumb"]
-    ctag, cz = img(cover_id, alt=p["title"], w=2000, lazy=False, cap=p["title"])
+    ctag, cz = img(cover_id, alt=p["title"], w=2000, cap=p["title"])
     if p.get("strip"):
-        cells = "".join(f'<div class="cs-strip-cell" data-full="{u}" data-cap="kndi on the App Store">' + img(u, alt="kndi App Store screenshot", zoom=False, lazy=False)[0] + '</div>' for u in p["strip"])
+        cells = "".join(f'<div class="cs-strip-cell" data-full="{u}" data-cap="kndi on the App Store">' + img(u, alt="kndi App Store screenshot", zoom=False)[0] + '</div>' for u in p["strip"])
         cover_html = f'<div class="wrap"><div class="cs-strip">{cells}</div></div>'
     else:
         cover_html = f'<div class="wrap"><div class="cs-cover"><div class="ph"{cz} style="cursor:zoom-in">{ctag}</div></div></div>'
@@ -199,9 +201,9 @@ f"""<div class="progress" aria-hidden="true"></div>
   {outcome}
 </header>
 {cover_html}
-<nav class="toc"><div class="wrap">{toc}</div></nav>
+<nav class="toc" aria-label="Sections on this page"><div class="wrap">{toc}</div></nav>
 <main id="main">{"".join(secs)}</main>
-<div class="wrap"><div class="cs-next">{nxt}</div></div>
+<nav class="wrap" aria-label="Other case studies"><div class="cs-next">{nxt}</div></nav>
 """ + CONTACT)
 
 # Hiring guides agree on 3 to 5 deep case studies, titled by what you did rather

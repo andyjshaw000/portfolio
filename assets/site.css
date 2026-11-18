@@ -198,10 +198,6 @@ section.impact{padding:0;background:var(--surface)}
 .num span{display:block;margin-top:var(--s2);font-size:var(--t-sm);color:var(--muted);line-height:1.4}
 
 /* ---------- project grid ---------- */
-.filters{display:flex;gap:var(--s2);margin-bottom:28px;flex-wrap:wrap}
-.filters button{font-size:var(--t-sm);background:none;border:1px solid var(--line);color:var(--muted);padding:7px 16px;min-height:40px;cursor:pointer;transition:all var(--fast)}
-.filters button:hover{border-color:var(--ink);color:var(--ink)}
-.filters button.on{background:var(--ink);border-color:var(--ink);color:#fff}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s5)}
 .grid.two{grid-template-columns:repeat(2,1fr)}
 .grid.two .proj-t{font-size:24px;line-height:1.15}
@@ -223,7 +219,6 @@ section.impact{padding:0;background:var(--surface)}
 .proj{display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--line);text-decoration:none;transition:transform var(--med) var(--ease),border-color var(--fast),box-shadow var(--med) var(--ease)}
 .proj:hover{transform:translate(-3px,-3px);border-color:var(--ink);box-shadow:var(--shadow-pop)}
 .proj:active{transform:none;box-shadow:none}
-.proj.hide{display:none}
 .proj .thumb{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--well);border-bottom:1px solid var(--line)}
 .proj .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
 .proj:hover .thumb img{transform:scale(1.04)}
@@ -261,6 +256,8 @@ section.impact{padding:0;background:var(--surface)}
 /* ---------- contact and footer ---------- */
 .contact{padding:120px 0;background:var(--ink);color:var(--on-dark);border-top:none}
 .contact .label em{color:#fff}
+.contact .label{color:#8EA4FF}
+.foot span{color:var(--on-dark-muted)}
 .contact h2{max-width:none;font-size:clamp(30px,4.4vw,52px)}
 .contact h2 a{text-decoration:none;word-break:break-word;background:linear-gradient(var(--accent),var(--accent)) left bottom/100% 3px no-repeat;padding-bottom:4px;transition:color var(--fast),background-size var(--med) var(--ease)}
 .contact h2 a:hover{color:#8FA5FF}
@@ -270,7 +267,7 @@ section.impact{padding:0;background:var(--surface)}
 .links{display:flex;gap:var(--s6);flex-wrap:wrap;font-size:var(--t-base)}
 .links a{display:inline-block;padding:var(--s2) 0;text-decoration:none;color:var(--on-dark-muted);border-bottom:1px solid var(--dark-line);transition:color var(--fast),border-color var(--fast)}
 .links a:hover{color:#fff;border-color:#fff}
-footer{background:var(--ink);color:#77736B;font-size:13px;font-family:var(--mono);padding:0 0 40px}
+.foot-band{background:var(--ink);color:var(--on-dark-muted);font-size:13px;font-family:var(--mono);padding:0 0 40px}
 .foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--s4);border-top:1px solid var(--dark-line);padding-top:var(--s5)}
 .foot a{display:inline-block;padding:10px 0;margin-left:20px;color:var(--on-dark-muted);text-decoration:none;transition:color var(--fast)}
 .foot a:hover{color:#fff}
@@ -490,7 +487,7 @@ body.page-out{opacity:0;transition:opacity .18s ease}
 /* ---------- print / save as PDF ---------- */
 @media print{
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  nav.top,.toc,.strip,.to-top,.progress,.gridlines,.menu-btn,.filters,.skip,.lb{display:none!important}
+  nav.top,.toc,.strip,.to-top,.progress,.gridlines,.menu-btn,.skip,.lb{display:none!important}
   body{font-size:12pt}
   section,.cs-sec{padding:36px 0;break-inside:auto}
   .hero{padding:24px 0}

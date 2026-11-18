@@ -74,35 +74,6 @@
     addEventListener('pageshow', function(ev){ if (ev.persisted) document.body.classList.remove('page-out'); });
   }
 
-  /* project filters */
-  var fb = document.querySelectorAll('.filters button');
-  fb.forEach(function(b){
-    b.setAttribute('aria-pressed', b.classList.contains('on'));
-    b.addEventListener('click', function(){
-      fb.forEach(function(x){ x.classList.remove('on'); x.setAttribute('aria-pressed', 'false'); });
-      b.classList.add('on'); b.setAttribute('aria-pressed', 'true');
-      var f = b.dataset.f, cards = Array.prototype.slice.call(document.querySelectorAll('.proj'));
-      var grid = document.querySelector('.grid'); if (grid) grid.classList.toggle('filtered', f !== 'all');
-      var before = new Map();
-      cards.forEach(function(p){ if (!p.classList.contains('hide')) before.set(p, p.getBoundingClientRect()); });
-      cards.forEach(function(p){
-        var hide = f !== 'all' && p.dataset.c.split(' ').indexOf(f) < 0;
-        p.classList.toggle('hide', hide);
-      });
-      if (reduce) return;
-      cards.forEach(function(p){
-        if (p.classList.contains('hide')) return;
-        var a = before.get(p), r = p.getBoundingClientRect();
-        if (a) {
-          var dx = a.left - r.left, dy = a.top - r.top;
-          if (dx || dy) p.animate([{transform:'translate(' + dx + 'px,' + dy + 'px)'}, {transform:'none'}], {duration:380, easing:'cubic-bezier(.2,.7,.2,1)'});
-        } else {
-          p.animate([{opacity:0, transform:'scale(.96)'}, {opacity:1, transform:'none'}], {duration:300, easing:'cubic-bezier(.2,.7,.2,1)'});
-        }
-      });
-    });
-  });
-
   /* sliders */
   document.querySelectorAll('.slider').forEach(function(s){
     var track = s.querySelector('.track'), slides = s.querySelectorAll('.slide'), count = s.querySelector('.count');

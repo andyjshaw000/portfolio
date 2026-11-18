@@ -8,7 +8,7 @@ def m(h, ext="png"):
 PROJECTS = [
 # ------------------------------------------------------------------ BUNDLING
 dict(
-  slug="bundling", title="Bundling", cat="research", where="Gopuff · 2022", kind="Research",
+  slug="bundling", title="Bundling", where="Gopuff · 2022", kind="Research",
   thumb=m("ac41818a18824cda8b4a404ed0357459"),
   cover=None,
   card="How should Gopuff sell product bundles? I ran the interviews and concept tests that answered it.",
@@ -67,7 +67,7 @@ dict(
 ),
 # ------------------------------------------------------------- SAVE FOR LATER
 dict(
-  slug="save-for-later", title="Save For Later", cat="research", where="Gopuff · 2022", kind="Research",
+  slug="save-for-later", title="Save For Later", where="Gopuff · 2022", kind="Research",
   thumb=m("865fd07f116f49e7a4769ef09fd593ba"),
   card="People were using their cart as a wishlist, then abandoning it. I researched what a real save-for-later feature should look like.",
   impact="Team projected about $16M in annual revenue",
@@ -122,7 +122,7 @@ dict(
 ),
 # --------------------------------------------------------------- PDP REDESIGN
 dict(
-  slug="pdp-redesign", title="Product Page Redesign", cat="research", where="Gopuff · 2022", kind="Research",
+  slug="pdp-redesign", title="Product Page Redesign", where="Gopuff · 2022", kind="Research",
   thumb=m("fe562874bf23461ca57c1bb11e7d16cc"),
   cover=None,
   card="I compared Gopuff's product page against 12 competitors and category leaders to figure out what to fix.",
@@ -168,7 +168,7 @@ dict(
 ),
 # --------------------------------------------------------------------- KUOW
 dict(
-  slug="kuow", title="KUOW Redesign", cat="research design", where="UW Capstone · 2023", kind="Research + Design",
+  slug="kuow", title="KUOW Redesign", where="UW Capstone · 2023", kind="Research + Design",
   thumb=m("4df59576199e4828a0e88f7415937630"),
   card="Our senior capstone for KUOW public radio. We redesigned the app to win back engagement and reach a younger, more diverse audience.",
   impact="Pitched to judges at the HCDE capstone showcase",
@@ -245,7 +245,7 @@ dict(
 ),
 # ------------------------------------------------------------------ STRELMO
 dict(
-  slug="strelmo", title="STRELMO", cat="research design", where="UW CSE 440", kind="Research + Design",
+  slug="strelmo", title="STRELMO", where="UW CSE 440", kind="Research + Design",
   thumb=m("ffc3dd8dd7d948ff8125c08bf8c6c75a","jpg"),
   cover=m("6cb804f0a68a44789ef3d6c94aff2782","jpg"),
   card="The Stress Less Mouse. A mouse with a cortisol sensor and a desktop app that helps students track stress.",
@@ -300,7 +300,7 @@ dict(
 ),
 # --------------------------------------------------------------- HIKE FINDER
 dict(
-  slug="hike-finder", title="Hike Finder", cat="design", where="UW HCDE", kind="Design",
+  slug="hike-finder", title="Hike Finder", where="UW HCDE", kind="Design",
   thumb=m("7187013b0a25412189ba593559e07269"),
   cover=m("257c282a2e6243f7b2a857fb5c064541"),
   card="Reworked the Washington Trails Association's mobile hike search and visual system, ending with a full brand book.",
@@ -333,7 +333,7 @@ dict(
 ),
 # ----------------------------------------------------------- COOKING CENTRAL
 dict(
-  slug="cooking-central", title="Cooking Central", cat="design", where="UW HCDE · 2020", kind="Design",
+  slug="cooking-central", title="Cooking Central", where="UW HCDE · 2020", kind="Design",
   thumb=m("395ef3fde3394981bac4b5bbaf78ccba"),
   cover=None,
   card="A cooking app for young adults short on time, money, and skills, with a social side so cooking feels less lonely.",
@@ -382,7 +382,7 @@ dict(
 ),
 # --------------------------------------------------------- CELESTIAL NINJA
 dict(
-  slug="celestial-ninja", title="Celestial Ninja", cat="code", where="UW HCDE 438 · 2023", kind="Code",
+  slug="celestial-ninja", title="Celestial Ninja", where="UW HCDE 438 · 2023", kind="Code",
   thumb="assets/ninja/v2-gameplay.jpg",
   cover="assets/ninja/v2-gameplay.jpg",  # outlined enemies, kill streak, new HUD
   card="A 2D survival game in JavaScript with 14 powers, five enemy types, a boss, and a live leaderboard. Playable in the browser.",
@@ -448,7 +448,7 @@ dict(
 ),
 # --------------------------------------------------------- RESTAURANT FINDER
 dict(
-  slug="restaurant-finder", title="Restaurant Finder", cat="code", where="UW HCDE", kind="Code",
+  slug="restaurant-finder", title="Restaurant Finder", where="UW HCDE", kind="Code",
   thumb=m("35594dc7958d442cb5eb68fcd17642c8"),
   card="A Python and Flask web app that maps nearby restaurants with color-coded ratings, using the Yelp Fusion API.",
   impact="",
@@ -483,7 +483,7 @@ dict(
 ),
 # ---------------------------------------------------------------- SIMON SAYS
 dict(
-  slug="simon-says", title="Simon Says", cat="code", where="UW HCDE", kind="Hardware",
+  slug="simon-says", title="Simon Says", where="UW HCDE", kind="Hardware",
   thumb=m("82f67276b86c4ce6bef7008c791951bc"),
   card="A physical Simon Says memory game I wired up with arcade buttons, LEDs, and an Arduino in one week.",
   impact="",
@@ -553,7 +553,7 @@ TLDR = {
 
 K = "assets/kndi/"
 KNDI = dict(
-  slug="kndi", title="kndi", cat="product", where="Side project", kind="Product + iOS",
+  slug="kndi", title="kndi", where="Side project", kind="Product + iOS",
   thumb=K+"home.jpg", cover=None,
   strip=[K+f"store-panel-0{i}.jpg" for i in range(1, 6)],
   card="An iPhone app for planning festivals with friends and trading digital kandi. Live on the App Store with about 560 users.",
