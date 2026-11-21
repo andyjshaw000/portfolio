@@ -23,6 +23,12 @@ def url(mid, w=1400, fill=None):
     """Wix image URL. GIFs are served as-is so they stay animated."""
     if mid.startswith("assets/"):
         return mid
+    # Use the copy in assets/wix when we have one, so the site doesn't depend on Wix.
+    name = mid.split("~")[0]
+    local = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "wix")
+    for f in ([name + ".gif"] if mid.endswith(".gif") else [name + ("-card" if fill else "-full") + ".webp", name + "-full.webp"]):
+        if os.path.exists(os.path.join(local, f)):
+            return "assets/wix/" + f
     base = f"https://static.wixstatic.com/media/{mid}"
     if mid.endswith(".gif"):
         return base
