@@ -20,7 +20,7 @@ SUMMARY = ("UX researcher with three years running studies end to end and turnin
            "Leads product for kndi, an iOS app with ~560 users.")
 
 JOBS = [
-    ("Human Subjects Research Assistant II", "Meta Reality Labs (contract via H10)", "Redmond, WA", "May 2024 - Present", [
+    ("Human Subjects Research Assistant II", "Meta Reality Labs (contract via H10)", "Redmond, WA", "May 2024 - Nov 2026", [
         "Helped move several features from prototyping into development by contributing to 8 research reports, one of which shaped an onboarding flow in the Meta AI app for smart glasses.",
         "Owned the team's UX research work within four months, running studies independently from pilot to readout.",
         "Collected 3,500+ responses across 13 research programs by building 90 survey instruments in Qualtrics.",

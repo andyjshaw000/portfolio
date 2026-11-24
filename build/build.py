@@ -11,7 +11,7 @@ def _ver():
         h.update(open(os.path.join(SRC, f), "rb").read())
     return h.hexdigest()[:8]
 V = _ver()
-LD = '''<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Andy Shaw","url":"https://andyjshaw000.github.io/portfolio/","jobTitle":"UX Researcher","worksFor":{"@type":"Organization","name":"Meta Reality Labs"},"address":{"@type":"PostalAddress","addressLocality":"Seattle","addressRegion":"WA","addressCountry":"US"},"alumniOf":{"@type":"CollegeOrUniversity","name":"University of Washington"},"knowsAbout":["Product management","Program management","UX research","Usability testing","React Native","SwiftUI","Python","R","SQL"],"sameAs":["https://www.linkedin.com/in/andyjshaw000/","https://github.com/andyjshaw000","https://kndi.app"]}</script>'''
+LD = '''<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Andy Shaw","url":"https://andyjshaw000.github.io/portfolio/","jobTitle":"UX Researcher","address":{"@type":"PostalAddress","addressLocality":"Seattle","addressRegion":"WA","addressCountry":"US"},"alumniOf":{"@type":"CollegeOrUniversity","name":"University of Washington"},"knowsAbout":["Product management","Program management","UX research","Usability testing","React Native","SwiftUI","Python","R","SQL"],"sameAs":["https://www.linkedin.com/in/andyjshaw000/","https://github.com/andyjshaw000","https://kndi.app"]}</script>'''
 
 # Contact email comes from the environment so it isn't stored in this script.
 # Build with: PORTFOLIO_EMAIL=you@example.com python3 build/build.py
@@ -252,7 +252,7 @@ def home():
     cards = "\n".join(card(BYSLUG[s], i + 1) for i, s in enumerate(FEATURED))
     minis = "\n".join(mini(BYSLUG[s]) for s in ORDER if s != "kndi" and s not in FEATURED)
     ptag, _ = img(m("56a508aabfa1400493a7a92ebbedee1b", "jpg"), alt="Andy Shaw", w=900, zoom=False)
-    return (HEAD.format(ld=LD, v=V, canon="https://andyjshaw000.github.io/portfolio/", title="Andy Shaw | Product Manager and UX Researcher in Seattle",
+    return (HEAD.format(ld=LD, v=V, canon="https://andyjshaw000.github.io/portfolio/", title="Andy Shaw | UX Research and Product, Seattle",
                         desc="Andy Shaw runs UX research studies at Meta Reality Labs and is the top contributor on kndi, a live iOS app. Open to Product Manager, Program Manager, and UX Researcher roles in Seattle or remote.")
             + nav(True) + f"""
 <main id="main">
@@ -262,7 +262,7 @@ def home():
  <div class="hero-main">
   <div class="status"><span class="dot"></span>Open to Product Manager, Program Manager, and UX Researcher roles.</div>
   <h1>I research how people use products, and I <em>build</em> them too.</h1>
-  <p class="lede">I'm Andy. I run UX research studies at <strong>Meta Reality Labs</strong> for AR/VR and smart glasses, and on the side I'm the top contributor on <strong>kndi</strong>, a live iPhone app for planning festivals with friends. Now I want a role where I help decide what gets built, not just test it after.</p>
+  <p class="lede">I'm Andy. I ran UX research studies at <strong>Meta Reality Labs</strong> for AR/VR and smart glasses for two and a half years, and on the side I'm the top contributor on <strong>kndi</strong>, a live iPhone app for planning festivals with friends. Now I want a role where I help decide what gets built, not just test it after.</p>
   <div class="btns hero-cta">
     <a class="btn solid" href="#work">See my work ↓</a>
     <a class="btn" href="assets/Andy_Shaw_Resume.pdf" target="_blank" rel="noopener">Resume (PDF) ↗</a>
@@ -272,7 +272,7 @@ def home():
  <aside class="quick" aria-label="Quick facts">
   <div class="quick-h"><span>Quick facts</span><span class="beads" aria-hidden="true"><span style="background:#E2552B"></span><span style="background:#F2A541"></span><span style="background:#F5D547"></span><span style="background:#5BC0A8"></span><span style="background:#4F8EF7"></span><span style="background:#9B6BF2"></span><span style="background:#EF6FB4"></span></span></div>
   <dl>
-    <div><dt>Now</dt><dd>UX Research at Meta Reality Labs</dd></div>
+    <div><dt>Most recent</dt><dd>UX Research at Meta Reality Labs, 2024 to 2026</dd></div>
     <div><dt>Shipped</dt><dd><a href="#kndi">kndi</a>, live on the App Store</dd></div>
     <div><dt>Track record</dt><dd>300+ experiments run at Meta. Gopuff research shipped.</dd></div>
     <div><dt>Looking for</dt><dd>Product, program, or UX research roles</dd></div>
@@ -287,7 +287,7 @@ def home():
   <div class="wrap impact-g">
     <a href="#meta"><b>3,500+</b><span>survey responses collected across 13 research programs</span><i>Meta</i></a>
     <a href="#meta"><b>4 mo.</b><span>to owning my team's UX research work</span><i>Meta</i></a>
-    <a href="kndi.html"><b>72%</b><span>of all commits on a live iOS app, as top contributor of 6</span><i>kndi</i></a>
+    <a href="kndi.html"><b>44%</b><span>week-one return for new users who join a group on day one, vs 15% for those who don't</span><i>kndi</i></a>
     <a href="bundling.html"><b>2</b><span>research projects that shipped in the Gopuff app</span><i>Gopuff</i></a>
   </div>
 </section>
@@ -334,26 +334,26 @@ def home():
   <div class="wrap">
     <div class="split">
       <div>
-        <div class="label"><em>02</em>Current role</div>
-        <h2 style="margin-bottom:28px">Leading research for AR/VR and smart glasses.</h2>
+        <div class="label"><em>02</em>Most recent role</div>
+        <h2 style="margin-bottom:28px">Running research for AR/VR and smart glasses.</h2>
         <div class="meta-side">
           <b>Meta Reality Labs</b>
           Human Subjects Research Assistant II<br>
           (UX research)<br>
-          May 2024 to now<br>
+          May 2024 to Nov 2026<br>
           Redmond, via H10
         </div>
       </div>
       <div class="prose">
-        <p>I joined Meta to support research studies. Within four months, I took ownership of my team's UX research work instead of rotating across teams.</p>
-        <p>I run studies end to end: writing the procedures, building screeners and surveys in Qualtrics, recruiting through Prolific or our internal pool, running sessions in the lab, and doing the first round of analysis in R and Python. That work goes straight to the research scientists who use it to shape product proposals for AR/VR and smart glasses.</p>
-        <p>I care a lot about data you can trust. I build headphone screeners, catch trials, and hidden references into studies, which in one case narrowed 146 recruits to 98 reliable participants. I use the standard methods from audio research, like MUSHRA listening tests, MaxDiff, and paired comparisons, and I've run sessions in 8+ labs, including an anechoic chamber, plus people's homes and live cafeterias.</p>
-        <p>I also own the team's documentation. I wrote 101 of the wiki's 113 revisions, consolidated 40+ documents into 10 role-based categories, and built a training curriculum so our panel studies no longer depend on one person. I use AI where it saves the team time: an LLM that tracks document status, a chatbot that answers common equipment and process questions, and a digest of meeting notes.</p>
+        <p>I joined Meta to support research studies. Within four months, I took ownership of my team's UX research work instead of rotating across teams, and ran it until my contract ended in November 2026.</p>
+        <p>I ran studies end to end: writing the procedures, building screeners and surveys in Qualtrics, recruiting through Prolific or our internal pool, running sessions in the lab, and doing the first round of analysis in R and Python. That work goes straight to the research scientists who use it to shape product proposals for AR/VR and smart glasses.</p>
+        <p>I care a lot about data you can trust. I built headphone screeners, catch trials, and hidden references into studies, which in one case narrowed 146 recruits to 98 reliable participants. I used the standard methods from audio research, like MUSHRA listening tests, MaxDiff, and paired comparisons, and ran sessions in 8+ labs, including an anechoic chamber, plus people's homes and live cafeterias.</p>
+        <p>I also owned the team's documentation. I wrote 101 of the wiki's 113 revisions, consolidated 40+ documents into 10 role-based categories, and built a training curriculum so our panel studies no longer depend on one person. I used AI where it saved the team time: an LLM that tracks document status, a chatbot that answers common equipment and process questions, and a digest of meeting notes.</p>
         <p class="note">Most of this work is under NDA, so I keep it high level here. I'm happy to walk through how I run a study when we talk.</p>
       </div>
     </div>
     <div class="numbers">
-      <div class="num"><b>300+</b><span>auditory perception experiments run</span></div>
+      <div class="num"><b>300+</b><span>audio perception experiments run, across 30+ studies</span></div>
       <div class="num"><b>90</b><span>surveys built, collecting 3,500+ responses</span></div>
       <div class="num"><b>8</b><span>research reports I contributed to, one shaping a Meta AI app onboarding flow</span></div>
       <div class="num"><b>101</b><span>of the team wiki's 113 revisions written by me</span></div>
@@ -382,7 +382,7 @@ def home():
     <div class="label"><em>04</em>Experience</div>
     <h2>About three years in UX research.</h2>
     <ul class="xp">
-      <li><span class="when">May 2024 to now</span><div>
+      <li><span class="when">May 2024 to Nov 2026</span><div>
         <div class="role">Human Subjects Research Assistant II (UX research)</div>
         <div class="org">Meta Reality Labs, Redmond (contract via H10)</div>
         <ul>
@@ -404,11 +404,11 @@ def home():
         <div class="role">UX Moderator</div>
         <div class="org">User Research International, Redmond</div>
         <ul>
-          <li>Led 80+ in-person usability tests, interviews, and benchmarks on consumer electronics hardware.</li>
+          <li>Moderated 80+ in-person usability tests, interviews, and benchmarks on consumer electronics hardware.</li>
           <li>Helped write client reports with trends, insights, and recommendations.</li>
         </ul></div></li>
       <li><span class="when">Jun 2022 to Aug 2022</span><div>
-        <div class="role">UX Researcher Intern</div>
+        <div class="role">UX Research Intern</div>
         <div class="org">Gopuff, remote</div>
         <ul>
           <li>Led discovery research on Save For Later, which the team projected at about $16M in annual revenue.</li>
