@@ -253,7 +253,7 @@ def home():
     minis = "\n".join(mini(BYSLUG[s]) for s in ORDER if s != "kndi" and s not in FEATURED)
     ptag, _ = img(m("56a508aabfa1400493a7a92ebbedee1b", "jpg"), alt="Andy Shaw", w=900, zoom=False)
     return (HEAD.format(ld=LD, v=V, canon="https://andyjshaw000.github.io/portfolio/", title="Andy Shaw | UX Research and Product, Seattle",
-                        desc="Andy Shaw runs UX research studies at Meta Reality Labs and is the top contributor on kndi, a live iOS app. Open to Product Manager, Program Manager, and UX Researcher roles in Seattle or remote.")
+                        desc="Andy Shaw ran UX research studies at Meta Reality Labs and co-founded kndi, a live iOS app. Open to Product Manager, Program Manager, and UX Researcher roles in Seattle or remote.")
             + nav(True) + f"""
 <main id="main">
 <header class="hero wrap" id="top">
@@ -262,7 +262,7 @@ def home():
  <div class="hero-main">
   <div class="status"><span class="dot"></span>Open to Product Manager, Program Manager, and UX Researcher roles.</div>
   <h1>I research how people use products, and I <em>build</em> them too.</h1>
-  <p class="lede">I'm Andy. I ran UX research studies at <strong>Meta Reality Labs</strong> for AR/VR and smart glasses for two and a half years, and on the side I'm the top contributor on <strong>kndi</strong>, a live iPhone app for planning festivals with friends. Now I want a role where I help decide what gets built, not just test it after.</p>
+  <p class="lede">I'm Andy. I ran UX research studies at <strong>Meta Reality Labs</strong> for AR/VR and smart glasses for two and a half years, and on the side I'm a co-founder and the top contributor on <strong>kndi</strong>, a live iPhone app for planning festivals with friends. Now I want a role where I help decide what gets built, not just test it after.</p>
   <div class="btns hero-cta">
     <a class="btn solid" href="#work">See my work ↓</a>
     <a class="btn" href="assets/Andy_Shaw_Resume.pdf" target="_blank" rel="noopener">Resume (PDF) ↗</a>
@@ -309,7 +309,7 @@ def home():
         <p>It also brings kandi trading into the app. You design digital beads and trade them by scanning each other's codes in person. The goal was never to replace the real thing. It's a way to keep the memory of who you met.</p>
         <ul class="did">
           <li><b>Product</b><span>Decide what to build and what to cut. A cohort study of 251 signups showed new users who join a group on day one come back at 44% vs 15%, so onboarding now leads with groups.</span></li>
-          <li><b>Build</b><span>Top contributor on a team of six: 72% of commits across the SwiftUI app and its React Native rebuild, including chat, the design system, kandi, and push.</span></li>
+          <li><b>Build</b><span>Co-founder and top contributor on a team of six: 72% of commits across the SwiftUI app and its React Native rebuild, including chat, the design system, kandi, and push.</span></li>
           <li><b>Launch</b><span>Led App Store submission, including the moderation policy and DMCA registration.</span></li>
         </ul>
         <div class="stats">
@@ -393,7 +393,7 @@ def home():
           <li>Built a training curriculum so panel studies no longer depend on one person, and wrote 101 of 113 wiki revisions.</li>
         </ul></div></li>
       <li><span class="when">Apr 2026 to now</span><div>
-        <div class="role">Top contributor</div>
+        <div class="role">Co-founder and top contributor</div>
         <div class="org">kndi, iOS app (volunteer team of 6)</div>
         <ul>
           <li>Found in a cohort study of 251 signups that new users who join a group on day 0 come back in week 1 at 44% vs 15%, and reshaped onboarding around it.</li>

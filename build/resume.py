@@ -17,7 +17,7 @@ OUT = os.environ.get("OUT_DIR") or os.path.join(os.path.dirname(__file__), "..")
 
 SUMMARY = ("UX researcher with three years running studies end to end and turning findings into product decisions. "
            "At Meta Reality Labs, ran 300+ audio perception experiments and built 90 surveys that collected 3,500+ responses. "
-           "Leads product for kndi, an iOS app with ~560 users.")
+           "Co-founded kndi, an iOS app with ~560 users.")
 
 JOBS = [
     ("Human Subjects Research Assistant II", "Meta Reality Labs (contract via H10)", "Redmond, WA", "May 2024 - Nov 2026", [
@@ -41,7 +41,7 @@ JOBS = [
     ]),
 ]
 
-PROJECT = ("Product Owner and Lead Engineer", "kndi, iOS app for festival crews (volunteer team)", "kndi.app", "Apr 2026 - Present", [
+PROJECT = ("Co-founder and Top Contributor", "kndi, iOS app for festival crews (volunteer team)", "kndi.app", "Apr 2026 - Present", [
     "Found that new users who join a group on day 0 return in week 1 at 44% vs 15%, from a cohort study of 251 signups, and reshaped onboarding around it.",
     "Grew the app to ~560 users, leading product and engineering with AI coding tools (72% of all commits).",
     "Led the rebuild from SwiftUI to React Native for iOS and Android, keeping parity across ~40 feature areas.",

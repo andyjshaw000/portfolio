@@ -558,8 +558,8 @@ KNDI = dict(
   strip=[K+f"store-panel-0{i}.jpg" for i in range(1, 6)],
   card="An iPhone app for planning festivals with friends and trading digital kandi. Live on the App Store with about 560 users.",
   impact="Live on the App Store", pills=["Product", "React Native", "SwiftUI", "Supabase"],
-  lede="An iPhone app for planning festivals with friends and trading digital kandi. I joined a volunteer team of six in April 2026 to handle UI and App Store submission, and ended up writing more of the code than anyone, first in SwiftUI and then in a full React Native rebuild.",
-  facts=[("Role","Top contributor, product and engineering"),("Since","April 2026"),("Team","6 volunteers"),("Stack","React Native, Expo, Supabase (v1 in SwiftUI)")],
+  lede="An iPhone app for planning festivals with friends and trading digital kandi. I joined the volunteer founding team of six in April 2026, before launch, to handle UI and App Store submission, and ended up writing more of the code than anyone, first in SwiftUI and then in a full React Native rebuild.",
+  facts=[("Role","Co-founder and top contributor"),("Since","April 2026"),("Team","6 volunteers"),("Stack","React Native, Expo, Supabase (v1 in SwiftUI)")],
   outcome="",
   links=[("View on the App Store","https://apps.apple.com/app/kndi/id6762342337"),("kndi.app","https://kndi.app")],
   sections=[
@@ -569,7 +569,7 @@ KNDI = dict(
       ("figs",3,[(K+"home.jpg","Home: your groups and schedules"),(K+"group.jpg","One page for the whole trip"),(K+"sched.jpg","See who's going to which set")],"","9/19.5",False),
     ]),
     ("My role", [
-      ("p","I'm the top contributor on the team. On the original SwiftUI app I wrote <b>647 of 1,264 commits</b>. In May 2026 we started rebuilding the whole app from scratch in React Native and Expo, using the SwiftUI app as the reference for how everything should behave across about 40 feature areas, and built it for both iOS and Android. Across both versions I've written <b>5,491 of 7,643 commits (72%)</b>."),
+      ("p","I'm a co-founder and the top contributor on the team. On the original SwiftUI app I wrote <b>647 of 1,264 commits</b>. In May 2026 we started rebuilding the whole app from scratch in React Native and Expo, using the SwiftUI app as the reference for how everything should behave across about 40 feature areas, and built it for both iOS and Android. Across both versions I've written <b>5,491 of 7,643 commits (72%)</b>."),
       ("p","I build with AI coding tools, which is how one person ships this much. My time goes into deciding what to build, testing how it feels, and fixing what breaks."),
       ("p","The areas I owned:"),
       ("ul",[
